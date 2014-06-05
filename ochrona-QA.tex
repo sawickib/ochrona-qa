@@ -1,0 +1,883 @@
+%\documentclass[]{exam}
+\documentclass[answers,11pt]{exam}
+
+%\renewcommand{\familydefault}{\sfdefault}
+\usepackage{t1enc}        
+\usepackage[utf8]{inputenc}
+
+\usepackage[polish]{babel}
+%\usepackage{polski}
+
+\renewcommand{\solutiontitle}{}
+%\renewcommand{\solutiontitle}{\noindent\textbf{Odpowiedź:} }
+
+\cfoot[]{}
+\rfoot[]{strona \thepage}
+
+\title{Ochrona danych w systemach informatycznych \\ \vspace{0.5cm} \large{niepełny zbiór pytań i przykładowych odpowiedzi}}
+\author{Bartosz Sawicki}
+
+
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{Notka od autora:}
+
+Niniejszy zbiór pytań i odpowiedzi obejmuje zdecydowaną większość materiału poruszanego w ramach wykładu ,,Ochrona danych w systemach informatycznych'' na drugim roku studiów na kierunku Informatyka na Wydziale Elektrycznym Politechniki Warszawskiej. Lista pytań jest dosyć rozległa jednak nie wyczerpuje całkowicie wszystkich tematów, dlatego nie należy traktować jej jako jedyne źródło wiedzy. Tym bardziej, że prezentowane teksty nie wyjaśniają opisywanych tematów, a są po prostu krótkimi, przykładowymi odpowiedziami na pytania egzaminacyjne. Przygotowując się do egzaminu trzeba sięgnąć do slajdów i podanej literatury.
+
+Przy opracowywaniu tego zbioru wykorzystywałem wiele źródeł o uznanej wiarygodności, ale specjalne podziękowania leżą się również wielu studentom, którzy udostępnili swoje notatki. Mam nadzieję, że w ten sposób tekst stał się bardziej przystępny. Zapraszam do przesyłania poprawek i uzupełnień tego opracowania.
+
+\hspace*{10cm}\textit{Bartosz.Sawicki@ee.pw.edu.pl}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Kryptografia}
+
+\subsection{Kryptografia klasyczna}
+
+\begin{questions}
+
+\question Omów trzy wybrane zasady dobrego systemu kryptograficznego podane przez Kerkhoffa.
+\begin{solution}
+\begin{itemize}
+\item Utajniony powinien być klucz, a nie budowa maszyny szyfrującej - w ten sposób system nie zostanie skompromitowany gdy wróg przechwyci maszynę. Wystarczy tylko zmienić klucz.
+\item System powinien być łatwy w użyciu - w przeciwnym razie użytkownicy będą unikali stosowania go, tym samy narażając dane na niebezpieczeństwo.
+\item Liczy się praktyczna, a nie bezwzględna odporność systemu - dlatego należy zawsze uwzględniać rolę jaką pełni zabezpieczenie. Do ochrony danych wartych 1000zł, nie warto stosować systemów za miliony.
+\end{itemize}
+\end{solution}
+
+\question Wymień zasady Kerkhoffsa
+\begin{solution}
+\begin{enumerate}
+\item System praktycznie nie do złamania.
+\item Utajniony jest klucz, a nie sama budowa maszyny. 
+\item Klucz powinien być łatwy do zapamiętania.
+\item Kryptogram łatwy do przekazania.
+\item Maszyna szyfrująca łatwa do przenoszenia. 
+\item System łatwy w użyciu.
+\end{enumerate}
+\end{solution}
+
+\question Omów najważniejszą zasadę Kerkhoffsa.
+\begin{solution}
+\emph{Utajniony powinien być klucz, a nie budowa maszyny szyfrującej.} W ten sposób bezpieczeństwo systemu nie będzie zagrożone nawet jeśli gdy wróg przechwyci maszynę. Wystarczy tylko zmienić klucz. Zasada ta również stosowana jest przy systemach informatycznych jako argument za ujawnianiem kodu algorytmów szyfrujących.
+\end{solution}
+
+\question Przedstaw metodę projektowania dobrego szyfru homofonicznego.
+\begin{solution}
+Podstawą działania szyfru homofonicznego jest podstawienie jeden do wielu, czyli jednemu symbolowi tekstu jawnego może odpowiadać wiele symboli kryptogramu. Celem tego szyfru jest spłaszczenie histogramu kryptogramu w ten sposób, że najczęściej występującym znakom w tekście jawnym przypisana jest największa liczba homofonów. Oczywiście taka operacja wymaga aby liczba symboli występujących w kryptogramie była wyraźnie większa niż symboli tekstu jawnego.
+\end{solution}
+
+\question Jakie algorytmy podatne są na kryptoanalizę statystyczno-lingwistyczną?
+\begin{solution}
+Zasadniczo większość algorytmów historycznych miało problem ze zniekształcaniem statystycznych cech tekstu napisanego w języku naturalnym. Każdy język charakteryzuje się pewną częstotliwością występowania poszczególnych liter. Dysponując dużą próbką tekstu możemy z dużą pewnością określić jakie znaki odpowiadają jakim literom. Najbardziej podatne na tego typu atak są algorytmu jednoznakowe, monoalfabetyczne (np. alg. Cezara). Algorytmy polialfabetyczne są lepsze pod tym względem. 
+\end{solution}
+
+\question Na czym polega algorytm autokey?
+\begin{solution}
+Algorytm autokey jest rozszerzeniem algorytmu Vigenere'a. Polega on na uzupełnieniu klucza przy pomocy tekstu jawnego. W ten sposób unikamy ciągłego powtarzania hasła, co ułatwiłoby atak oparty na częstotliwości znaków. 
+\end{solution}
+
+\question Opisz zasadę algorytmów polifonicznych?
+\begin{solution}
+Algorytmy polifoniczne, to rodzaj szyfrów przez podstawienie, w których kilka znaków z alfabetu tekstu jawnego jest przekształcanych w ten jeden, ten sam znak kryptogramu. Takie przekształcenie jest nie jednoznaczne w rozszyfrowaniu. Z tego powodu algorytmy polifoniczne są odporne na kryptoanalizę, ale jednocześnie trudne w stosowaniu.
+\end{solution}
+
+\question Omów systematykę klasycznych algorytmów szyfrowania przez podstawienie?
+\begin{solution}
+Jest kilka klasyfikacji algorytmów tego typu. Możemy wydzielić algorytmy jednoznakowe, w których niezależnie szyfrowane są poszczególe litery tekstu jawnego, lub algorytmy poligramowe (jednoczesne szyfrowanie kilku znaków). 
+Drugi podział opiera się na tym, czy jest jeden słownik/alfabet tłumaczący (monoalfabetyczne), czy też jest ich wiele (polialfabetyczne). 
+\end{solution}
+
+\question Przedstaw wybrany algorytm szyfrowania polialfabetyczny.
+\begin{solution}
+Szyfry polialfabetyczne są algorytmami szyfrującymi przez podstawienie, w którym wykorzystywanych jest wiele alfabetów tłumaczących kolejne znaki tekstu jawnego na kryptogram. Przykładem może być algorytm Vigenere'a. Jest to rozszerzenie algorytmu Cezara w taki sposób, że kolejne znaki  ($p_i$) szyfrowane są z innym przesunięciem wynikającym z odpowiedniego symbolu klucza ($k_i$).
+\begin{equation}
+c_i = p_i + k_i \pmod{26}
+\end{equation}
+\end{solution}
+
+\question Omów szyfr afiniczny.
+\begin{solution}
+Szyfr afiniczny to algorytm monoalfabetyczny podstawieniowy. Operacja szyfrowania definiowana jest przez równanie matematyczne $E(x) = ax + b \pmod{26}$. Przy czym, żeby szyfrowanie było odwracane wymagane jest, żeby $a$ było względnie pierwsze z $26$. Odszyfrowanie realizowane jest przez $D(x) = a^{-1}(x-b) \pmod{26}$.
+\end{solution}
+
+
+\question Przedstaw wybrany algorytm szyfrowania monoalfabetyczny.
+\begin{solution}
+Przykładem algorytmu monoalfabetycznego jest szyfr ROT-13. Polega on na zastąpieniu każdej litery tekstu jawnego poprzez literę przesuniętą cyklicznie o 13 znaków w alfabecie. W podstawowym alfabecie ASCII jest 26 znaków, a więc ROT-13 ma tą zaletę, że zaszyfrowanie kryptogramu daje w wyniku tekst jawny.
+\end{solution}
+
+\question Przedstaw wybrany algorytm szyfrowania poligramowy.
+\begin{solution}
+W algorytmach poligramowych szyfrowane jest więcej niż jeden symbol jednocześnie. Przykładem może być szyfr Playfair, w którym w kratkę o rozmiarze 5x5 wpisywane jest hasło uzupełnione pozostałymi literami alfabetu. Na podstawie położenia liter poszczególnych bigramów (kolejnych dwóch znaków tekstu jawnego) wybiera się położenie znaków kryptogramu. Jeżeli litery znajdują się w tym samym rzędzie (kolumnie), to wybieramy znaki leżące po prawej (poniżej). W innej sytuacji wybieramy znaki znajdujące się po przekątnej od liter bigramu.  
+\end{solution}
+
+
+\end{questions}
+
+\subsection{Kryptografia współczesna}
+
+\begin{questions}
+
+\question Dlaczego funkcja XOR jest tak często stosowana w kryptografii?
+\begin{solution}
+Funkcja XOR jest najprostszą operacją logiczną, która może zapewnić szyfrowanie i deszyfrowanie przy pomocy tego samego klucza. Symetryczne algorytmy strumieniowe opierają się na bramce XOR.
+\end{solution}
+
+\question Omów algorytm szyfrowamia one-time pad?
+\begin{solution}
+Algorytm OTP w swoich założeniach zbliża się do algorytmu doskonałego, czyli takiego, który ma udowodnioną odporność na wszelkiego typy ataki. Podstawowym założeniem OTP jest wykorzystanie losowego klucza. Klucz w OTP musi spełniać szereg warunków:
+\begin{itemize}
+\item klucz musi być tak długi jak tekst jawny,
+\item klucz musi być ciągiem doskonale losowym,
+\item nigdy nie wolno wykorzystać dwa razy tego samego klucza.
+\end{itemize}
+Nie trudno zauważyć, że OTP jest mało praktyczny w zwykłych zastosowaniach. Używa się go do zastosowań specjalnych, a także jego elementy można znaleźć inych algorytmach.
+\end{solution}
+
+\question Ile wynosi entropia dobrego kryptogramu? Odpowiedź uzasadnij.
+\begin{solution}
+Dobry kryptogram powinien nie nieść żadnej informacji statystycznej, czyli przypominać biały szum. Entropia jest sumą logarytmów z prawdopodobieństwa poszczególnych wartości.
+\begin{equation}
+H(x)= - \sum_{i=1}^n p(i) \ log_2 p(i)
+\end{equation}
+W idealnym szumie prawdopodobieństwa są jednakowe, a więc entropia będzie miała maksymalną wartość. 
+\end{solution}
+
+\question Oceń maksymalną entropię hasła składającego się z 8 cyfr.
+\begin{solution}
+Przy założeniu, że wszystkie możliwości są równie prawdopodobne entropia wynosi:
+\begin{equation}
+H = 8 * log_2 10 = 8 * 3.32 = 26.6 bits
+\end{equation}
+\end{solution}
+
+\question Określ relację pomiędzy maksymalna liczba prób ataku brute force na hasło, a jego maksymalną entropią.
+\begin{solution}
+Maksymalna liczba prób jest równa $2^H$, gdzie H jest entropia w bitach. Na przykład dla czterocyfrowego PINu $H = 4*3.32 = 13.28 $, a liczba prób wynosi $ 2^{13.28} = 9946 \approx 10000$ .
+\end{solution}
+
+\question Przedstaw podstawową technikę wykorzystania bramki XOR w konstrukcji szyfru.
+\begin{solution}
+Bramka logiczna XOR stanowi podstawę algorytmów szyfrowania strumieniowego. Cała technika polega na połączeniu operatorem XOR strumienia bitów tekstu jawnego ze strumieniem klucza. Dzięki cechom tej bramki, ten sam układ może być również wykorzystywany do deszyfrowania (XOR pomiędzy kryptogramem a kluczem). 
+\end{solution}
+
+\question Udowodnij, że dwukrotne szyfrowania bramką XOR daje z powrotem tekst jawny.
+\begin{solution}
+Wiedząc, że operacja XOR ($\oplus$) posiada następujące cechy: $x \oplus x = 0$, oraz $x \oplus 0 = x$, można pokazać, że dwukrotne XORowanie z kluczem daje tekst jawny:
+\begin{equation}
+c = p \oplus k 
+\end{equation}
+\begin{equation}
+c \oplus k = (p \oplus k) \oplus k = p \oplus (k \oplus k ) = p \oplus 0 = p 
+\end{equation}
+\end{solution}
+
+\question Omów podstawowe problemy prawne związane ze stosowaniem silnej kryptografii.
+\begin{solution}
+Współczesna kryptografia dostarcza bardzo silnych narzędzi ochrony poufności danych. Rodzi to pewnego rodzaju problemy społeczne i prawne, albowiem przestępcy mogą stosunkowo łatwo ukrywać dowody, albo komunikować się w sposób całkowicie poufny. Z tego też powodu w niektórych krajach silna kryptografia podlega podobnym regulacjom prawnym jak broń. Jednak z drugiej strony wraz z rosnącym znaczeniem systemów IT, ich skuteczna ochrona staje się coraz ważniejsza, a co za tym idzie rośnie potrzeba silnej kryptografii.
+\end{solution}
+
+\question Przedstaw koncepcję szyfrów homomorficznych.
+\begin{solution}
+Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykonywanie pewnych operacji na kryptogramie bez jego odszyfrowywania. Następnie wynik taki obliczeń może być  odszyfrowany. Koncepcja szyfrów homomorficznych jest atrakcyjna, bowiem pozwala na zbudowanie zewnętrznego systemu przetwarzania dla wrażliwych danych. Istnieją pierwsze prototypowe algorytmy tego typu, jednak są one bardzo kosztowne obliczeniowe.
+\end{solution}
+
+\end{questions}
+
+\subsection{Liczby losowe}
+\begin{questions}
+
+\question Omów zasadę działania generatora liczb pseudolosowych opartego na LFSR.
+\begin{solution}
+LFSR oznacza z angielskiego "liniowy rejestr przesuwny ze sprzężeniem zwrotnym". Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające pętlą zwrotną rejestr. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
+\end{solution}
+
+\question Przedstaw pięć zastosowania liczb losowych w kryptografii.
+\begin{solution}
+Liczby losowe to bardzo ważny element wielu algorytmów. Na przykład:
+\begin{itemize}
+\item Wektor inicjalizujący IV w trybie CBC.
+\item Liczby $p$ i $q$ wykorzystywane podczas tworzenia kluczy RSA.
+\item Element wyznania przy algorytmach uwierzytelniania typu wyzwanie odpowiedź.
+\item Sól dla metod przechowywania haseł.
+\item Podstawa algorytmu OTP.
+\end{itemize}
+\end{solution}
+
+\question Wyjaśnij zasadę działania generatorów prawdziwych liczb losowych.
+\begin{solution}
+Prawdziwe liczby losowe nie mogą być wygenerowane przez komputery, które działają w sposób ściśle określony, deterministyczny. Źródłem danych losowych może być tylko proces fizyczny ze świata realnego, które złożoność jest niemożliwa do dokładnego odtworzenia. Dobrymi generatorami są zjawiska ze skali makro (rzut kostką, ruletka, itp.) a także zjawiska na poziomie mikro (szum termiczny, efekty fotoelektryczne, itp.)
+\end{solution}
+
+\end{questions}
+
+\subsection{Algorytmy symetryczne strumieniowe}
+\begin{questions}
+
+\question Omów algorytm RC4.
+\begin{solution}
+RC4 (zwany również ARC4 albo ARCFOUR) jest popularnym szyfrem strumieniowym. Używany jest w protokołach, takich jak SSL oraz WEP. Szyfr RC4 nie jest bezpiecznym szyfrem i znane są sposoby ataku w związku z tym algorytm nie jest zalecany do używania w nowych systemach.
+
+RC4 jak wszystkie algorytmy strumieniowe generuje strumień klucza, który następnie jest XORowany ze strumieniem tekstu jawnego. W wyniku tej operacji powstaje kryptogram.
+
+Działanie RC4 opiera się na 256 bajtowej tablicy $S$, zawierającej wszystkie wartości 0-255. Tablica ta jest inicjowana na podstawie hasła, a następnie przy pomocy prostych operacji w pętli można z niej generować nieskończony strumień klucza. 
+\end{solution}
+
+\question Omów algorytm szyfrowania A5/1.
+\begin{solution}
+Algorytm A5/1 to najbardziej popularna metoda zabezpieczenia poufności w komunikacji w sieci GSM. Jest to szyfr strumieniowy oparty na trzech rejestrach liniowych ze sprzężeniem zwrotnym (LSFR). Podstawowa długość klucza wynosi 64 bity, chociaż w praktyce jest mniejsza. Pokazano wiele wydajnych ataków na ten algorytm, a więc nie może być uważany bezpieczny. Następcą A5/1 jest blokowy algorytm A5/3 wykorzystywany w sieciach G3.
+\end{solution}
+
+\end{questions}
+
+
+
+\subsection{Algorytmy symetryczne blokowe}
+\begin{questions}
+
+\question Na czym polega ECB i czym różni się do CBC.
+\begin{solution}
+ECB i CBC to dwa najprostsze tryby pracy algorytmów blokowych. W trybie ECB tekst jawny dzielony jest na fragmenty o wielkości bloku i następnie każdy fragment jest niezależnie szyfrowany. W trybie CBC kolejne bloki są ze sobą kaskadowo połączone w ten sposób, że wynik szyfrowania z jednego bloku jest XORowany z następnym blokiem tekstu jawnego. Należy pamiętać, że ECB jest znacznie słabszą metodą, która w praktyce nie powinna być stosowana.
+\end{solution}
+
+\question Scharakteryzuj algorytm DES.
+\begin{solution}
+DES (ang. Data Encryption Standard) to jeden z pierwszych popularnych algorytmów szyfrujący. Od 1979 roku został zatwierdzony w USA jako zalecany do szyfrowania powszechnego. Algorytm operuje na 64 bitowych blokach, które przy pomocy prostych operacji przekształcane są w 16 rundach. Wykorzystywany jest 56 bitowy klucz (64 bity minus 8 bitów kontroli parzystości). Dzisiaj DES nie powinien być już stosowany ze względu na długość klucza. Zaletą DES jest to, że przez wiele lat został dobrze przebadany - dlatego stosowane są rozszerzenia zapewniające dłuższy klucz, np. 3DES, DESX.
+\end{solution}
+
+\question Wyjaśnij rolę i budowę elementu S-box.
+\begin{solution}
+S-box jest kluczowym elementem algorytmów szyfrowania symetrycznego. Jego rola polega na przekształceniu $m$ bitów wejścia w $n$ wyjścia. Operacja opiera się na tablicy, w której bity wejścia określają położenie komórki zawierającej bity wejścia. Poprawne skonstruowanie takiej tablicy jest zadaniem trudnym, dlatego też korzysta się ze zdefiniowanych S-boxów. W przypadku algorytmu DES: S-box ma wymiar (4x16), a dla AES (16x16). 
+\end{solution}
+
+\question Opisz zasadę działania S-boxów w algorytmie DES.
+\begin{solution}
+S-box dla algorytmu DES, to tablica o wymiarach 4x16, która pozwala na przekształcenie 6 bitów wejścia na 4 bity wyjściowe. Dwa zewnętrze bity wejścia tworzą numer wiersza, a cztery wewnętrzne bity opisują numer kolumny. Określona w ten sposób komórka tablicy daje ciąg wyjściowy. W algorytmie DES używanych jest osiem precyzyjnie zdefiniowanych S-boxów. Wszystkie one dobrane są tak, aby inicjować efekt lawinowy, to znaczy zmiana jednego bitu na wejściu skutkuje zmianą co najmniej dwóch bitów na wyjściu.
+\end{solution}
+
+\question Scharakteryzuj algorytm AES.
+\begin{solution}
+Algorytm AES to współcześnie polecany symetryczny szyfr blokowy. Został zatwierdzony do użycia w roku 2001 i zastąpił wysłużony algorytm DES. Długość bloku w AES wynosi 128 bitów, a standard dopuszcza trzy długości kluczy: 128, 192 i 256 bitów. Budowa algorytmu opiera się na powtarzanych wielokrotnie prostych operacjach podstawienia i permutacji. 
+\end{solution}
+
+\question Pokaż zasadę działania sieci Feistela.
+\begin{solution} 
+Sieć Feistela to struktura wykorzystywana w wielu algorytmach szyfrowania blokowego (np. DES). Pozwala na wykorzystanie funkcji jednokierunkowej, przy jednoczesnym zachowaniu możliwości odszyfrowania kryptogramu. Podstawą sieci Feistela jest podział bloku na dwie połówki $L$ i $R$, a następnie zdefiniowanie przekształcenia pomiędzy kolejnymi rundami $i \rightarrow i+1$:
+\begin{equation}
+L_{i+1} = R_i, \;\; R_{i+1}= L_i \oplus {\rm F}(R_i, K_i).
+\end{equation}
+Odwrócenie procesu szyfrowania przebiega analogicznie, ale od ostatniej rundy
+\begin{equation}
+R_{i-1} = L_{i},\;\; L_{i-1} = R_{i} \oplus {\rm F}(L_{i}, K_{i-1}).
+\end{equation}
+\end{solution}
+
+\question Wykaż, że runda w sieci Feistela jest odwracalna.
+\begin{solution} 
+Jeżeli zapiszeny szyfrowanie w sieci Feistela jako:
+\begin{equation}
+L_{i+1} = R_i, \;\; R_{i+1}= L_i \oplus {\rm F}(R_i, K_i),
+\end{equation}
+a deszyfrowanie jako:
+\begin{equation}
+R_{i} = L_{i+1},\;\; L_{i} = R_{i+1} \oplus {\rm F}(L_{i+1}, K_{i}),
+\end{equation}
+to łatwo pokazać, że
+\begin{equation}
+L_{i} = L_i \oplus {\rm F}(R_i, K_i) \oplus {\rm F}(L_{i+1}, K_{i}),
+\end{equation}
+co po podstawieniu $L_{i+1} = R_i$ daje
+\begin{equation}
+L_{i} = L_i \oplus {\rm F}(R_i, K_i) \oplus {\rm F}(R_i, K_{i}).
+\end{equation}
+Wykorzystując podstawowe cechy operacji XOR ($\oplus$) dostajemy ostatecznie:
+\begin{equation}
+L_{i} = L_i.
+\end{equation}
+\end{solution} 
+
+
+\question Omów różnicę w propagacji błędów pomiędzy trybami ECB i CBC.
+\begin{solution}
+W trybie ECB każdy blok szyfrowany jest niezależnie, co przekłada się na to, że nie przenoszą się pomiędzy blokami. Inaczej jest w trybie CBC, w którym zakłócenie jednego bitu kryptogramu spowoduje całkowite uszkodzenie dwóch bloków (aktualnego i częściowo następnego). 
+\end{solution}
+
+\question Przedstaw tryb CFB
+\begin{solution}
+CFB jest to tryb pracy algorytmów blokowych. Polega on na sprzężeniu pomiędzy wyjściem z algorytmu blokowego, a jego wejściem. Dopiero wyjście zXORowane z tekstem jawnym daje kryptogram.
+Tryb ten może być wykorzystany do stworzenia algorytmu strumieniowego zdolnego do szyfrowania pojedyńczych bitów. 
+\end{solution}
+
+\question Wyjaśnij podstawy działania i uzasadnienie dla wykorzystania trybów uwierzytelniająco-szyfrujących.
+\begin{solution}
+Często występuje potrzeba jednoczesnego zapewnienia poufności i kontroli autentyczności dla wiadomości. W klasycznych rozwiązaniach poufność zapewniana jest poprzez szyfrowanie, a kontrola autentyczności poprzez hashowanie HMAC. Tryby uwierzytelniająco-szyfrujące przeprowadzają te dwie operacje jednocześnie, a więc są znacznie bardziej efektywne, niż przetwarzanie dwuetapowe.
+\end{solution}
+
+
+\question Na czym polega atak meet-in-the-middle?
+\begin{solution}
+Atak meet-in-the-middle jest wydajnym atakiem na algorytmy, które można rozdzielić na dwie niezależne części (np. 3DES). Atakujący buduje w pamięci bazy wyników szyfrowania dla każdej z części, a następnie szuka w pamięci przecięcia tych zbiorów. Algorytm pozwala znacząco obniżyć liczbę prób, ale kosztem dużych wymagań pamięci.
+\end{solution}
+
+
+\end{questions}
+
+
+
+\subsection{Algorytmy funkcji skrótu}
+\begin{questions}
+
+\question Na jakie typy ataków podatne są jednokierunkowe funkcje skrótu słabo bezkonfliktowe? Odpowiedź uzasadnij.
+\begin{solution}
+Słaba bezkonfliktowość do cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
+Przykładem ataku, którego celem jest właśnie znalezienie takiego $x'$ są ataki słownikowe, lub brutalnej siły na hasła.
+\end{solution}
+
+\question Wyjaśnij zasadę działania tablic tęczowych.
+\begin{solution}
+Tablice tęczowe to struktura zaprojektowana do przeprowadzanie ataków na hasła chronione funkcjami hashującymi. U jej podstaw leży optymalne połączenie czasochłonnych metod brutalnej siły, z pamięciożernymi metodami słownikowymi. Podstawowym elementem tablic tęczowych jest ciąg przekształceń: hash i redukcja. Gdzie redukcja jest przekształceniem tworzącym hasło z jego skrótu. W tablicach tęczowych przechowuje się tylko pierwszy i ostatni element tego ciągu - co czyni metodę znacznie efektywniejszą.
+\end{solution}
+
+\question Opisz metody pozwalające na bezpieczne przechowywania haseł w systemie.
+\begin{solution}
+Najpopularniejsza metoda uwierzytelniania oparta o tajne hasło wymaga, żeby system przechowywał hasło. Potencjalnie taka sytuacja jest niebezpieczna, ze względu na możliwości wykradzenia bazy hasał. Mamy jednak kilka metod, które pozwalają na bezpieczne przechowywanie haseł:
+\begin{itemize}
+\item przechowujemy hasło przekształcone funkcją hashującą, a nie tekst jawny,
+\item używamy losowego modyfikatora (soli), który znacznie utrudnia ataki słownikowe,
+\item wielokrotnie hashujemy hasło (np. 1000 razy) w ten sposób utrudniamy ataki brutalnej siły.
+\end{itemize}
+\end{solution}
+
+\question Omów budowę algorytmu MD5.
+\begin{solution}
+Algorytm MD5 jest kryptograficzną funkcją haszującą opracowaną w 1991 przez Rivesta. Polega on na wielokrotnym przekształcaniu 128 bitowego rejestru podzielonego na cztery 32 bitowe sekcje na podstawie 512 bitów wejściowego bloku tekstu. Wynikiem operacji jest 128 bitowy hash. Algorytm jest wciąż popularny, mimo, że nie jest on zalecany z powodu znanych ataków.
+\end{solution}
+
+\question Omów algorytmy SHA-2.
+\begin{solution}
+SHA-2 to rodzina algorytmów hashujących. Zawiera ona funkcje generujące hashe od 256 do 512 bitów. Algorytmy SHA-2 są unowocześnionymi wersjami algorytmu SHA-0 i SHA-1, a korzeniami sięgają do MD5. Ich działanie opiera się na serii prostych przekształceń wykorzystujących rejestr 512/1024 bitowy. SHA-2 jest obecnie najlepszym algorytmem hash, chociaż trwa właśnie konkurs na jego następcę SHA-3.
+\end{solution}
+
+\question Na czym polega paradoks urodzinowy i jak wykorzystać go do ataku na MAC?
+\begin{solution}
+Paradoks urodzinowy to zaskakująca obserwacja z rachunku prawdopodobieństwa dla grupy liczącej  $k$ osób. Polega ona na zestawieniu szansy na to ktoś ma urodziny konkretnego dnia, z tym, że dowolne dwie osoby w grupie mają urodziny tego samego dnia. O ile pierwsza wartość wynosi $P_1 = k/365$, o tyle druga $P_2 = 1 - \frac{364}{365}\frac{363}{365} ... \frac{365-k+1}{365}$. 
+Na przykład, jeśli $k=20$, to $P_1 = 0.06$, a $P_2 = 0.44$. 
+\end{solution}
+
+\question Oszacuj czas ataku brute-force na hasło składające się z 6 małych liter, przy założeniu, że algorytm atakujący wykonuje $10^6$ prób na sekundę.
+\begin{solution}
+Liczba wszystkich możliwych haseł wynosi w tym przypadku $26^6$. Statystycznie atak brute-force musi przeszukać połowę tej liczby, co zajmie mu $(26^6 / 2 ) / 10^6 \approx 154$ sekund.
+\end{solution}
+
+\question Zaproponuj wymagania na hasło, tak aby niosło około 60 bitów entropii.
+\begin{solution}
+Przy założeniu, że hasło jest w pełni losowe jego entropia wynosi $n \log_2(N)$, gdzie $n$ to liczba znaków, a $N$ jest liczbą znaków w stosowanym alfabecie. Jeżeli przyjmiemy hasło składające się z samych cyfr, czyli $N=10$, aby otrzymać 60 bitów potrzebnych będzie $60/\log_2(10) \approx 18$ znaków. Natomiast w przypadku hasła składającego się z małych i dużych liter, będzie to $60/\log_2(52) \approx 10 $ znaków
+\end{solution}
+
+
+\end{questions}
+
+
+\subsection{Algorytmy asymetryczne}
+
+\begin{questions}
+\question Przedstaw metodę generowania kluczy w algorytmie RSA.
+\begin{solution}
+Etap generowanie kluczy jest specyfiką wszystkich algorytmów asymetrycznych. Występuje on jednorazowo przed rozpoczęciem jakiegokolwiek szyfrowania. Raz wygenerowana para kluczy (prywatny i publiczny) może być wykorzystywana wielokrotnie. 
+
+Dla algorytmu RSA wygląda to następująco:
+\begin{enumerate}
+\item Losujemy dwie duże liczby pierwsze $p$ i $q$.
+\item Wybieramy losowo liczbę $e$ względnie pierwszą z $(p-1)(q-1)$, czyli $NWD(e, (p-1)(q-1)) = 1$.
+\item Obliczamy liczbę $d$ będącą odwrotnością $e$ modulo $(p-1)(q-1)$, czyli $ ed = 1 mod (p-1)(q-1)$.
+\item Obliczamy liczbę n, $n = pq$, a następnie niszczymy $p$ i $q$. 
+\end{enumerate}
+Kluczem prywatnym jest para liczb $(e,n)$, a kluczem publicznym $(d,n)$.
+\end{solution}
+
+\question Omów szyfrowanie i deszyfrowanie w algorytmie RSA.
+\begin{solution}
+Zakładając, że $(e,n)$ jest kluczem prywatnym, a $(d,n)$ kluczem publicznym. Zaszyfrowanie wiadomości $M$ sprowadza się do przekształcenia jej w liczbę (nazwijmy tą liczbę $m$) i wykonaniu operacji podnoszenia do potęgi $d$ modulo $n$:
+\begin{equation}
+ c = m^d \pmod{n}
+\end{equation}
+Odszyfrowanie to bardzo podobna operacja matematyczna wykonaną na kryptogramie $c$, wykorzystująca jednak klucz prywatny:
+\begin{equation}
+ m = c^e \pmod{n}
+\end{equation}
+\end{solution}
+
+\question Omów szyfrowanie i deszyfrowanie w algorytmie ElGamal.
+\begin{solution}
+Załóżmy, że $(p,\alpha,\beta)$ jest kluczem publicznym, a $(t)$ kluczem prywatnym. Zaszyfrowanie wiadomości $M$ sprowadza się do przekształcenia jej w liczbę (nazwijmy tą liczbę $m$) i wykonaniu dwóch obliczeń:
+\begin{equation}
+ (c_1, c_2) = (\alpha^k, m\beta^k) \pmod{p}
+\end{equation}
+gdzie $k$ jest dużą liczbą losową. Kryptogram $c$ składa się z dwóch liczb na każdą liczbę tekstu jawnego. W przypadku szyfrowania dłuższego ciągu liczb, można wykorzystać tą samą liczbę losową $k$, tym samym $\alpha^k$ będzie jedno, zmniejszając w ten sposób długość kryptogramu.
+  
+Odszyfrowanie to jedna operacja matematyczna:
+\begin{equation}
+ m = c_2({c_1}^t)^{-1} \pmod{p}
+\end{equation}
+\end{solution}
+
+\question Udowodnij zasadę odszyfrowywania w algorytmie ElGamal.
+\begin{solution}
+Wiemy, że kryptogram w algorytmie ElGamal składa się z dwóch liczb:
+\begin{equation}
+ (c_1, c_2) = (\alpha^k, m\beta^k) \pmod{p}
+\end{equation}
+gdzie $k$ jest dużą liczbą losową, $(p,\alpha,\beta)$ jest kluczem publicznym, a $(t)$ kluczem prywatnym. 
+Odszyfrowanie to jedna operacja matematyczna:
+\begin{equation}
+ m = c_2({c_1}^t)^{-1} \pmod{p}
+\end{equation}
+Pamiętając podstawową relację $\beta=\alpha^t$, możemy udowodnić działanie algorytmu:
+\begin{equation}
+ c_2({c_1}^t)^{-1} = m\beta^k (\alpha^{kt})^{-1} =  m\alpha^{kt} (\alpha^{kt})^{-1}  = m \pmod{p}
+\end{equation}
+\end{solution}
+
+\question Przedstaw podstawowy schemat wykorzystania kryptografii asymetrycznej do szyfrowania.
+
+\question Przedstaw podstawowy schemat wykorzystania kryptografii asymetrycznej do podpisu.
+
+\question Wymień wady i zalety kryptografii asymetrycznej.
+\begin{solution}
+Kryptografia asymetryczna rozwiązuje problem ustalania klucza, który jest poważnym utrudnieniem przy masowym stosowaniu kryptografii symetrycznej. Ponadto stwarza nowe możliwości (np. uwierzytelnianie) definiowane przez wykorzystanie schematu podpisu (szyfrowanie kluczem prywatnym). Do wad kryptografii asymetrycznej należy zaliczyć większą złożoność obliczeniową stosowanych algorytmów oraz większość długość wymaganych kluczy.
+\end{solution}
+
+
+\question Wyjaśnij znacznie zapisu $x = y^{-1} \pmod{n}$.
+\begin{solution}
+Oznacza to, że liczba $x$ jest odwrotnością liczby $y$ w arytmetyce modularnej. Jest to równoważne z tym, że iloczyn tych liczb jest równy $1$, co można zapisać jako $x y = 1 \pmod{n}$.
+\end{solution}
+
+\question Scharakteryzuj szyfrowanie oparte na krzywych eliptycznych.
+\begin{solution}
+Algorytmy oparte na krzywych eliptycznych (ECC) wymagają kilkukrotnie krótszych kluczy niż inne algorytmy asymetryczne, np. RSA, przy tym samym poziomie odporności. Na przykład, klucz o długości 1024 bitów w RSA odpowiada 163 bitowemu kluczowy ECC.
+Dodatkowo wykonywane obliczenia są stosunkowo proste, a więc nie wymagają dużej mocy obliczeniowej od urządzeń szyfrujących.
+\end{solution}
+
+\question Wyjaśnij działanie probabilistycznych testów pierwszości.
+
+\question Opisz algorytm szybkiego potęgowania.
+
+\question Oblicz liczbę odwrotną do $34 \pmod{77}$.
+
+\question Korzystając algorytmu Euklidesa sprawdź, czy liczby 57 i 123 są względnie pierwsze.
+\begin{solution}
+Tworzymy ciąg reszt z dzielenia:
+$r_0 = 123$, $r_1 = 57$, $r_3 = 123 - 2 \times 57 = 9$, $r_4 = 57 - 6 \times 9 = 3$, 
+$r_5 = 9 - 3 \times 3 = 0$. Okazało się, że największym wspólnym dzielnikiem liczb 57 i 123 jest liczba 3, co oznacza, że liczby te nie są względnie pierwsze.
+\end{solution}
+
+\question Na czym polegają operacje w kryptografii krzywych eliptycznych?
+\begin{solution}
+Główne operacje dotyczą punktów (x,y) spełniających równanie eliptyczne w artmetyce modularnej. 
+\begin{equation}
+y^2 = x^3 + ax +b \pmod{p}
+\end{equation}
+Operacje dodawania, mnożenia są zdefiniowane matematycznie, jednak ich obliczenie może nie być proste. Na przykład prosta na pierwszy rzut oka operacja mnożenia punktu $A$ przez skalar $k$:
+\begin{equation}
+R = k A \pmod{p}
+\end{equation}
+jest łatwa do wykonania w jedną stronę, jednak bardzo trudna do odwrócenia. Na tym właśnie bazuje kryptografia krzywych eliptycznych.
+
+\end{solution}
+
+
+\end{questions}
+
+\subsection{Steganografia}
+
+\begin{questions}
+
+\question Na czym polega steganografia? Podaj przykłady historyczne.
+\begin{solution}
+Steganografia polega na ukrywaniu faktu istnienia informacji, a także na ukrywaniu kanału komunikacyjnego. O starożytności mamy wiele metod tego typu, np: atrament sympatyczny, mikrokropki, tatuaż pod włosami.
+\end{solution}
+
+\question Jakiego rodzaju dane cyfrowe mogą być nośnikiem kanału steganograficznego?
+\begin{solution}
+Nośnikiem steganograficznym mogą być każde dane, które mają w sobie pewną nadmiarowość. Idealnie w tej funkcji sprawdzają się materiały multimedialne, zdjęcia, filmy, muzyka. Jednak równie dobrze informacja może zostać ukryta w innych plikach danych, które mogą zostać zmodyfikowane bez zmiany niesionej informacji np. HTML, DOC, PDF. W protokołach sieciowych też jest wpisana pewna dowolność, a więc otwiera się pole dla steganografii. 
+\end{solution}
+
+\question Omów dwa główne zastosowania steganografii?
+\begin{solution}
+Technika ukrywania informacji może być stosowana do utajnionej komunikacji oraz do znakowania wodnego danych. Od strony algorytmicznej są to właściwie identyczne problemy. Różnica tkwi tylko w tym co jest głównym przedmiotem metody. W pierwszym przypadku jest to ukryta informacja, a w drugim nośnik steganograficzny. 
+\end{solution}
+
+\question Wyjaśnij na czym polega pasywna steganoanaliza?
+\begin{solution}
+Pasywna steganoanaliza polega na wykrywaniu kanału steganograficznego. Samo wykrycie informacji, to najczęściej tylko pierwszy krok, albowiem jest ona zaszyfrowana. W celu pełnego poznania komunikatu konieczne jest przeprowadzenie również ataku kryptoanalitycznego.
+\end{solution}
+
+\question Wyjaśnij na czym polega aktywna steganoanaliza?
+\begin{solution}
+Aktywna steganoanaliza polega na zakłóceniu lub całkowitym zniszczeniu ukrytej wiadomości. Metody te są wykorzystywane do usuwania cyfrowych znaków wodnych z treści multimedialnych, lub do niszczenia kanału steganograficznego. Co istotne algorytmy niszczące działają najczęściej na ślepo i nie wygają żadnej wiedzy o zastosowanej metodzie steganograficznej.  
+\end{solution}
+
+\question Przedstaw popularny schemat znakowania wodnego obrazów cyfrowych?
+\begin{solution}
+Celem znakowania wodnego jest trwałe oznaczenie materiału multimedialnego danymi autora, dystrybutora, lub właściciela kopii. Proces rozpoczyna się od tego, że dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Dane identyfikacyjne poddawane są kodowaniu rozszerzającemu, aby zwiększyć ich odporność na uszkodzenia. Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
+\end{solution}
+
+\question Przedstaw ogólny schemat tworzenia kanału steganograficznego?
+\begin{solution}
+Kanał steganograficzny ma za zadanie w ukryty sposób przekazać tajną wiadomośći. Proces rozpoczyna się od zaszyfrowania wiadomości, aby zapewnić jej poufność i zatrzeć cechy statystyczne. Jednocześnie dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
+\end{solution}
+
+
+\end{questions}
+
+
+
+\section{Protokoły}
+
+\subsection{Dystrybucja kluczy publicznych}
+
+\begin{questions}
+
+\question Co to jest PKI? Jakie ma zalety, a jakie wady?
+\begin{solution}
+PKI - Public Key Infrastructure, po polsku Infrastruktura Klucza Publicznego. Jest to zorganizowana metoda dystrybucji kluczy publicznych opierająca się na certyfikatach i drzewiastej strukturze urzędów certyfikujących (CA). Rolą CA jest uprzednie stwierdzenie tożsamości, a następnie poświadczenie jej przez złożenie podpisu cyfrowego na kluczu publicznym zainteresowanego. Centralizacja w formie urzędów certyfikujących może być przez jednych traktowana jako zaleta, bo odpowiedzialność za system jest skupiona na określonej grupie organizacji. Jednak CA mogą stać się celem ataków, przez cały system stanie się niewiarygodny.
+\end{solution}
+
+\question Wyjaśnij dlaczego certyfikaty urzędów certyfikujących są wbudowane w system operacyjny?
+\begin{solution}
+Wiarygodność certyfikatu urzędu certyfikującego (CA, ang. Certification Authority) stoi u podstaw całej infrastruktury klucza publicznego (PKI). Dlatego też bardzo ważne jest, aby te certyfikaty były dystrybuowane możliwie pewnym kanałem i rzadko ulegały zmianom. Najczęściej certyfikaty CA instalowane są razem z systemem operacyjnym, lub samym programem, który będzie wykorzystywał połączenia szyfrowane (np. przeglądarka internetowa).
+\end{solution}
+
+\question Na czym polega Web-of-trust?
+\begin{solution}
+Web-of-trust to rozproszona metoda dystrybucji kluczy publicznych, alternatywna do hierarchicznej infrastruktury klucza publicznego. Użytkownicy systemu tworzą sieć wzajemnie poświadczając sobie klucze publiczne. Jeden klucz może być podpisywany przez wielu użytkowników, którzy mają możliwość ustawiania różnych poziomów zaufania. Popularna implementacja Web-of-trust wykorzystywana jest w systemie PGP.
+\end{solution}
+
+\question W jaki sposób dystrybuowane są klucze publiczne w protokole SSH?
+
+\question Co to jest certyfikat X.509 i jakie są jego najważniejsze elementy?
+Rolą systemu certyfikatów X.509 jest rozprowadzenie kluczy publicznych ich właścicieli. Podstawowymi elementami certyfikatu są: klucz publiczny w wybranym protokole, dane właściciela, daty ważności oraz podpis wystawcy, który jest gwarantem wiarygodności certyfikatu.
+\end{questions}
+
+
+\subsection{Uwierzytelnianie}
+
+\begin{questions}
+
+
+\question Czym różni się uwierzytelnianie od autoryzacji?
+\begin{solution}
+Uwierzytelnianie jest procesem potwierdzenia tożsamości, natomiast autoryzacja dotyczy przyznania uprawnień. Bardzo często te dwa kroki następują po sobie, jednak należy je zdecydowanie rozróżniać, bo wiążą się z nimi zupełnie inne problemu.
+\end{solution}
+
+\question Opisz dowolny iteracyjny protokół uwierzytelniania.
+\begin{solution}
+Iteracyjne protokoły uwierzytelniania są szczególnym przypadkiem protokołów Wyzwanie-Odpowiedź, w których jednorazowe pytanie nie daje odpowiedzi na pytanie o tożsamość użytkownika. 
+
+Najprostszym do opisania protokołem tego typu jest dowód z wiedzą zerową na przykładzie tajemnych drzwi w jaskini. W protokole tym jedna osoba dowodzi, że zaklęcie otwierające drzwi, a weryfikujący nie wie nawet, czy i kiedy zaklęcie zostało użyte. Protokół musi być wykonany wiele razy, żeby w sposób wiarygodny przekonać weryfikującego.
+\end{solution}
+
+\question Omów wady i zalety uwierzytelniania przy pomocy hasła.
+\begin{solution}
+Uwierzytelniania przy pomocy tajnego hasła jest najpopularniejszą metodą potwierdzania tożsamości. Stosowane jest od czasów starożytnych i jest naturalnie zrozumiałe przez ludzi. 
+Do zalet tej metody należy zaliczyć: łatwość w implementacji, powszechne zrozumienie zasady działania.
+Wadami są: możliwość podsłuchania hasła, konieczność przechowywania hasła na serwerze, dobre hasła są trudne do zapamiętania przez użytkowników.
+\end{solution}
+
+\question Przedstaw trzy główne grupy metod uwierzytelniania.
+\begin{solution}
+Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na trzy grupy w zależności od tego do czego się odwołują:
+\begin{description}
+\item[Co wie?] - odwołujące się do zapamiętanych haseł,
+\item[Co ma?] - odwołujące się do posiadanych przedmiotów,
+\item[Kim jest?] - odwołujące się do cech biometrycznych.
+\end{description}
+\end{solution}
+
+\question Na czym polega uwierzytelnianie dwuskładnikowe? Podaj przykłady.
+
+\question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
+
+\question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię asymetryczną.
+
+\question Omów podstawowy schemat iteracyjnego dowodu z wiedzą zerową.
+
+\end{questions}
+
+
+\subsection{Podpis cyfrowy}
+
+\begin{questions}
+
+\question Omów podstawowy schemat podpisu cyfrowego.
+
+\question Wyjaśnij jakie znaczenie ma zastosowanie funkcji haszującej w podpisie cyfrowym.
+
+\question Jakie zagrożenia niesie za sobą podpisywanie niezrozumiałych danych?
+\begin{solution}
+Możliwe jest, że dane zostały spreparowane w ten sposób, aby poznać nasz klucz prywatny bądź dokonać podpisu podstawionej wiadomości. W przypadku algorytmu RSA jest to stosunkowo proste. Wystarczy, że atakujący przykryje wiadomość $m$ poprzez pomnożenie jej przez losowe $k$ do potęgi $e$ (nasz klucz publiczny). 
+\begin{equation}
+t = m k^e \pmod{n}
+\end{equation}
+Podpisując niezrozumiałe, losowo-wyglądające $t$ przy pomocy klucza prywatnego $d$ wykonujemy operację
+\begin{equation}
+s = t^d \pmod{n}
+\end{equation}
+Ponieważ z $k^{ed} = k$, atakujący może wykonać następującą operację:
+\begin{equation}
+sk^{-1} = m^d \pmod{n}
+\end{equation}
+otrzymując w ten sposób poprawny podpis wiadomości $m$ naszym kluczem prywatnym.
+\end{solution}
+
+\end{questions}
+
+
+\subsection{Ustalanie kluczy}
+\begin{questions}
+
+\question Przedstaw prosty protokół uzgadniania kluczy, który równo rozkłada odpowiedzialność pomiędzy dwie strony komunikacji.
+\begin{solution}
+Celem protokołu jest ustalenie klucza, który będzie mógł być zastosowany do szyfrowania symetrycznego. 
+\begin{enumerate}
+\item Ala wybiera losową liczbę $r_A$ i przesyła ją do Boba,
+\item Bob wybiera losową liczbę $r_B$ i przesyła ją do Ali,
+\item Ala i Bob niezależnie obliczają $hash(r_A, r_B)$ i traktują go jako klucz.
+\end{enumerate}
+Protokół ten jest wrażliwy na podsłuch, jednak obie strony w jednakowym stopniu odpowiadają za bezpieczeństwo klucza.
+\end{solution}
+
+\question Omów protoków Diffie-Helmana.
+
+\question Omów protoków Interlock.
+
+\end{questions}
+
+
+\subsection{Inne}
+
+\begin{questions}
+
+\question Na czym polegają protokoły dzielenia tajemnic? 
+\begin{solution}
+Dzielenie tajemnic jest sposobem rozdzielenie sekretu pomiędzy kilku użytkowników w taki sposób, że żaden z nich samodzielnie nie może go odzyskać. Przydatność takiej metody prosto pokazać na przykładzie: Pewna firma jest w posiadaniu ważnych informacji, np. decydującej o jej przewadze technologicznej nad konkurencją. Informacje te muszę być chronione i dlatego znajdują się w sejfie. Aby dodatkowo zwiększyć bezpieczeństwo, sejf może zostać otwarty tylko wtedy, gdy wszystkie osoby z zarządu firmy użyją swych kluczy (protokół bez progu). Wygodniejsza wersja powyższego scenariusza zakłada, że do otworzenia sejfu wystarcza, powiedzmy, 2/3 kluczy (tak aby sejf nie został zablokowany, np. absencją chorobową pojedynczych członków zarządu) (protokół z progiem). Oczywiście, najlepiej, gdy sejf ma postać protokołu kryptograficznego – eliminuje to konieczność drogich szaf pancernych.
+\end{solution}
+
+\question{Omów wybrany przykład protokołu dzielenia tajemnicy.}
+\begin{solution}
+Przedstawmy najprostszy protokół bez progu opierający działanie na funkcji XOR ($\oplus$):
+\begin{itemize}
+\item tworzymy $n-1$ losowych ciągów $X_1, X_2, X_3, ..., X_{n-1}$
+\item obliczamy $X_n = S \oplus X_1 \oplus X_2 \oplus X_3 \oplus ... \oplus X_{n-1}$ 
+\item rozdajemy tajemnicę użytkownikom w ten sposób, że użytkownik 1 otrzymuje $X_1$, użytkownik 2 $X_2$ itd.
+\item odtworzenie tajemnicy polega na obliczeniu $S = X_0 \oplus X_1 \oplus X_2 \oplus X_3 \oplus ... \oplus X_{n}$
+\end{itemize}
+\end{solution}
+
+\question{Przedstaw wybrany protokół dzielenia tajemnicy z progiem.}
+\begin{solution}
+Protokoły dzielenia tajemnicy z progiem pozwalają dowolnie ustalić liczbę osób, które będą konieczne do odtworzenia tajemnicy. Liczba ta jest niezależna od całkowitej liczby powierników tajemnicy. Przykładem takiego rozwiązania jest wielomianowy protokół Shamira. Polega on na tym, że dla ustalonego progu $k$ zostają wylosowane współczynniki wielomianu stopnia $k-1$. Kolejnym osobom rozdaje się punkty na krzywej, a do odtworzenia wielomianu wystarczy spotkanie $k$ z nich.
+\end{solution}
+
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Ochrona danych w praktyce}
+
+\subsection{Programowanie klasyczne}
+\begin{questions}
+
+\question Dlaczego czas przetwarzania danych może być źródłem ataku? Jak się przed nim bronić?
+\begin{solution}
+W wielu algorytmach czas przetwarzania danych zależy od tego jakie są te dane. W związku z tym, należy mieć zawsze na uwadze, że atakujący mierząc dokładnie czas odpowiedzi systemu może wywnioskować z tego jakieś wewnętrzne informacje. Znanych jest wiele ataków tego typu, np. timming-atak na klucz prywatny RSA.
+Obroną przed tego typu atakami jest dodanie pewnych losowych modyfikacji opóźniających działanie algorytmu.  
+\end{solution}
+
+\question Jakie jest główne źródło ataków na programy komputerowe? Jak bronić się przed tymi atakami?
+\begin{solution}
+Głównym źródłem ataków są dane wejściowe do programów. Twórcy programu tworzą system zakładając poprawność danych i dobre intencje użytkownika. Dane przesyłane przez atakującego nie spełniają tych warunków, i w ten sposób może on zaburzyć normalne działanie programu. 
+Jedynym rozwiązaniem jest konsekwentny brak zaufania do danych i odrzucanie wszystkiego co nie spełnia określonych warunków (tzw. walidacja z negatywnym nastawieniem).
+\end{solution}
+
+
+\question Na czym polega błąd przepełnienia bufora?
+\begin{solution}
+Błąd przepełnienia bufora polega na tym, że ilość wprowadzanych danych przekracza założenia programisty co do potrzebnego na nie miejsca w pamięci komputera. Ten rodzaj błędu występuje głównie w językach niskiego poziomu (np. C), w których programista samodzielnie zarządza pamięcią. Przepełnienie bufora ma zawsze poważne skutki, albowiem bezpośrednio wpływa na działanie kodu maszynowego. Jest to jedna z popularnych technik ataku na oprogramowanie. 
+\end{solution}
+
+\question Omów metody ochrony przed błędami przepełnienia bufora?
+
+\question Przedstaw najważniejsze zasady walidacji danych.
+\begin{solution}
+Walidacja, czyli kontrola poprawności danych wejściowych musi dotyczyć wszelkiego rodzaju informacji wprowadzanych do programu. Istotne jest opracowanie reguł, które muszą spełniać dane, żeby mogły być uznane za poprawne. Reguły te powinny być możliwie ścisłe i brać pod uwagę parametry takie jak: format, długość oraz znaczenie danych. Wszystkie dane nie pasujące do reguł powinny zostać odrzucone.  
+\end{solution}
+
+\question Na czym polega model security-by-obsurity?
+
+\question Na czym polega model security-by-design?
+
+\question Na czym polega model security-by-separation?
+
+\question Na czym polega model wielopoziomowej ochrony? Jakie są jego zalety?
+
+
+\end{questions}
+
+\subsection{Programowanie internetowe}
+\begin{questions}
+
+\question Omów trzy popularne ataki wg. Top10 OWASP
+\begin{solution}
+Organizacja OWASP zajmuje się analizą stanu i edukacją z zakresie bezpieczeństwa aplikacji internetowych. List Top10 przestawia najpopularniejsze błędy wraz z zaleceniami tego jak ich unikać.
+\begin{description}
+\item[Injection-Wstrzyknięcie] Ataki polegające na wstrzyknięciu poprzez formularze kodu, który zaburza działanie aplikacji po stronie serwera. Najpopularniejszym przykładem jest SQL Injection, w którym atakowi poddane jest zapytanie SQL. Jednak celem ataku mogą być również inne technologie działające na serwerze, na przykład LDAP, shell, Python (co było demonstrowane na laboratorium).
+\item[XSS] Atak Cross-Site Scripting polega na wysłaniu w zapytaniu kodu napisanego w języku Javascript. Jest to atak na przeglądarkę, a nie na serwer jak w przypadku ataków typu Injection.
+\item[Błędy uwierzytelniania i sesji] Szczególnie wrażliwy jest moment ustalenia tożsamości użytkownika. W przypadku aplikacji internetowych, które pracują w środowisku bezzstanowym, konieczna jest także staranna ochrona sesji. Bowiem przechwycenie sesji jest równoważne z przełamaniem uwierzytelnienia.
+\end{description}
+\end{solution}
+
+\question Omów niebezpieczeństwa związane z bezstanowością protokołu HTTP.
+\begin{solution}
+Protokół HTTP jest bezstanowy, co oznacza, że w wersji podstawowej każde zapytanie jest oddzielnym połączeniem. Rozwiązanie to ma sporo zalet związanych z wydajnością komunikacji, jednak cierpi na problemy utrzymywania spójności sesji. W przypadku aplikacji internetowych wymagających kontroli dostępu serwer musi być przekonanym, że seria zapytań jest przesyłana od konkretnego wcześniej uwierzytelnionego klienta. Identyfikator sesji jest przyznawany przez serwer przy pierwszym połączeniu, a później przesyłany przez klienta przy każdym z kolejnych zapytań. Wykradzenie identyfikatora sesji jest najczęściej równoznaczne z przechwyceniem sesji i przejęciem uprawnień klienta. 
+\end{solution}
+
+\question Na czym polega atak XSRF?
+\begin{solution}
+Atak Cross-Site Request Forgery (XSFR) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określa, która zakładka ma prawo do korzystania z sesji. 
+\end{solution}
+
+\question W jaki sposób bronić się przed atakiem XSRF?
+\begin{solution}
+XSFR jest atakiem na sesję, a więc należy uszczelnić mechanizmy kontroli jej spójności. Najlepiej jest to zrobić poprzez wprowadzenie dodatkowego mechanizmu losowych, każdorazowo zmiennych jednorazowych kluczy sesji, które są przekazywane w każdym zapytaniu. Możliwe jest także sprawdzanie, źródła zapytania poprzez pole nagłówka HTTP Referer. Dobrą strategią jest także wymaganie dodatkowego uwierzytelnienia przy szczególnie istotnych operacjach. 
+\end{solution}
+
+
+\question Przedstaw podstawowe metody przed atakiem XSS?
+\begin{solution}
+Atak XSS (Cross-Site Scripting) polega na umieszczeniu na stronie internetowej złośliwego kodu Javascript. Niezależnie od zastosowanej przez atakującego metody, jedyną skuteczną metodą jest walidacja wszystkich danych wejściowych do systemu. Precyzyjne określenie dopuszczalnych formatów i kontrola wszystkich danych pod kątem zgodności z nimi eliminuje podatność na XSS.  
+\end{solution}
+
+\question Przedstaw metody obrony przed atakami typu Injection?
+
+\question Omów przykład błędu skutkującemu możliwością SQL-Injection?
+
+\question Przedstaw metody obrony przed atakami typu Phishing?
+
+
+\end{questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Kontrola dostępu}
+\begin{questions}
+
+\question Omów wybraną metodę przechowywania uprawnień w systemie.
+\begin{solution}
+Przedstawmy macierz uprawnień (ang. ACM - Access Control Matrix). Wiersze tej macierzy stanowią podmioty (użytkownicy systemu), a kolumny to obiekty (zasoby systemu). Na przecięciu odpowiedniego wiersza i kolumny zapisane są prawa jakie dany podmiot ma do danego obiektu. Model ten został po raz pierwszy opisany przez Lampsona w 1971r.
+\end{solution}
+
+\question Wyjaśnij dlaczego model MAC jest trudny w implementacji.
+\begin{solution}
+MAC (ang. Mandatory Access Control) to model obowiązkowej kontroli dostępu. Zakłada on, że każdy z obiektów w systemie (pliki, urządzenia, itp) ma przydzieloną etykietę definiującą poziom poufności/bezpieczeństwa. Główną trudnością w MAC jest to, że system musi kontrolować wszystkie operacje pod względem etykiet poufności. W ten sposób może zablokować każde działanie, które mogłoby obniżyć poufność obiektu. W przypadku dużych systemów informatycznych (np. system operacyjny) uporządkowanie ilość obiektów i dopuszczalnych operacji na nich stanowi spore wyzwanie.
+\end{solution}
+
+\question Na czym polega model DAC.
+\begin{solution}
+DAC (ang. Discretionary Access Control) to model uznaniowej kontroli dostępu. Użytkownicy w tym modelu mogą dosyć swobodnie zarządzać posiadanymi uprawnieniami od wszelkiego typu zasobów. Według swojego uznania mogą przekazywać uprawnienia innym użytkownikom, czy procesom. W DAC nie ma centralnych mechanizmów gwarantujących poziom ochrony dla danych.
+\end{solution}
+
+\question Omów model RBAC.
+\begin{solution}
+RBAC to model kontroli dostępu oparty na rolach (ang. Role Based Access Control). Uprawnienia nie są nadawane bezpośrednio użytkownikom systemu, ale poprzez role. Dopiero nominowanie użytkownika do danej roli daje mu odpowiednie uprawnienia. Dzięki temu zarządzanie uprawnieniami jest ułatwione, a system zachowuje elastyczność, gdyż użytkownik może posiadać wiele ról, z których każda może mieć niezależne uprawnienia. 
+\end{solution}
+
+\question Na czym polega przechowywanie oprawnień w formie ACL?
+\begin{solution}
+ACL (ang. Access Control List) jest techniką przechowywania uprawnień w systemie. Polega ona na tym, że do każdego obiektu (zasobu) przypisana jest lista par (podmiot, uprawnienie). W momencie prośby o dostęp do zasobu system weryfikuje, czy podmiot proszący i wnioskowane uprawnienie są na liście ACL związanej z danym obiektem. Technika ta jest wydajna w przypadku gdy obiektów jest znacznie więcej niż użytkowników.
+\end{solution}
+
+\question Przedstaw model ochrony Take-Grant.
+
+\question Przedstaw schemat ,,High-water mark'' do ustalania poziomu poufności.
+\begin{solution}
+Strategia ,,High-water mark'' dotyczy przyznawania etykiet poufności w systemach chronionych modelem MAC. Według tej strategii dokument dostaje najwyższą etykietę ze wszystkich zasobów, które zostały wykorzystane do jego stworzenia.
+\end{solution}
+
+
+
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bezpieczna administracja}
+\begin{questions}
+
+\question Przedstaw podstawowe zasady etyki hackowania.
+\begin{solution}
+Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest właśnie takim kontrolowanym atakowaniem systemu, szukaniem słabości i potencjalnych zagrożeń. Różnica pomiędzy hackowaniem a atakowaniem jest więc bardzo delikatna, dlatego też hackując systemy należy dbać o etykę tych działań, a w szczególności:
+\begin{itemize}
+\item nie powodować żadnych zniszczeń lub strat,
+\item znalezione słabości niezwłocznie zgłosić do operatora systemu,
+\item najlepiej uzyskać wcześniejszą zgodę operatora.
+\end{itemize}
+\end{solution}
+
+\question Omów funkcjonalności związane z kopiami zapasowymi.
+
+\question Wyjaśnij czym różni się kopia zapasowa pełna, przyrostowa i różnicowa.
+
+\question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI
+
+\end{questions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Zarządzanie bezpieczeństwem}
+
+\begin{questions}
+
+\question Omów krótko kwestię ekonomicznego doboru zabezpieczeń.
+\begin{solution}
+Planując zabezpieczenia systemu informatycznego należy mieć przed oczami wartość chronionych zasobów. Z ekonomicznego punktu widzenia równie błędny jest niedostateczny poziom zabezpieczeń, jak i nadmiernie wysoki ich poziom. Do ilustracji tego faktu można posłużyć się krzywą kosztu zabezpieczeń i krzywą potencjalnych strat. Miejsce ich przecięcia pokazuje optymalne zabezpieczenia dla konkretnego przypadku. 
+\end{solution}
+
+\question Wyjaśnij znaczenie testów penetracyjnych.
+\begin{solution}
+Testy penetracyjne to rodzaj zewnętrznego audytu przypominającego pod wieloma aspektami realny atak. Osoby przeprowadzające test penetracyjny działają jak atakujący. Korzystają z puli możliwych ataków (technicznych, organizacyjnych, socjotechnicznych), żeby uzyskać niedozwolony dostęp do systemu. Przeprowadzanie testów penetracyjnych jest wyjątkowo trudnym zadaniem, albowiem atakujący musi działać niestandardowo, a jednocześnie w pełni kontrolować wszystkie swoje działania, tak, żeby nie doprowadzić do uszkodzeń w systemie, albo niekontrolowanych wycieków informacji.
+\end{solution}
+
+\question Wyjaśnij znaczenie dokumentu polityki bezpieczeństwa.
+\begin{solution}
+Dokument polityki bezpieczeństwa jest podstawową ochrony zasobów informatycznych organizacji. Zawiera on opis zasobów sklasyfikowanych według poziomu poufności/ważności, stosowanych metod oraz procedur ochrony, a także zakresy odpowiedzialności poszczególnych pracowników. 
+Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej oznacza, że ochrona jest chaotyczna i nieprzemyślana, a tym samym nie będzie skuteczna.
+\end{solution}
+
+
+\question Wyjaśnij dlaczego ewidencja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
+
+\question Na czym polega audyt polityki bezpieczeństwa?
+
+\question Jaki wpływ na bezpieczeństwo systemu mogą mieć normy z serii ISO 27000?
+
+\question Czego dotyczy norma PN-ISO 17799?
+
+\question Jakie dane chronione są przez ustawę o ochronie danych osobowych?
+
+\question Jakie klauzule tajności przewiduje ustawa o ochronie informacji niejawnych?
+\begin{solution}
+Ustawa o ochronie informacji niejawnych określa zasady przetwarzania danych mogących mieć wpływ na bezpieczeństwo państwa. Autor dokumentu może nadać mu jeden z czterech poziomów tajności: ścisle tajne, tajne, poufne i zastrzeżone. Nadanie klauzuli tajności precyzyjnie określa metody przetwarzania, ochrony, a także grupę osób, które mogą mieć do niego dostęp. 
+\end{solution}
+
+
+\question Na czym polega test penetracyjny?
+
+
+\end{questions}
+
+
+
+
+
+\end{document}
