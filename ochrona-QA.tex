@@ -159,6 +159,8 @@ H = 8 * log_2 10 = 8 * 3.32 = 26.6 bits
 \end{equation}
 \end{solution}
 
+\question Oblicz entropię ciągu ,,bdabbabc''.
+
 \question Określ relację pomiędzy maksymalna liczba prób ataku brute force na hasło, a jego maksymalną entropią.
 \begin{solution}
 Maksymalna liczba prób jest równa $2^H$, gdzie H jest entropia w bitach. Na przykład dla czterocyfrowego PINu $H = 4*3.32 = 13.28 $, a liczba prób wynosi $ 2^{13.28} = 9946 \approx 10000$ .
@@ -197,7 +199,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 
 \question Omów zasadę działania generatora liczb pseudolosowych opartego na LFSR.
 \begin{solution}
-LFSR oznacza z angielskiego "liniowy rejestr przesuwny ze sprzężeniem zwrotnym". Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające pętlą zwrotną rejestr. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
+LFSR oznacza z angielskiego ,,liniowy rejestr przesuwny ze sprzężeniem zwrotnym'' (ang. linear feedback shift register). Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające pętlą zwrotną rejestr. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
 \end{solution}
 
 \question Przedstaw pięć zastosowania liczb losowych w kryptografii.
@@ -216,6 +218,13 @@ Liczby losowe to bardzo ważny element wielu algorytmów. Na przykład:
 \begin{solution}
 Prawdziwe liczby losowe nie mogą być wygenerowane przez komputery, które działają w sposób ściśle określony, deterministyczny. Źródłem danych losowych może być tylko proces fizyczny ze świata realnego, które złożoność jest niemożliwa do dokładnego odtworzenia. Dobrymi generatorami są zjawiska ze skali makro (rzut kostką, ruletka, itp.) a także zjawiska na poziomie mikro (szum termiczny, efekty fotoelektryczne, itp.)
 \end{solution}
+
+\question Scharakteryzuj bezpieczne generatory liczb losowych.
+
+\question Wyjaśnij w jaki sposób komputer będący deterministyczną maszyną stanów może dokonać aktu losowania.
+
+\question Ile wynosi entropia ciągu losowego? Odpowiedź uzasadnij.
+
 
 \end{questions}
 
@@ -340,6 +349,9 @@ Atak meet-in-the-middle jest wydajnym atakiem na algorytmy, które można rozdzi
 Słaba bezkonfliktowość do cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
 Przykładem ataku, którego celem jest właśnie znalezienie takiego $x'$ są ataki słownikowe, lub brutalnej siły na hasła.
 \end{solution}
+
+\question Jakie warunek musi spełniać funkcja silnie bezkonfliktowa?
+
 
 \question Wyjaśnij zasadę działania tablic tęczowych.
 \begin{solution}
