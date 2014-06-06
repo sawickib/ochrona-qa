@@ -616,12 +616,17 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 \end{solution}
 
 \question Na czym polega uwierzytelnianie dwuskładnikowe? Podaj przykłady.
+\begin{solution}
+Uwierzytelnianie takie polega na powtórzeniu procesu identyfikującego użytkownika. Przykładem może być przesłanie pieniędzy za pomocą strony internetowej banku. Oprócz podania naszego hasła konieczne jest podanie specjalnego numeru PIN przesyłanego SMS-em. Stosowanie są także tokeny sprzętowe.
+\end{solution}
+
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię asymetryczną.
 
 \question Omów podstawowy schemat iteracyjnego dowodu z wiedzą zerową.
+
 
 \end{questions}
 
@@ -668,9 +673,15 @@ Celem protokołu jest ustalenie klucza, który będzie mógł być zastosowany d
 Protokół ten jest wrażliwy na podsłuch, jednak obie strony w jednakowym stopniu odpowiadają za bezpieczeństwo klucza.
 \end{solution}
 
-\question Omów protoków Diffie-Helmana.
+\question Omów protoków Diffiego-Helmana.
+\begin{solution}
+Jest to protokół służacy do wzajemnej wymiany kluczy szyfrujących, które następnie mogą zostać użyte do szyfrowania komunikacji. Algorytm jest odporny na podsłuch, ale nie na ataki man in the middle. 
+\end{solution}
 
-\question Omów protoków Interlock.
+\question Omów protokół Interlock.
+\begin{solution}
+Protokół ten służy do obrony przeciwko podsłuchom komunikacji i atakom typu man in the middle. Protokół ten bazuje na idei dzielenia wiadomości, które nie mogą być rozszyfrowane przez atakującego. 
+\end{solution}
 
 \end{questions}
 
@@ -727,6 +738,10 @@ Błąd przepełnienia bufora polega na tym, że ilość wprowadzanych danych prz
 \end{solution}
 
 \question Omów metody ochrony przed błędami przepełnienia bufora?
+\begin{solution}
+Aby skutecznie obronić się przed przepełnieniem bufora, należy zawsze przykłada uwagę do kwestii rozmiaru przyjmowanych danych. Zalecane są funkcje sprawdzające rozmiar przyjmowanych danych, gotowych bibliotek i modułów (oczywiście w najnowszych wersjach)
+\end{solution}
+
 
 \question Przedstaw najważniejsze zasady walidacji danych.
 \begin{solution}
@@ -734,12 +749,24 @@ Walidacja, czyli kontrola poprawności danych wejściowych musi dotyczyć wszelk
 \end{solution}
 
 \question Na czym polega model security-by-obsurity?
+\begin{solution}
+Jest to ogół technik tworzenia zabezpieczeń w taki sposób, aby faktyczna implementacja zabezpieczeń i ich implementacji była całkowicie niezrozumiała dla potencjalnych atakujących. System posiadający taki model zabezpieczeń może mieć istotne luki w bezpieczeństwie, ale ich potencjalne odkrycie będzie bardzo trudne, jeżeli nie niemożliwe.
+\end{solution}
+
 
 \question Na czym polega model security-by-design?
+\begin{solution}
+Model ten polega na dokładnym projektowaniu i programowaniu systemu w taki sposób, iż od samego początku myśli się o potencjalnych atakach (wręcz uznaje się je za pewne), dzięki czemu ryzyko ataków na system jest znacznie zmniejszone.
+\end{solution}
+
 
 \question Na czym polega model security-by-separation?
 
 \question Na czym polega model wielopoziomowej ochrony? Jakie są jego zalety?
+\begin{solution}
+Model ten polega na klasyfikacji podmiotów systemu według poziomu zaufania. Wielopoziomowa ochrona wymusza na nas staranne określenie priorytetów podmiotów w systemie, dzięki czemu łatwiej jest nam realizować założenia polityk bezpieczeństwa i stosować je do ogółu systemu.
+\end{solution}
+
 
 
 \end{questions}
@@ -779,10 +806,23 @@ Atak XSS (Cross-Site Scripting) polega na umieszczeniu na stronie internetowej z
 \end{solution}
 
 \question Przedstaw metody obrony przed atakami typu Injection?
+\begin{solution}
+Podstawową metodą obrony przed takimi atakami jest stosowanie odpowiednich funkcji filtrujące dane pobierające z formularzy i pól tekstowych. Należy zwracać uwagę na znaki ucieczki które powodują niespodziewane zakończenie polecenia SQL. Ważne jest, aby zabezpieczyć odpowiedno bazę danych, na przykład blokując możliwość wykonywania poleceń typu delete lub drop. Frameworki i gotowe biblioteki zawierają już moduły i funkcje radzące sobie z tego typu atakami.
+\end{solution}
+
 
 \question Omów przykład błędu skutkującemu możliwością SQL-Injection?
+\begin{solution}
+Nieprawidłowa filtracja danych przyjmowanych z formularzy może być podatna na ataki typu SQL-Injection.
+Prostym przykładem jest wpisanie złośliwego kodu w postaci:  \textit{x' OR '1'='1}. Spowoduje to, iż warunek będzie zawsze prawdziwy w związku z czym możliwe jest użycie funkcji języka SQL bądź określonego zapytania (np. zmieniającej określone dane w tabeli).
+\end{solution}
+
 
 \question Przedstaw metody obrony przed atakami typu Phishing?
+\begin{solution}
+Ważna jest edukacja informatyczna użytkownika i świadomość potencjalnych zagrożeń. Nigdy nie należy podawać nikomu swoich loginów i haseł, jak również numerów kart kredytowych i innych wrażliwych danych. Ważne jest, aby korzystać z najnowszych wersji przeglądarek i systemów operacyjnych. Należy także mieć na uwadze, czy stosowany jest protokół HTTPS tam, gdzie konieczne jest logowanie się do jakiegoś systemu.
+\end{solution}
+
 
 
 \end{questions}
@@ -845,6 +885,10 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \question Wyjaśnij czym różni się kopia zapasowa pełna, przyrostowa i różnicowa.
 
 \question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI
+\begin{solution}
+
+\end{solution}
+
 
 \end{questions}
 
@@ -873,13 +917,31 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 
 \question Wyjaśnij dlaczego ewidencja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
 
+
+
 \question Na czym polega audyt polityki bezpieczeństwa?
+\begin{solution}
+Taki audyt polega na sprawdzaniu naszego systemu pod względem bezpieczeństwa określonego w danej polityce bezpieczeństa. Audyty wskazują braki i nieścisłości, wskazują nam sposób uzupełnienia braków zabezpieczeń jak również weryfikują implementację zabezpieczeń z ich założeniami określonymi w polityce bezpieczeństwa. 
+\end{solution}
+
 
 \question Jaki wpływ na bezpieczeństwo systemu mogą mieć normy z serii ISO 27000?
+\begin{solution}
+Jest to zestaw norm określających bezpieczeństwo systemu informatycznego. Normy te określają dobre praktyki i zachowania dotyczące tworzenia, administrowania i zarządzania systemami informatycznymi. Stosowanie się do takich norm ułatwia nam zarządzanie bezpieczeństwem jak również określa co powinniśmy zrobić, aby nasz system był bardziej bezpieczny.
+\end{solution}
+
 
 \question Czego dotyczy norma PN-ISO 17799?
+\begin{solution}
+Norma ta dotyczy wdrażania, ustanawiania, eksploatacji i monitorowania systemu zarządzania bezpieczeństwem informacji.
+\end{solution}
+
 
 \question Jakie dane chronione są przez ustawę o ochronie danych osobowych?
+\begin{solution}
+Ustawa ta chroni wszelkie informacje które mogą zidentyfikować lub przyczynić się do identyfikacji danej osoby. Przykładem takich danych może być imię i nazwisko, zarobki, adres. Szczególnym przypadkiem są tzw. dane wrażliwe, jak np. wyznawana religia czy poglądy polityczne.
+\end{solution}
+
 
 \question Jakie klauzule tajności przewiduje ustawa o ochronie informacji niejawnych?
 \begin{solution}
@@ -888,7 +950,9 @@ Ustawa o ochronie informacji niejawnych określa zasady przetwarzania danych mog
 
 
 \question Na czym polega test penetracyjny?
-
+\begin{solution}
+Takie testy wykonywane są przez osoby sprawdzające poziom zabezpieczeń naszego systemu jak również ich brak. Osoba wykonująca test wczuwa się w role atakującego i stara się odnaleźć słabe punkty naszego systemu, jak również sprawdza działanie już zainstalowanych. Testy takie są w pełni kontrolowane i są wykonywane za zgodą właścicieli serwisów.
+\end{solution}
 
 \end{questions}
 
