@@ -160,6 +160,22 @@ H = 8 * log_2 10 = 8 * 3.32 = 26.6 bits
 \end{solution}
 
 \question Oblicz entropię ciągu ,,bdabbabc''.
+\begin{solution}
+Zgodnie ze wzorem:
+\begin{equation}
+H = - \sum_{i=1}^n p_i \ log_2 p_i
+\end{equation}
+Obliczamy prawdopodobieństwo wystąpienia w ciągu każdej z liter jako iloraz liczby wystąpień danej litery przez długość całego ciągu, np. $ p(b) = 4/8 = 0.5 $. Podstawiamy wartości do wzoru ogólnego i otrzymujemy entropię.
+\begin{equation}
+H = - ( 0.25 * log_2 0.25 + 0.5 * log_2 0.5 + 0.125 * log_2 0.125 + 0.125 * log_2 0.125 ]
+\end{equation}
+\begin{equation}
+H = -((-0.5)+(-0.5)+(-0.375)+(-0.375))
+\end{equation}
+\begin{equation}
+H = 1.75
+\end{equation}
+\end{solution}
 
 \question Określ relację pomiędzy maksymalna liczba prób ataku brute force na hasło, a jego maksymalną entropią.
 \begin{solution}
