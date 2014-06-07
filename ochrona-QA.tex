@@ -236,6 +236,10 @@ Prawdziwe liczby losowe nie mogą być wygenerowane przez komputery, które dzia
 \end{solution}
 
 \question Scharakteryzuj bezpieczne generatory liczb losowych.
+\begin{solution}
+Bezpieczne generatory liczb losowych (eng. CSPRNG) stanowią szczególną klasę generatorów pseudolosowych. Aby generator mógł być uznany za CSPRNG musi przejść \textit{test następnego bitu} - nie może istnieć efektywny algorytm, który potrafi przewidzieć kolejny generowany bit z prawdopodobieństwem większym niż $0.5$. Opierają się na algorytmach kryptograficznych (DES, RSA, MD5, SHA) lub są zaprojektowane specjalne do takich celów (Yarrow, Blum Blum Shub), które na podstawie ziarna tworzą ciąg liczb losowych. Przy tworzeniu ziarna generator korzysta z możliwie nieprzewidywalnego źródła danych np. ,,machanie'' myszką po ekranie przez określony czas, zmiany temperatury procesora/płyty głównej, parametry pracy dysku. Generatory te mogą być bezpiecznie używane w kryptografii. 
+\end{solution}
+
 
 \question Wyjaśnij w jaki sposób komputer będący deterministyczną maszyną stanów może dokonać aktu losowania.
 
