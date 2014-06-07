@@ -6,6 +6,7 @@ Prowadzący: Bartosz Sawicki
 
 Informatyka, Wydział Elektryczny, Politechnika Warszawska
 
-Zapraszam do uzupełniania i poprawiania. Czekam na pull-requesty. Mniejsze zmiany można też zgłaszać poprzez issues.
+Zapraszam do uzupełniania i poprawiania. Czekam na pull-requesty (proszę przyjąć zasadę jedna poprawka = jeden commit). 
+Mniejsze zmiany można też zgłaszać poprzez issues.
 
 *Powodzenia na egzaminie*
