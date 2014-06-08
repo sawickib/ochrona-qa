@@ -689,7 +689,16 @@ Protokół ten jest wrażliwy na podsłuch, jednak obie strony w jednakowym stop
 \end{solution}
 
 \question Omów protoków Diffie-Helmana.
-
+\begin{solution}
+Jest to protokół wymiany kluczy szyfrujących przez niezabezpieczony kanał przesyłu danych. Jest jednym z pierwszych praktycznych rozwiązan tego typu problemów w historii. Jego siłą jest brak (obecnie) skutecznego algorytmu do obliczania logarytmów dyskretnych w skończonych zbiorach elementów. Protokół nie jest wrażliwy na podsłuch o ile elementy "p" i "g" są dobrane poprawnie. W celu zwiększenia bezpieczeństwa liczba "p" oraz liczby "a" i "b" powinny być złożone z jak największej liczby cyfr. Oto schemat protokołu:
+\begin{enumerate}
+\item Ala i Bob ustalają publiczną liczbę pierwszą "p" oraz publiczną podstawę obliczeń "g".
+\item Ala wybiera sobie tajną liczbę "a" i oblicza wartość $A=g^{a}\pmod{p}$, następnie wysyła obliczoną wartość A do Boba.
+\item Bob wybiera sobie tajną liczbę "b" i oblicza wartość $B=g^{b}\pmod{p}$, następnie wysyła obliczoną wartość B do Ali.
+\item Ala oblicza $s=B^{a}\pmod{p}$
+\item Bob oblicza $s=A^{b}\pmod{p}$
+\end{enumerate}
+Ala i Bob współdzielą tajną wartość "s" za pomocą której mogą szyfrować dalszą komunikację przez niezabezpieczone kanały komunikacji. Dzieje się tak ponieważ $a*b=b*a$ osoba znająca obie tajne wartości "a" i "b" mogłaby obliczyć wartość "s" i swobodnie podsłuchiwać komunikację szyfrowaną tą wartością, jednakże przy odpowiednim doborze wszystkich wartości i braku odpowiedniego algorytmu obliczenie wartości "s" bez poznania wartości tajnych "a" i "b" nie jest możliwe nawet w przypadku dysponowania całą mocą obliczeniową dostępną na Ziemii.
 \question Omów protoków Interlock.
 
 \end{questions}
