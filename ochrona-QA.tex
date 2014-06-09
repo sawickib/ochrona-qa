@@ -241,6 +241,13 @@ Bezpieczne generatory liczb losowych (eng. CSPRNG) stanowią szczególną klasę
 \question Wyjaśnij w jaki sposób komputer będący deterministyczną maszyną stanów może dokonać aktu losowania.
 
 \question Ile wynosi entropia ciągu losowego? Odpowiedź uzasadnij.
+\begin{solution}
+Entropię możemy obliczyć za pomocą wzoru:
+\begin{equation}
+H(x)= - \sum_{i=1}^n p(i) \ log_2 p(i)
+\end{equation}
+Entropia ciągu losowego zależy zatem przede wszystkim od prawdopodobieństwa, z jakim pojawia się każdy ze znaków. Na tę zaś wpływa z kolei długość alfabetu, czyli ilość możliwych znaków w ciągu.
+\end{solution}
 
 
 \end{questions}
