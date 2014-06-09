@@ -11,6 +11,8 @@
 \renewcommand{\solutiontitle}{}
 %\renewcommand{\solutiontitle}{\noindent\textbf{Odpowiedź:} }
 
+\newcommand{\fixit}{\textit{(Dobrze, ale do lekkiej poprawki)} }
+
 \cfoot[]{}
 \rfoot[]{strona \thepage}
 
@@ -240,6 +242,7 @@ Bezpieczne generatory liczb losowych (eng. CSPRNG) stanowią szczególną klasę
 
 \question Wyjaśnij w jaki sposób komputer będący deterministyczną maszyną stanów może dokonać aktu losowania.
 \begin{solution}
+\fixit
 Komputer będący deterministyczną maszyną stanów może dokonać aktu losowania na 2 sposoby zależnie od tego jakich liczb losowych potrzebujemy. W przypadku prawdziwych liczb losowych odbywa się to poprzez pobieranie danych z nieprzewidywalnego źródła. Komputer wykorzystuje źródło takie jak np. miernik stężenia promieniowania radioaktywnego (takie rozwiązania wymagają przekazywania danych do komputera z zewnętrznych urządzeń) lub wewnętrzne źródło jakim jest jego procesor, jako źródła entropii. Następnie komputer jest w stanie wygenerować prawdziwe liczby losowe, ponieważ tego typu zdarzenia generują nieprzewidywalne dla nikogo wyniki (ciężko jest przewidzieć ile dokładnie w ciągu następnych 100ms nasz procesor odbierze i wyśle pakietów lub jak będzie zmieniała się temperatura procesora uwzględniając 10 miejsc po przecinku). W przypadku, gdy potrzebne nam liczby nie muszą być prawdziwie losowe, możemy użyć prostych algorytmów losowania liczb pseudolosowych z użyciem ziarna ("seed"), jednakże należy pamiętać, że takie rozwiązanie w przypadku użycia takiego samego ziarenka np. 10 na wszystkich maszynach, na których zostanie odpalona, da dokładnie takie same wylosowane liczby, aby uniknąć tego problemu należy dobierać unikalne ziarno, bardzo często jest to liczba sekund, która minęła od 1 stycznia 1970 roku do chwili uruchomienia programu, sprawia to, że z każdym uruchomieniem programu mamy inne ziarenko, a co za tym idzie inne liczby pseudolosowe. 
 \end{solution}
 \question Ile wynosi entropia ciągu losowego? Odpowiedź uzasadnij.
