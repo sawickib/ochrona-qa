@@ -521,6 +521,15 @@ Dodatkowo wykonywane obliczenia są stosunkowo proste, a więc nie wymagają du�
 \end{solution}
 
 \question Wyjaśnij działanie probabilistycznych testów pierwszości.
+\begin{solution}
+Test pierwszości to algorytm określający, czy dana liczba jest pierwsza, czy złożona. Probabilistyczny test pierwszości przebiega w następujący sposób:
+\begin{enumerate}
+\item Wybieramy losowo liczbę $a$.
+\item Sprawdzamy pewne równanie zawierające $a$ oraz zadaną liczbę $n$. Jeśli okaże się fałszywe, zwracamy wynik \textit{n jest złożona}.
+\item Powtarzamy procedurę aż uzyskamy wystarczającą pewność.
+\end{enumerate}
+Jeśli w wystarczająco wielu próbach nie uda się stwierdzić złożoności $n$, test zwraca odpowiedź \textit{n jest prawdopodobnie pierwsza}.
+\end{solution}
 
 \question Opisz algorytm szybkiego potęgowania.
 
