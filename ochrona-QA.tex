@@ -753,6 +753,20 @@ Alicja i Bob współdzielą tajną wartość $s$, za pomocą której mogą szyfr
 \end{solution}
 
 \question Omów protokół Interlock.
+\begin{solution}
+Ciekawy protokół mający za zadanie zapobiegać atakom man-in-the-middle. Podstawową zasadą jest to, że nie deszyfruje się klucza mając tylko połowę kryptogramu(0.5 krypto$=>$ 0.5 tekstu jawnego). Istnieją jednak skuteczne ataki na ten protokół.
+
+\begin{enumerate}
+\item A wysyła do B swój klucz publiczny i na odwrót
+\item B szyfruje wiadomość tekstową za pomocą klucza publicznego A i wysyła pierwszą połowę kryptogramu
+\item A otrzymuje 0.5 kryptogramu, tworzy swoją wiadomość tekstową, szyfruje ją i tez wysyła do B 0.5 kryptogramu
+\item B otrzymuje 0.5 kryptogramu od A i przesyła swoja drugą połowę
+\item A otrzymuje druga połowę i deszyfruje ją swoim kluczem prywatnym. A sprawdza czy wiadomość ma sens. Jeśli ma to kanał jest ok, więc wysyłamy 2 połowę do B
+\item B deszyfruje wiadomość. Jeśli ma sens to wszystko jest w porządku.
+\end{enumerate}
+
+\end{solution}
+
 
 \end{questions}
 
