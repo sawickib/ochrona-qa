@@ -833,6 +833,10 @@ Walidacja, czyli kontrola poprawności danych wejściowych musi dotyczyć wszelk
 \end{solution}
 
 \question Na czym polega model security-by-obsurity?
+\begin{solution}
+,,Security by obscurity'' jest techniką zwiększenia bezpieczeństwa przez pisanie programów w sposób bardzo niejasny i zagmatwany. Skuteczność tej metody jest dosyć wątpliwa.
+Już reguła Kerkhoffa odradzała stosowania takiej techniki: ,,Nie opieramy sie na tajności algorytmu, a na pewności klucza.'' Podkreśla to fakt, iż bezpieczeństwo nie tkwi w tajności budowy algorytmu, ale w jego konstrukcji.
+\end{solution}
 
 \question Na czym polega model security-by-design?
 
@@ -944,6 +948,13 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \question Wyjaśnij czy kopie zapasowe zapewniają wysoką dostępność danych?
 
 \question Wyjaśnij czym różni się kopia zapasowa pełna, przyrostowa i różnicowa.
+\begin{solution}
+\begin{description}
+\item[Kopia pełna], zawsze musi byź wykonana na początku. Tworzymy pełny obraz archiwizowanych plików bez względu na to, czy od wykonania ostatniego obrazu w plikach zaszły jakieś zmiany. Największy rozmiar i najdłuższy czas wykonywania.
+\item[Kopia przyrostowa] charakteryzuje się tym, że do jej przywrócenia potrzebna jest najświeższa kopia pełna oraz wszystkie następujące po niej kopie przyrostowe. Backup polega archiwizowaniu tylko tej części, która ,,przyrosła'', co automatycznie zmniejsza jego czas i wielkość w porównaniu do kopii pełnej.
+\item[Kopia różnicowa] podobnie jak w przypadku kopii przyrostowej potrzebujemy obrazu bazowego (pełnego) na podstawie którego określane będą różnice w plikach. Archiwizowane są tylko te pliki, które zostały utworzone lub zmodyfikowane od momentu wykonania ostatniej pełnej kopii.
+\end{description}
+\end{solution}
 
 \question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI.
 
