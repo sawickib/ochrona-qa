@@ -684,6 +684,24 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 \begin{questions}
 
 \question Omów podstawowy schemat podpisu cyfrowego.
+\begin{solution}
+Schemat składa się z dwóch etapów generowania i weryfikacji podpisu cyfrowego.
+
+Generowanie podpisu:
+\begin{enumerate}
+\item Podpisujący wylicza hash wiadomości.
+\item Hash jest szyfrowany kluczem prywatnym podpisującego.
+\item Zaszyfrowana wartość hash to właśnie podpis elektroniczny.
+\end{enumerate}
+
+Weryfikacja podpisu:
+\begin{enumerate}
+\item Odbiorca wyznacza hash z otrzymanej wiadomości.
+\item Deszyfruje podpis używając klucza publicznego nadawcy.
+\item Jeśli obie wartości hash są równe to podpis jest prawidłowy, a wiadomość wiarygodna.
+\end{enumerate}
+\end{solution}
+
 
 \question Wyjaśnij jakie znaczenie ma zastosowanie funkcji haszującej w podpisie cyfrowym.
 
