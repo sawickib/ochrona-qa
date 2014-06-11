@@ -243,7 +243,9 @@ Bezpieczne generatory liczb losowych (eng. CSPRNG) stanowią szczególną klasę
 \question Wyjaśnij w jaki sposób komputer będący deterministyczną maszyną stanów może dokonać aktu losowania.
 \begin{solution}
 \fixit
-Komputer będący deterministyczną maszyną stanów może dokonać aktu losowania na 2 sposoby zależnie od tego jakich liczb losowych potrzebujemy. W przypadku prawdziwych liczb losowych odbywa się to poprzez pobieranie danych z nieprzewidywalnego źródła. Komputer wykorzystuje źródło takie jak np. miernik stężenia promieniowania radioaktywnego (takie rozwiązania wymagają przekazywania danych do komputera z zewnętrznych urządzeń) lub wewnętrzne źródło jakim jest jego procesor, jako źródła entropii. Następnie komputer jest w stanie wygenerować prawdziwe liczby losowe, ponieważ tego typu zdarzenia generują nieprzewidywalne dla nikogo wyniki (ciężko jest przewidzieć ile dokładnie w ciągu następnych 100ms nasz procesor odbierze i wyśle pakietów lub jak będzie zmieniała się temperatura procesora uwzględniając 10 miejsc po przecinku). W przypadku, gdy potrzebne nam liczby nie muszą być prawdziwie losowe, możemy użyć prostych algorytmów losowania liczb pseudolosowych z użyciem ziarna ("seed"), jednakże należy pamiętać, że takie rozwiązanie w przypadku użycia takiego samego ziarenka np. 10 na wszystkich maszynach, na których zostanie odpalona, da dokładnie takie same wylosowane liczby, aby uniknąć tego problemu należy dobierać unikalne ziarno, bardzo często jest to liczba sekund, która minęła od 1 stycznia 1970 roku do chwili uruchomienia programu, sprawia to, że z każdym uruchomieniem programu mamy inne ziarenko, a co za tym idzie inne liczby pseudolosowe. 
+1) Komputer będący deterministyczną maszyną stanów może dokonać aktu losowania na 2 sposoby zależnie od tego jakich liczb losowych potrzebujemy. W przypadku prawdziwych liczb losowych odbywa się to poprzez pobieranie danych z nieprzewidywalnego źródła. Komputer wykorzystuje źródło takie jak np. miernik stężenia promieniowania radioaktywnego (takie rozwiązania wymagają przekazywania danych do komputera z zewnętrznych urządzeń) lub wewnętrzne źródło jakim jest jego procesor, jako źródła entropii. Następnie komputer jest w stanie wygenerować prawdziwe liczby losowe, ponieważ tego typu zdarzenia generują nieprzewidywalne dla nikogo wyniki (ciężko jest przewidzieć ile dokładnie w ciągu następnych 100ms nasz procesor odbierze i wyśle pakietów lub jak będzie zmieniała się temperatura procesora uwzględniając 10 miejsc po przecinku). W przypadku, gdy potrzebne nam liczby nie muszą być prawdziwie losowe, możemy użyć prostych algorytmów losowania liczb pseudolosowych z użyciem ziarna ("seed"), jednakże należy pamiętać, że takie rozwiązanie w przypadku użycia takiego samego ziarenka np. 10 na wszystkich maszynach, na których zostanie odpalona, da dokładnie takie same wylosowane liczby, aby uniknąć tego problemu należy dobierać unikalne ziarno, bardzo często jest to liczba sekund, która minęła od 1 stycznia 1970 roku do chwili uruchomienia programu, sprawia to, że z każdym uruchomieniem programu mamy inne ziarenko, a co za tym idzie inne liczby pseudolosowe. 
+
+2) Komputer sam z siebie nigdy nie wygeneruje niczego losowego. Każdy algorytm jest funkcją przekształcającą bieżący stan komputera w następny (przekształca zbiór skończony w siebie). Każda taka funkcja po pewnej liczbie iteracji wpadnie w cykl, a co za tym idzie nigdy nie uzyskamy losowości. Komputer jest w stanie wytworzyć coś, co wygląda jak losowe (patrz wyżej - generatory liczb pseudolosowych). Jednak komputer to też dyski, urządzenia wejścia/wyjścia, szumy i zakłócenia. To właśnie szumów i zakłóceń możemy użyć do wykonania aktu losowania.
 \end{solution}
 
 \question Ile wynosi entropia ciągu doskonale losowego? Odpowiedź uzasadnij.
@@ -486,19 +488,18 @@ Pamiętając podstawową relację $\beta=\alpha^t$, możemy udowodnić działani
 
 \question Przedstaw podstawowy schemat wykorzystania kryptografii asymetrycznej do szyfrowania.
 \begin{solution}
-\fixit
+W kryptografii asymetrycznej używane są dwa rodzaje kluczy - klucz publiczny i klucz prywatny. Klucz publiczny użytkownika jest powszechnie znany, natomiast do klucza prywatnego dostęp ma tylko jego właściciel. Wynika z tego, że kluczem publicznym zaszyfrowujemy informacje, a klucz prywatny służy do jej odczytu. Prosty schemat:
 \begin{enumerate}
-\item Bob szyfruje wiadomość kluczem publicznym Alicji;
-\item Alicja odszyfrowuje wiadomość swoim kluczem prywatnym.
+\item Alicja chce wysłać zaszyfrowaną wiadomość do Boba. Klucz publiczny Boba jest ogólnodostępny (np. umieszczony w jego podpisie na forum dyskusyjnym). Alicja szyfruje swoją wiadomość kluczem publicznym Boba i wysyła do niego.
+\item Bob otrzymuje zaszyfrowaną wiadomość. Używa swojego klucza prywatnego do jej odszyfrowania.
 \end{enumerate}
 \end{solution}
 
 \question Przedstaw podstawowy schemat wykorzystania kryptografii asymetrycznej do podpisu.
 \begin{solution}
-\fixit
 \begin{enumerate}
-\item Alicja podpisuje wiadomość swoim kluczem prywatnym;
-\item Bob odszyfrowuje (i tym samym weryfikuje autentyczność) wiadomość kluczem publicznym Alicji.
+\item Alicja chce zagwarantować autentyczność wiadomości. Zaczyna od obliczenia jej hasha. Następnie szyfruje ten hash swoim kluczem prywatnym i dołącza go jako podpis do oryginalnej wiadomości.
+\item Dowolna osoba posiadająca klucz publiczny Alicji może sprawdzić autentyczność podpisu, poprzez odszyfrowanie hasha za pomocą klucza publicznego Alicji i porównanie go z samodzielnie wyliczonym.
 \end{enumerate}
 \end{solution}
 
