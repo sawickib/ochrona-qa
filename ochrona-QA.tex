@@ -42,7 +42,7 @@ Przy opracowywaniu tego zbioru wykorzystywałem wiele źródeł o uznanej wiaryg
 
 \begin{questions}
 
-\question Omów trzy wybrane zasady dobrego systemu kryptograficznego podane przez Kerkhoffa.
+\question Omów trzy wybrane zasady dobrego systemu kryptograficznego podane przez Kerkhoffsa.
 \begin{solution}
 \begin{itemize}
 \item Utajniony powinien być klucz, a nie budowa maszyny szyfrującej - w ten sposób system nie zostanie skompromitowany gdy wróg przechwyci maszynę. Wystarczy tylko zmienić klucz.
@@ -65,7 +65,7 @@ Przy opracowywaniu tego zbioru wykorzystywałem wiele źródeł o uznanej wiaryg
 
 \question Omów najważniejszą zasadę Kerkhoffsa.
 \begin{solution}
-\emph{Utajniony powinien być klucz, a nie budowa maszyny szyfrującej.} W ten sposób bezpieczeństwo systemu nie będzie zagrożone nawet jeśli gdy wróg przechwyci maszynę. Wystarczy tylko zmienić klucz. Zasada ta również stosowana jest przy systemach informatycznych jako argument za ujawnianiem kodu algorytmów szyfrujących.
+\emph{Utajniony powinien być klucz, a nie budowa maszyny szyfrującej.} W ten sposób bezpieczeństwo systemu nie będzie zagrożone nawet gdy wróg przechwyci maszynę. Wystarczy tylko zmienić klucz. Zasada ta również stosowana jest przy systemach informatycznych jako argument za ujawnianiem kodu algorytmów szyfrujących.
 \end{solution}
 
 \question Przedstaw metodę projektowania dobrego szyfru homofonicznego.
@@ -130,7 +130,7 @@ W algorytmach poligramowych szyfrowane jest więcej niż jeden symbol jednocześ
 Funkcja XOR jest najprostszą operacją logiczną, która może zapewnić szyfrowanie i deszyfrowanie przy pomocy tego samego klucza. Symetryczne algorytmy strumieniowe opierają się na bramce XOR.
 \end{solution}
 
-\question Omów algorytm szyfrowamia one-time pad?
+\question Omów algorytm szyfrowania one-time pad?
 \begin{solution}
 Algorytm OTP w swoich założeniach zbliża się do algorytmu doskonałego, czyli takiego, który ma udowodnioną odporność na wszelkiego typy ataki. Podstawowym założeniem OTP jest wykorzystanie losowego klucza. Klucz w OTP musi spełniać szereg warunków:
 \begin{itemize}
@@ -138,7 +138,7 @@ Algorytm OTP w swoich założeniach zbliża się do algorytmu doskonałego, czyl
 \item klucz musi być ciągiem doskonale losowym,
 \item nigdy nie wolno wykorzystać dwa razy tego samego klucza.
 \end{itemize}
-Nie trudno zauważyć, że OTP jest mało praktyczny w zwykłych zastosowaniach. Używa się go do zastosowań specjalnych, a także jego elementy można znaleźć inych algorytmach.
+Nie trudno zauważyć, że OTP jest mało praktyczny w zwykłych zastosowaniach. Używa się go do zastosowań specjalnych, a także jego elementy można znaleźć w innych algorytmach.
 \end{solution}
 
 \question Ile wynosi entropia dobrego kryptogramu? Odpowiedź uzasadnij.
@@ -204,7 +204,7 @@ Współczesna kryptografia dostarcza bardzo silnych narzędzi ochrony poufności
 
 \question Przedstaw koncepcję szyfrów homomorficznych.
 \begin{solution}
-Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykonywanie pewnych operacji na kryptogramie bez jego odszyfrowywania. Następnie wynik takich obliczeń może być  odszyfrowany. Koncepcja szyfrów homomorficznych jest atrakcyjna, bowiem pozwala na zbudowanie zewnętrznego systemu przetwarzania dla wrażliwych danych. Istnieją pierwsze prototypowe algorytmy tego typu, jednak są one bardzo kosztowne obliczeniowe.
+Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykonywanie pewnych operacji na kryptogramie bez jego odszyfrowywania. Następnie wynik takich obliczeń może być  odszyfrowany. Koncepcja szyfrów homomorficznych jest atrakcyjna, bowiem pozwala na zbudowanie zewnętrznego systemu przetwarzania dla wrażliwych danych. Istnieją pierwsze prototypowe algorytmy tego typu, jednak są one bardzo kosztowne obliczeniowo.
 \end{solution}
 
 \end{questions}
@@ -214,7 +214,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 
 \question Omów zasadę działania generatora liczb pseudolosowych opartego na LFSR.
 \begin{solution}
-LFSR oznacza z angielskiego ,,liniowy rejestr przesuwny ze sprzężeniem zwrotnym'' (ang. linear feedback shift register). Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające pętlą zwrotną rejestr. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
+LFSR oznacza z angielskiego ,,liniowy rejestr przesuwny ze sprzężeniem zwrotnym'' (ang. linear feedback shift register). Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające rejestr pętlą zwrotną. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
 \end{solution}
 
 \question Przedstaw pięć zastosowania liczb losowych w kryptografii.
@@ -231,7 +231,7 @@ Liczby losowe to bardzo ważny element wielu algorytmów. Na przykład:
 
 \question Wyjaśnij zasadę działania generatorów prawdziwych liczb losowych.
 \begin{solution}
-Prawdziwe liczby losowe nie mogą być wygenerowane przez komputery, które działają w sposób ściśle określony, deterministyczny. Źródłem danych losowych może być tylko proces fizyczny ze świata realnego, które złożoność jest niemożliwa do dokładnego odtworzenia. Dobrymi generatorami są zjawiska ze skali makro (rzut kostką, ruletka, itp.) a także zjawiska na poziomie mikro (szum termiczny, efekty fotoelektryczne, itp.)
+Prawdziwe liczby losowe nie mogą być wygenerowane przez komputery, które działają w sposób ściśle określony, deterministyczny. Źródłem danych losowych może być tylko proces fizyczny ze świata realnego, którego złożoność jest niemożliwa do dokładnego odtworzenia. Dobrymi generatorami są zjawiska ze skali makro (rzut kostką, ruletka, itp.) a także zjawiska na poziomie mikro (szum termiczny, efekty fotoelektryczne, itp.)
 \end{solution}
 
 \question Scharakteryzuj bezpieczne generatory liczb losowych.
@@ -267,7 +267,7 @@ Działanie RC4 opiera się na 256 bajtowej tablicy $S$, zawierającej wszystkie 
 
 \question Omów algorytm szyfrowania A5/1.
 \begin{solution}
-Algorytm A5/1 to najbardziej popularna metoda zabezpieczenia poufności w komunikacji w sieci GSM. Jest to szyfr strumieniowy oparty na trzech rejestrach liniowych ze sprzężeniem zwrotnym (LSFR). Podstawowa długość klucza wynosi 64 bity, chociaż w praktyce jest mniejsza. Pokazano wiele wydajnych ataków na ten algorytm, a więc nie może być uważany bezpieczny. Następcą A5/1 jest blokowy algorytm A5/3 wykorzystywany w sieciach G3.
+Algorytm A5/1 to najbardziej popularna metoda zabezpieczenia poufności w komunikacji w sieci GSM. Jest to szyfr strumieniowy oparty na trzech rejestrach liniowych ze sprzężeniem zwrotnym (LSFR). Podstawowa długość klucza wynosi 64 bity, chociaż w praktyce jest mniejsza. Pokazano wiele wydajnych ataków na ten algorytm, a więc nie może być uważany za bezpieczny. Następcą A5/1 jest blokowy algorytm A5/3 wykorzystywany w sieciach G3.
 \end{solution}
 
 \end{questions}
@@ -585,7 +585,7 @@ Pasywna steganoanaliza polega na wykrywaniu kanału steganograficznego. Samo wyk
 
 \question Wyjaśnij na czym polega aktywna steganoanaliza?
 \begin{solution}
-Aktywna steganoanaliza polega na zakłóceniu lub całkowitym zniszczeniu ukrytej wiadomości. Metody te są wykorzystywane do usuwania cyfrowych znaków wodnych z treści multimedialnych, lub do niszczenia kanału steganograficznego. Co istotne algorytmy niszczące działają najczęściej na ślepo i nie wygają żadnej wiedzy o zastosowanej metodzie steganograficznej.  
+Aktywna steganoanaliza polega na zakłóceniu lub całkowitym zniszczeniu ukrytej wiadomości. Metody te są wykorzystywane do usuwania cyfrowych znaków wodnych z treści multimedialnych, lub do niszczenia kanału steganograficznego. Co istotne algorytmy niszczące działają najczęściej na ślepo i nie wymagają żadnej wiedzy o zastosowanej metodzie steganograficznej.  
 \end{solution}
 
 \question Przedstaw popularny schemat znakowania wodnego obrazów cyfrowych?
@@ -641,7 +641,7 @@ Rolą systemu certyfikatów X.509 jest rozprowadzenie kluczy publicznych ich wł
 
 \question Czym różni się uwierzytelnianie od autoryzacji?
 \begin{solution}
-Uwierzytelnianie jest procesem potwierdzenia tożsamości, natomiast autoryzacja dotyczy przyznania uprawnień. Bardzo często te dwa kroki następują po sobie, jednak należy je zdecydowanie rozróżniać, bo wiążą się z nimi zupełnie inne problemu.
+Uwierzytelnianie jest procesem potwierdzenia tożsamości, natomiast autoryzacja dotyczy przyznania uprawnień. Bardzo często te dwa kroki następują po sobie, jednak należy je zdecydowanie rozróżniać, bo wiążą się z nimi zupełnie inne problemy.
 \end{solution}
 
 \question Opisz dowolny iteracyjny protokół uwierzytelniania.
@@ -741,7 +741,7 @@ Protokół ten jest wrażliwy na podsłuch, jednak obie strony w jednakowym stop
 
 \question Omów protokół Diffie-Helmana.
 \begin{solution}
-Protokół Diffie-Helmana służy do ustalenia klucza szyfrowania przez niezabezpieczony kanał przesyłu danych. Jest jednym z pierwszych praktycznych rozwiązań tego typu problemów w historii. Jego siłą jest brak skutecznego algorytmu do obliczania logarytmów dyskretnych w artmetyce modularnej. Protokół nie jest wrażliwy na podsłuch o ile elementy $p$ i $g$ są dobrane poprawnie. W celu zwiększenia bezpieczeństwa liczba $p$ oraz liczby $a$ i $b$ powinny być długie. Oto schemat protokołu:
+Protokół Diffie-Helmana służy do ustalenia klucza szyfrowania przez niezabezpieczony kanał przesyłu danych. Jest jednym z pierwszych praktycznych rozwiązań tego typu problemów w historii. Jego siłą jest brak skutecznego algorytmu do obliczania logarytmów dyskretnych w arytmetyce modularnej. Protokół nie jest wrażliwy na podsłuch o ile elementy $p$ i $g$ są dobrane poprawnie. W celu zwiększenia bezpieczeństwa liczba $p$ oraz liczby $a$ i $b$ powinny być długie. Oto schemat protokołu:
 \begin{enumerate}
 \item Alicja i Bob ustalają publiczną liczbę pierwszą $p$ oraz publiczną podstawę obliczeń $g$.
 \item Alicja wybiera sobie tajną liczbę $a$ i oblicza wartość $A=g^{a} \pmod{p}$, następnie wysyła obliczoną wartość $A$ do Boba.
@@ -835,7 +835,7 @@ Walidacja, czyli kontrola poprawności danych wejściowych musi dotyczyć wszelk
 \question Na czym polega model security-by-obsurity?
 \begin{solution}
 ,,Security by obscurity'' jest techniką zwiększenia bezpieczeństwa przez pisanie programów w sposób bardzo niejasny i zagmatwany. Skuteczność tej metody jest dosyć wątpliwa.
-Już reguła Kerkhoffa odradzała stosowania takiej techniki: ,,Nie opieramy sie na tajności algorytmu, a na pewności klucza.'' Podkreśla to fakt, iż bezpieczeństwo nie tkwi w tajności budowy algorytmu, ale w jego konstrukcji.
+Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy sie na tajności algorytmu, a na pewności klucza.'' Podkreśla to fakt, iż bezpieczeństwo nie tkwi w tajności budowy algorytmu, ale w jego konstrukcji.
 \end{solution}
 
 \question Na czym polega model security-by-design?
@@ -856,7 +856,7 @@ Organizacja OWASP zajmuje się analizą stanu i edukacją z zakresie bezpieczeń
 \begin{description}
 \item[Injection-Wstrzyknięcie] Ataki polegające na wstrzyknięciu poprzez formularze kodu, który zaburza działanie aplikacji po stronie serwera. Najpopularniejszym przykładem jest SQL Injection, w którym atakowi poddane jest zapytanie SQL. Jednak celem ataku mogą być również inne technologie działające na serwerze, na przykład LDAP, shell, Python (co było demonstrowane na laboratorium).
 \item[XSS] Atak Cross-Site Scripting polega na wysłaniu w zapytaniu kodu napisanego w języku Javascript. Jest to atak na przeglądarkę, a nie na serwer jak w przypadku ataków typu Injection.
-\item[Błędy uwierzytelniania i sesji] Szczególnie wrażliwy jest moment ustalenia tożsamości użytkownika. W przypadku aplikacji internetowych, które pracują w środowisku bezzstanowym, konieczna jest także staranna ochrona sesji. Bowiem przechwycenie sesji jest równoważne z przełamaniem uwierzytelnienia.
+\item[Błędy uwierzytelniania i sesji] Szczególnie wrażliwy jest moment ustalenia tożsamości użytkownika. W przypadku aplikacji internetowych, które pracują w środowisku bezstanowym, konieczna jest także staranna ochrona sesji. Bowiem przechwycenie sesji jest równoważne z przełamaniem uwierzytelnienia.
 \end{description}
 \end{solution}
 
@@ -867,7 +867,7 @@ Protokół HTTP jest bezstanowy, co oznacza, że w wersji podstawowej każde zap
 
 \question Na czym polega atak XSRF?
 \begin{solution}
-Atak Cross-Site Request Forgery (XSFR) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określa, która zakładka ma prawo do korzystania z sesji. 
+Atak Cross-Site Request Forgery (XSFR) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określić, która zakładka ma prawo do korzystania z sesji. 
 \end{solution}
 
 \question W jaki sposób bronić się przed atakiem XSRF?
@@ -950,7 +950,7 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \question Wyjaśnij czym różni się kopia zapasowa pełna, przyrostowa i różnicowa.
 \begin{solution}
 \begin{description}
-\item[Kopia pełna], zawsze musi byź wykonana na początku. Tworzymy pełny obraz archiwizowanych plików bez względu na to, czy od wykonania ostatniego obrazu w plikach zaszły jakieś zmiany. Największy rozmiar i najdłuższy czas wykonywania.
+\item[Kopia pełna], zawsze musi być wykonana na początku. Tworzymy pełny obraz archiwizowanych plików bez względu na to, czy od wykonania ostatniego obrazu w plikach zaszły jakieś zmiany. Największy rozmiar i najdłuższy czas wykonywania.
 \item[Kopia przyrostowa] charakteryzuje się tym, że do jej przywrócenia potrzebna jest najświeższa kopia pełna oraz wszystkie następujące po niej kopie przyrostowe. Backup polega archiwizowaniu tylko tej części, która ,,przyrosła'', co automatycznie zmniejsza jego czas i wielkość w porównaniu do kopii pełnej.
 \item[Kopia różnicowa] podobnie jak w przypadku kopii przyrostowej potrzebujemy obrazu bazowego (pełnego) na podstawie którego określane będą różnice w plikach. Archiwizowane są tylko te pliki, które zostały utworzone lub zmodyfikowane od momentu wykonania ostatniej pełnej kopii.
 \end{description}
@@ -995,7 +995,7 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 
 \question Jakie klauzule tajności przewiduje ustawa o ochronie informacji niejawnych?
 \begin{solution}
-Ustawa o ochronie informacji niejawnych określa zasady przetwarzania danych mogących mieć wpływ na bezpieczeństwo państwa. Autor dokumentu może nadać mu jeden z czterech poziomów tajności: ścisle tajne, tajne, poufne i zastrzeżone. Nadanie klauzuli tajności precyzyjnie określa metody przetwarzania, ochrony, a także grupę osób, które mogą mieć do niego dostęp. 
+Ustawa o ochronie informacji niejawnych określa zasady przetwarzania danych mogących mieć wpływ na bezpieczeństwo państwa. Autor dokumentu może nadać mu jeden z czterech poziomów tajności: ściśle tajne, tajne, poufne i zastrzeżone. Nadanie klauzuli tajności precyzyjnie określa metody przetwarzania, ochrony, a także grupę osób, które mogą mieć do niego dostęp. 
 \end{solution}
 
 
