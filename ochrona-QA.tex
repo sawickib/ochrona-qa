@@ -532,6 +532,25 @@ Jeśli w wystarczająco wielu próbach nie uda się stwierdzić złożoności $n
 \end{solution}
 
 \question Opisz algorytm szybkiego potęgowania.
+\begin{solution}
+Algorytm szybkiego potęgowania pozwala obliczać potęgi całkowite dużych liczb. Opiera się na spostrzeżeniu, że do obliczenia wartości wyrażenia $x^n$ wystarczy wykonanie maksymalnie $\frac{n}{2} + 1$ mnożeń, zgodnie z właściwością potęgowania: $x^n = x * x^{n-1}$.
+
+\medskip
+Treść algorytmu:\\
+Wejście: $x,n \in N$,
+Wyjście: $w \in N$
+\begin{verbatim}
+potęga(x, n):
+  jeżeli n = 0 
+    zwróć 1;
+  jeżeli n nieparzysta
+    zwróć x * potęga (x, n-1);
+  jeżeli n parzysta
+    a = potęga (x, n/2);
+    w = a * a;
+    zwróć w;
+\end{verbatim}
+\end{solution}
 
 \question Oblicz liczbę odwrotną do $34 \pmod{77}$.
 
@@ -544,7 +563,7 @@ $r_5 = 9 - 3 \times 3 = 0$. Okazało się, że największym wspólnym dzielnikie
 
 \question Na czym polegają operacje w kryptografii krzywych eliptycznych?
 \begin{solution}
-Główne operacje dotyczą punktów (x,y) spełniających równanie eliptyczne w artmetyce modularnej. 
+Główne operacje dotyczą punktów (x,y) spełniających równanie eliptyczne w arytmetyce modularnej. 
 \begin{equation}
 y^2 = x^3 + ax +b \pmod{p}
 \end{equation}
