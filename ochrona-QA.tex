@@ -223,7 +223,7 @@ Liczby losowe to bardzo ważny element wielu algorytmów. Na przykład:
 \begin{itemize}
 \item Wektor inicjalizujący IV w trybie CBC.
 \item Liczby $p$ i $q$ wykorzystywane podczas tworzenia kluczy RSA.
-\item Element wyznania przy algorytmach uwierzytelniania typu wyzwanie odpowiedź.
+\item Element wyzwania przy algorytmach uwierzytelniania typu wyzwanie odpowiedź.
 \item Sól dla metod przechowywania haseł.
 \item Podstawa algorytmu OTP.
 \end{itemize}
@@ -692,6 +692,17 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię asymetryczną.
+
+\begin{solution}
+Przykładowy schemat w oparciu o uwierzytelnianie z wykorzystaniem kluczy RSA klienta w protokole SSH2:
+\begin{enumerate}
+\item Klient przesyła do serwera swój klucz publiczny.
+\item Serwer sprawdza w wewnętrznej bazie kluczy czy przesłany klucz faktycznie odpowiada danemu klientowi.
+\item Jeśli klucze są zgodne serwer wysyła do klienta losowe dane (np. liczbę) zaszyfrowane jego kluczem publicznym.
+\item Klient odszyfrowuje dane swoim kluczem prywatnym i odsyła do serwera.
+\item Serwer porównuje otrzymane dane z wysłanymi przez siebie, jeśli są zgodne klient zostaje uwierzytelniony.
+\end{enumerate}
+\end{solution}
 
 \question Omów podstawowy schemat iteracyjnego dowodu z wiedzą zerową.
 
