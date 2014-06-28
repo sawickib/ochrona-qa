@@ -188,7 +188,7 @@ Bramka logiczna XOR stanowi podstawę algorytmów szyfrowania strumieniowego. Ca
 
 \question Udowodnij, że dwukrotne szyfrowania bramką XOR daje z powrotem tekst jawny.
 \begin{solution}
-Wiedząc, że operacja XOR ($\oplus$) posiada następujące cechy: $x \oplus x = 0$, oraz $x \oplus 0 = x$, można pokazać, że dwukrotne XORowanie z kluczem daje tekst jawny:
+Wiedząc, że operacja XOR ($\oplus$) posiada następujące cechy: $\forall_{x,y,z} (x \oplus y) \oplus z = x \oplus (y \oplus z) $(łączność), $x \oplus x = 0$, oraz $x \oplus 0 = x$, można pokazać, że dwukrotne XORowanie z kluczem daje tekst jawny:
 \begin{equation}
 c = p \oplus k 
 \end{equation}
