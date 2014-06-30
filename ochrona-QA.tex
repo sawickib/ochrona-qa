@@ -1072,7 +1072,36 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \end{solution}
 
 \question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI.
+\begin{solution}
+\begin{description}
+\item[DDOS] (ang. Distributed Denial of Service – rozproszona odmowa usługi) – atak na system komputerowy lub usługę sieciową w celu uniemożliwienia działania poprzez zajęcie wszystkich wolnych zasobów, przeprowadzany równocześnie z wielu komputerów
+\item[DMZ]
+Demilitarized zone (DMZ), strefa zdemilitaryzowana bądź ograniczonego zaufania – jest to wydzielany na zaporze sieciowej (ang. firewall) obszar sieci komputerowej nienależący ani do sieci wewnętrznej (tj. tej chronionej przez zaporę), ani do sieci zewnętrznej (tej przed zaporą; na ogół jest to Internet). W strefie zdemilitaryzowanej umieszczane są serwery "zwiększonego ryzyka włamania", przede wszystkim serwery świadczące usługi użytkownikom sieci zewnętrznej, którym ze względów bezpieczeństwa nie umożliwia się dostępu do sieci wewnętrznej (najczęściej są to serwery WWW i FTP). W strefie zdemilitaryzowanej umieszczane są także te serwery usług świadczonych użytkownikom sieci wewnętrznej, które muszą kontaktować się z obszarem sieci zewnętrznej (serwery DNS, proxy, poczty i inne), oraz serwery monitorujące i reagujące na próby włamań IDS.
+\item[Firewall]
+Zapora sieciowa (ang. firewall – ściana przeciwogniowa) – jeden ze sposobów zabezpieczania sieci i systemów przed intruzami.
 
+Termin ten może odnosić się zarówno do dedykowanego sprzętu komputerowego wraz ze specjalnym oprogramowaniem, jak i do samego oprogramowania blokującego niepowołany dostęp do komputera, na którego straży stoi. Pełni rolę połączenia ochrony sprzętowej i programowej sieci wewnętrznej LAN przed dostępem z zewnątrz tzn. sieci publicznych, Internetu, chroni też przed nieuprawnionym wypływem danych z sieci lokalnej na zewnątrz. Często jest to komputer wyposażony w system operacyjny z odpowiednim oprogramowaniem. Do jego podstawowych zadań należy filtrowanie połączeń wchodzących i wychodzących oraz tym samym odmawianie żądań dostępu uznanych za niebezpieczne.
+\item[IDS]
+(ang. intrusion detection system)Jest to software'owy lub hardware'owy system moinitorujacy sieć pod kątem złośliwych aktywności. 
+\item[IPS]
+
+\item[DLP]
+Ochrona przed wyciekami informacji (ang. DLP – Data Leak/Leakage/Loss Protection/Prevention) – ogólna nazwa technologii informatycznych wspomagających ochronę danych w postaci elektronicznej przed kradzieżą lub przypadkowymi wyciekami.
+
+Systemy DLP wdraża się w organizacjach przetwarzających informacje podlegające ochronie z powodów biznesowych (tajemnica przedsiębiorstwa) lub prawnych (osobowe, dane wrażliwe, finansowe, zdrowotne) a których ujawnienie może narazić organizację na odpowiedzialność karną, cywilną lub innego rodzaju straty. Wdrożenia DLP służą najczęściej realizacji prawnych lub branżowych wymogów ochrony danych osobowych i finansowych (PCI DSS).
+\item[DPI]
+Głęboka Inspekcja Pakietów (często używany skrót DPI od ang. Deep Packet Inspection) – technika sieciowa pozwalająca ISP analizować pakiety przesyłane przez sieć pod względem ich treści. W zależności od zawartości pakiet jest zatrzymywany, opóźniany, zmieniany, lub przesyłany dodatkowo w celu zapisania. Możliwe jest składanie wielu pakietów w jedną całość i analizowanie ich razem.
+
+Technika ta jest używana do:
+
+    celów statystycznych,
+    podsłuchiwania treści przesyłanych przez internet (inwigilacja obywateli),
+    automatycznego blokowania wiadomości zawierające dane hasła lub url podstrony (cenzura),
+    priorytetyzowania ruchu w sieciach mobilnych (np. hipotetyczne obniżenie priorytetu połączeń przez Skype)
+
+
+\end{description}
+\end{solution}
 \end{questions}
 
 
