@@ -766,6 +766,16 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 \question Na czym polega uwierzytelnianie dwuskładnikowe? Podaj przykłady.
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
+\begin{solution}
+Przykładowy schemat w oparciu o kryptografię symetryczną:\\
+Wcześniej klient i serwer ustalają tajny klucz do szyfrowania używając innego kanału.
+\begin{enumerate}
+\item Klient podaje swoje dane identyfikacyjne.
+\item Serewer losuje $r$ i odsyła klientowi.
+\item Klient szyfruje $r$ i odsyła do banku.
+\item Serwer również szyfruje $r$ i porównuje wyniki, jeśli są zgodne, klient zostaje uwierzytelniony.
+\end{enumerate}
+\end{solution}
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię asymetryczną.
 
