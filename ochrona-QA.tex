@@ -188,7 +188,7 @@ Bramka logiczna XOR stanowi podstawę algorytmów szyfrowania strumieniowego. Ca
 
 \question Udowodnij, że dwukrotne szyfrowania bramką XOR daje z powrotem tekst jawny.
 \begin{solution}
-Wiedząc, że operacja XOR ($\oplus$) posiada następujące cechy: $x \oplus x = 0$, oraz $x \oplus 0 = x$, można pokazać, że dwukrotne XORowanie z kluczem daje tekst jawny:
+Wiedząc, że operacja XOR ($\oplus$) posiada następujące cechy: $\forall_{x,y,z} (x \oplus y) \oplus z = x \oplus (y \oplus z) $(łączność), $x \oplus x = 0$, oraz $x \oplus 0 = x$, można pokazać, że dwukrotne XORowanie z kluczem daje tekst jawny:
 \begin{equation}
 c = p \oplus k 
 \end{equation}
@@ -217,7 +217,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 LFSR oznacza z angielskiego ,,liniowy rejestr przesuwny ze sprzężeniem zwrotnym'' (ang. linear feedback shift register). Działa on na zasadzie kombinacji liniowej wybranych elementów rejestru, które tworzą nowe dane zasilające rejestr pętlą zwrotną. Ten prosty schemat powoduje, że układ ten jest prosty do realizacji i może działać z wielką szybkością. Wadą jest jednak niska jakość generowanego ciągu pseudolosowego. W praktyce generatory tego typu nie nadają się do zastosowań kryptograficznych.
 \end{solution}
 
-\question Przedstaw pięć zastosowania liczb losowych w kryptografii.
+\question Przedstaw pięć zastosowań liczb losowych w kryptografii.
 \begin{solution}
 Liczby losowe to bardzo ważny element wielu algorytmów. Na przykład:
 \begin{itemize}
@@ -249,8 +249,14 @@ Bezpieczne generatory liczb losowych (eng. CSPRNG) stanowią szczególną klasę
 \end{solution}
 
 \question Ile wynosi entropia ciągu doskonale losowego? Odpowiedź uzasadnij.
+\begin{solution}
+W ciągu doskonale losowym rozkład prawdopodobieństwa jest jednostajny, tak więc entropię wyznacza się ze wzoru:
+\begin{equation}
+H = n * log_2 N
+\end{equation}
 
-
+Gdzie N to moc zbioru możliwych znaków, zaś n oznacza długość ciągu doskonale losowego.
+\end{solution}
 \end{questions}
 
 \subsection{Algorytmy symetryczne strumieniowe}
@@ -966,15 +972,18 @@ Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy si
 \end{solution}
 
 \question Na czym polega model security-by-design?
-
+\begin{solution}
+Polega on na projektowaniu oprogramowania pod kątem minimalizacji strat po ewentualnym złamaniu zabezpieczeń.
+\end{solution}
 \question Na czym polega model security-by-separation?
 \begin{solution}
 'Security-by-separation' to model, w którym ograniczamy skutki błędów do tylko jednego modułu. Możemy to uzyskać dzięki rozdzieleniu systemu na moduły i zabezpieczaniu każdego  niezależnie od innych, z negatywnym nastawieniem do reszty programu.
 \end{solution}
 
 \question Na czym polega model wielopoziomowej ochrony w głąb (ang. in depth defence)?
-
-
+\begin{solution}
+Model ten zakłada istnienie wielu niezależnych warstw zabezpieczeń, dzięki czemu luka w jednej z nich może być kompensowana przez inną. 
+\end{solution}
 \end{questions}
 
 \subsection{Programowanie internetowe}
@@ -997,12 +1006,12 @@ Protokół HTTP jest bezstanowy, co oznacza, że w wersji podstawowej każde zap
 
 \question Na czym polega atak XSRF?
 \begin{solution}
-Atak Cross-Site Request Forgery (XSFR) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określić, która zakładka ma prawo do korzystania z sesji. 
+Atak Cross-Site Request Forgery (XSRF) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określić, która zakładka ma prawo do korzystania z sesji. 
 \end{solution}
 
 \question W jaki sposób bronić się przed atakiem XSRF?
 \begin{solution}
-XSFR jest atakiem na sesję, a więc należy uszczelnić mechanizmy kontroli jej spójności. Najlepiej jest to zrobić poprzez wprowadzenie dodatkowego mechanizmu losowych, każdorazowo zmiennych jednorazowych kluczy sesji, które są przekazywane w każdym zapytaniu. Możliwe jest także sprawdzanie, źródła zapytania poprzez pole nagłówka HTTP Referer. Dobrą strategią jest także wymaganie dodatkowego uwierzytelnienia przy szczególnie istotnych operacjach. 
+XSRF jest atakiem na sesję, a więc należy uszczelnić mechanizmy kontroli jej spójności. Najlepiej jest to zrobić poprzez wprowadzenie dodatkowego mechanizmu losowych, każdorazowo zmiennych jednorazowych kluczy sesji, które są przekazywane w każdym zapytaniu. Możliwe jest także sprawdzanie, źródła zapytania poprzez pole nagłówka HTTP Referer. Dobrą strategią jest także wymaganie dodatkowego uwierzytelnienia przy szczególnie istotnych operacjach. 
 \end{solution}
 
 
@@ -1049,7 +1058,9 @@ ACL (ang. Access Control List) jest techniką przechowywania uprawnień w system
 \end{solution}
 
 \question Przedstaw model ochrony Take-Grant.
-
+\begin{solution}
+Model ten oparty jest na grafie, w którym wierzchołki stanowią obiekty i podmioty, zaś etykietowane połączenia między nimi opisują uprawnienia.
+\end{solution}
 \question Przedstaw schemat ,,High-water mark'' do ustalania poziomu poufności.
 \begin{solution}
 Strategia ,,High-water mark'' dotyczy przyznawania etykiet poufności w systemach chronionych modelem MAC. Według tej strategii dokument dostaje najwyższą etykietę ze wszystkich zasobów, które zostały wykorzystane do jego stworzenia.
@@ -1074,7 +1085,9 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \end{solution}
 
 \question Przedstaw czym kopie zapasowe różnią się od systemu archiwizacji.
-
+\begin{solution}
+W języku polskim określenia: „backup” i „archiwizacja danych” są (często mylnie) stosowane zamiennie. Jednak w języku angielskim „backup” i „data archiving” określają różne działania. Podobnie w języku polskim kopia bezpieczeństwa i archiwizacja danych. „Backup” dotyczy tworzenia kopii bezpieczeństwa danych w celu ich odtworzenia po utracie lub uszkodzeniu, natomiast „data archiving” oznacza proces tzw. warstwowania danych, czyli ich dzielenia na dane aktywne, nieaktywne i referencyjne, a następnie zapisywania w odpowiednich obszarach zapisu. D
+\end{solution}
 \question Wyjaśnij czy kopie zapasowe zapewniają wysoką dostępność danych?
 \begin{solution}
 Zadaniem klasycznych systemów kopii zapasowych jest zabezpieczenie przed utratą danych. Nie zapewniają jednak one wysokiej dostępności (ang. high availability), czyli szybkiego i pewnego dostępu do danych. Stawiając pytanie w drugą stronę można stwierdzić, że systemy wysokiej dostępności muszą realizować mechanizmy kopii zapasowych.
@@ -1091,7 +1104,36 @@ Zadaniem klasycznych systemów kopii zapasowych jest zabezpieczenie przed utrat�
 \end{solution}
 
 \question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI.
+\begin{solution}
+\begin{description}
+\item[DDOS] (ang. Distributed Denial of Service – rozproszona odmowa usługi) – atak na system komputerowy lub usługę sieciową w celu uniemożliwienia działania poprzez zajęcie wszystkich wolnych zasobów, przeprowadzany równocześnie z wielu komputerów
+\item[DMZ]
+Demilitarized zone (DMZ), strefa zdemilitaryzowana bądź ograniczonego zaufania – jest to wydzielany na zaporze sieciowej (ang. firewall) obszar sieci komputerowej nienależący ani do sieci wewnętrznej (tj. tej chronionej przez zaporę), ani do sieci zewnętrznej (tej przed zaporą; na ogół jest to Internet). W strefie zdemilitaryzowanej umieszczane są serwery "zwiększonego ryzyka włamania", przede wszystkim serwery świadczące usługi użytkownikom sieci zewnętrznej, którym ze względów bezpieczeństwa nie umożliwia się dostępu do sieci wewnętrznej (najczęściej są to serwery WWW i FTP). W strefie zdemilitaryzowanej umieszczane są także te serwery usług świadczonych użytkownikom sieci wewnętrznej, które muszą kontaktować się z obszarem sieci zewnętrznej (serwery DNS, proxy, poczty i inne), oraz serwery monitorujące i reagujące na próby włamań IDS.
+\item[Firewall]
+Zapora sieciowa (ang. firewall – ściana przeciwogniowa) – jeden ze sposobów zabezpieczania sieci i systemów przed intruzami.
 
+Termin ten może odnosić się zarówno do dedykowanego sprzętu komputerowego wraz ze specjalnym oprogramowaniem, jak i do samego oprogramowania blokującego niepowołany dostęp do komputera, na którego straży stoi. Pełni rolę połączenia ochrony sprzętowej i programowej sieci wewnętrznej LAN przed dostępem z zewnątrz tzn. sieci publicznych, Internetu, chroni też przed nieuprawnionym wypływem danych z sieci lokalnej na zewnątrz. Często jest to komputer wyposażony w system operacyjny z odpowiednim oprogramowaniem. Do jego podstawowych zadań należy filtrowanie połączeń wchodzących i wychodzących oraz tym samym odmawianie żądań dostępu uznanych za niebezpieczne.
+\item[IDS]
+(ang. intrusion detection system)Jest to software'owy lub hardware'owy system moinitorujacy sieć pod kątem złośliwych aktywności. 
+\item[IPS]
+
+\item[DLP]
+Ochrona przed wyciekami informacji (ang. DLP – Data Leak/Leakage/Loss Protection/Prevention) – ogólna nazwa technologii informatycznych wspomagających ochronę danych w postaci elektronicznej przed kradzieżą lub przypadkowymi wyciekami.
+
+Systemy DLP wdraża się w organizacjach przetwarzających informacje podlegające ochronie z powodów biznesowych (tajemnica przedsiębiorstwa) lub prawnych (osobowe, dane wrażliwe, finansowe, zdrowotne) a których ujawnienie może narazić organizację na odpowiedzialność karną, cywilną lub innego rodzaju straty. Wdrożenia DLP służą najczęściej realizacji prawnych lub branżowych wymogów ochrony danych osobowych i finansowych (PCI DSS).
+\item[DPI]
+Głęboka Inspekcja Pakietów (często używany skrót DPI od ang. Deep Packet Inspection) – technika sieciowa pozwalająca ISP analizować pakiety przesyłane przez sieć pod względem ich treści. W zależności od zawartości pakiet jest zatrzymywany, opóźniany, zmieniany, lub przesyłany dodatkowo w celu zapisania. Możliwe jest składanie wielu pakietów w jedną całość i analizowanie ich razem.
+
+Technika ta jest używana do:
+
+    celów statystycznych,
+    podsłuchiwania treści przesyłanych przez internet (inwigilacja obywateli),
+    automatycznego blokowania wiadomości zawierające dane hasła lub url podstrony (cenzura),
+    priorytetyzowania ruchu w sieciach mobilnych (np. hipotetyczne obniżenie priorytetu połączeń przez Skype)
+
+
+\end{description}
+\end{solution}
 \end{questions}
 
 
@@ -1124,8 +1166,32 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 \question Jaki wpływ na bezpieczeństwo systemu mogą mieć normy z serii ISO 27000?
 
 \question Czego dotyczy norma PN-ISO 17799?
-
+\begin{solution}
+Norma ISO 17799 wywodzi się z brytyjskiego standardu bezpieczeństwa BS 7799. Stanowi zestaw wskazówek dla wdrożenia i utrzymania bezpieczeństwa informacji w przedsiębiorstwie.
+\end{solution}
 \question Jakie dane chronione są przez ustawę o ochronie danych osobowych?
+\begin{solution}
+W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania żyjącej osoby fizycznej, np:
+\begin{itemize}
+\item Imię, nazwisko
+\item Adres
+\item PESEL
+\item DNA, linie papilarne
+\item stan konta
+
+\end{itemize}
+
+Szczególnie chronione są tzw. dane wrażliwe do których zaliczamy:
+\begin{itemize}
+\item pochodzenie rasowe lub etniczne
+\item poglądy polityczne
+\item przekonania religijne lub filozoficzne
+\item przynależność wyznaniową, partyjną lub związkową
+\item stan zdrowia, kodu genetycznego, nałogów lub życia seksualnego,
+\item skazania, orzeczenia o ukaraniu i mandaty karnych, a także inne orzeczenia wydane w postępowaniu sądowym lub administracyjnym.
+\end{itemize}
+\end{solution}
+
 
 \question Jakie klauzule tajności przewiduje ustawa o ochronie informacji niejawnych?
 \begin{solution}
