@@ -651,6 +651,15 @@ jest łatwa do wykonania w jedną stronę, jednak bardzo trudna do odwrócenia. 
 
 \end{solution}
 
+\question Wyjaśnij pojęcie świadka złożoności.
+\begin{solution}
+Świadek złożoności $p$ jest losowo wybraną liczbą, przy której użyciu stwierdzona zostanie złożoność $p$.
+\end{solution}
+
+\question Omów algorytm plecakowy.
+\begin{solution}
+Algorytm plecakowy jest asymetrycznym szyfrem opierającym się na maksymalizacyjnym problemie wyboru przedmiotów tak, by ich sumaryczna wartość była jak największa i jednocześnie mieściły się w plecaku. Generowane klucze tworzone są za pomocą dwóch problemów plecakowych - łatwego (klucz publiczny do szyfrowania) i trudnego (klucz prywatny do deszyfrowania). Reprezentacje wag dla danego problemu reprezentowane są liczbą binarną, np. w sytuacji dostępnych wag : $1, 6, 8, 15, 24$ przy ograniczeniu $40$ rozwiązaniem problemu plecakowego będzie : $1+15+24 = 40$, co zostanie przedstawione liczbą : $10011$.
+\end{solution}
 
 \end{questions}
 
@@ -766,6 +775,16 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 \question Na czym polega uwierzytelnianie dwuskładnikowe? Podaj przykłady.
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
+\begin{solution}
+Przykładowy schemat w oparciu o kryptografię symetryczną:\\
+Wcześniej klient i serwer ustalają tajny klucz do szyfrowania używając innego kanału.
+\begin{enumerate}
+\item Klient podaje swoje dane identyfikacyjne.
+\item Serewer losuje $r$ i odsyła klientowi.
+\item Klient szyfruje $r$ i odsyła do banku.
+\item Serwer również szyfruje $r$ i porównuje wyniki, jeśli są zgodne, klient zostaje uwierzytelniony.
+\end{enumerate}
+\end{solution}
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię asymetryczną.
 
@@ -947,6 +966,9 @@ Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy si
 \question Na czym polega model security-by-design?
 
 \question Na czym polega model security-by-separation?
+\begin{solution}
+'Security-by-separation' to model, w którym ograniczamy skutki błędów do tylko jednego modułu. Możemy to uzyskać dzięki zabezpieczaniu każdego modułu niezależnie od innych, z negatywnym nastawieniem do reszty programu.
+\end{solution}
 
 \question Na czym polega model wielopoziomowej ochrony w głąb (ang. in depth defence)?
 
@@ -1052,6 +1074,15 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 \question Przedstaw czym kopie zapasowe różnią się od systemu archiwizacji.
 
 \question Wyjaśnij czy kopie zapasowe zapewniają wysoką dostępność danych?
+\begin{solution}
+Kopie zapasowe mogą zapewniać wysoką dostępność danych, jeśli są odpowiednio przechowywane. Możliwe są następujące sposoby przechowywania, zabezpieczania kopii:
+\begin{itemize}
+\item on-line (np. dodatkowy dysk) - zapewnia szybki dostęp, lecz dane są podatne na ataki i awarie,
+\item off-line (np. płyty DVD) - dane odporne na ataki i awarie, lecz dostęp do nich jest wolny,
+\item zewnętrze, bezpieczne miejsce - dane są odporne na katastroficzne zniszczenia.
+\end{itemize}
+\end{solution}
+
 
 \question Wyjaśnij czym różni się kopia zapasowa pełna, przyrostowa i różnicowa.
 \begin{solution}
