@@ -782,9 +782,7 @@ Metody uwierzytelniania ludzi przez systemy komputerowe możemy podzielić na tr
 
 \question Na czym polega uwierzytelnianie dwuskładnikowe? Podaj przykłady.
 \begin{solution}
-Uwierzytelnianie dwuskładnikowe polega na potwierdzeniu tożsamości użytkownika poprzez wykorzystanie dwóch różnych metod uwierzytelniania. Metody uwierzytelniania mogą odwoływać się do wiedzy użytkownika, czegoś co posiada lub tego jaki jest.\\
-Dobrym przykładem jest operacja wypłacenia pieniędzy z bankomatu. Użytkownik potwierdza tożsamość posiadając kartę (coś co ma) oraz znając numer PIN (coś co wie).\\
-Drugim przykładem może być uwierzytelnianie użytkownika przed wpuszczeniem go do wysoce chronionego miejsca. Może się to odbywać poprzez skanowanie siatkówki oka (jaki jest), odcisk palca (jaki jest) oraz podanie kodu. Mimo że takie uwierzytelnianie będzie posiadało trzy etapy, również jest dwuskładnikowe, ponieważ odwołuje się do dwóch różnych metod.
+Uwierzytelnianie dwuskładnikowe polega na potwierdzeniu tożsamości użytkownika poprzez wykorzystanie dwóch różnych metod uwierzytelniania. Metody uwierzytelniania mogą odwoływać się do wiedzy użytkownika, czegoś co posiada lub tego jaki jest. Dobrym przykładem jest operacja wypłacenia pieniędzy z bankomatu. Użytkownik potwierdza tożsamość posiadając kartę (coś co ma) oraz znając numer PIN (coś co wie). Drugim przykładem może być uwierzytelnianie użytkownika przed wpuszczeniem go do wysoce chronionego miejsca. Może się to odbywać poprzez skanowanie siatkówki oka (jaki jest), odcisk palca (jaki jest) oraz podanie kodu. Mimo że takie uwierzytelnianie będzie posiadało trzy etapy, również jest dwuskładnikowe, ponieważ odwołuje się do dwóch różnych metod.
 \end{solution}
 
 \question Przedstaw schemat uwierzytelniania wyzwanie-odpowiedź w oparciu o kryptografię symetryczną.
@@ -1028,12 +1026,11 @@ Atak XSS (Cross-Site Scripting) polega na umieszczeniu na stronie internetowej z
 
 \question Przedstaw metody obrony przed atakami typu Injection?
 \begin{solution}
-Ataki typu Injection polegają na odpowiedniej modyfikacji danych wejściowych programu tak, aby ten wykonał niezamierzone przez programiste operacje.
-Obrona przed tego typu atakami polega na sprawdzaniu danych wejściowych na wiele sposobów, przed wykorzystaniem tych danych w programie.
+Ataki typu Injection dotyczą aplikacji internetowych. Polegają "wstrzyknięciu" spreparowanych danych wejściowych do serwera tak, aby ten wykonał niezamierzone przez programistę operacje.
+Obrona przed tego typu atakami polega na sprawdzaniu danych wejściowych przed wykorzystaniem tych danych w programie. Dane powinny być sprawdzane z negatywnym nastawieniem, czyli sprawdzamy czy dane są poprawne, a nie czy dane są błędne. Szczególną uwagę należy zwrócić na:
 \begin{itemize}
-\item Dane powinny być sprawdzane z negatywnym nastawieniem, czyli sprawdzamy czy dane są poprawne, a nie czy dane są błędne
-\item Sprawdzany powinien być typ, źródło oraz maksymalna długość danych
-\item W danych tekstowych kontrolowane powinny być znaki sterujące (EOF, EOL, NULL), znaki specjalne ( * \lq\ \lq\lq\ \textbackslash\ / ), separatory pól, kodowanie znaków (np. UTF-8 posiada zmienną długość), kodowanie danych do przesyłu
+\item Sprawdzany powinien być typ, źródło oraz maksymalna długość danych.
+\item W danych tekstowych kontrolowane powinny być znaki sterujące (EOF, EOL, NULL), znaki specjalne ( * \lq\ \lq\lq\ \textbackslash\ / ), separatory pól, kodowanie znaków (np. UTF-8 posiada zmienną długość), kodowanie danych do przesyłu.
 \item W danych numerycznych kontrolowany powinien być typ liczby (int, float, double), wartość minimalna i maksymalna, forma zapisu (np. rozdzielenie kropką czy przecinkiem)
 \item Uwzględnienie specyfiki oczekiwanych danych (np. poprawność adresu e-mail)
 \end{itemize}
@@ -1185,7 +1182,7 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 
 \question Na czym polega audyt polityki bezpieczeństwa?
 \begin{solution}
-Polityka bezpieczeństwa wymaga ciągłych modyfikacji odzwierciedlających zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzetu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
+Audyt dokumentu polityki bezpieczeństwa polega na zweryfikowaniu jej zgodności ze stosowanymi zabezpieczeniami. Wymagane są ciągłe modyfikacje odzwierciedlające zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzetu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
 \end{solution}
 
 \question Jaki wpływ na bezpieczeństwo systemu mogą mieć normy z serii ISO 27000?
