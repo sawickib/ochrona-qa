@@ -1025,14 +1025,8 @@ Atak XSS (Cross-Site Scripting) polega na umieszczeniu na stronie internetowej z
 
 \question Przedstaw metody obrony przed atakami typu Injection?
 \begin{solution}
-Ataki typu Injection dotyczą aplikacji internetowych. Polegają "wstrzyknięciu" spreparowanych danych wejściowych do serwera tak, aby ten wykonał niezamierzone przez programistę operacje.
-Obrona przed tego typu atakami polega na sprawdzaniu danych wejściowych przed wykorzystaniem tych danych w programie. Dane powinny być sprawdzane z negatywnym nastawieniem, czyli sprawdzamy czy dane są poprawne, a nie czy dane są błędne. Szczególną uwagę należy zwrócić na:
-\begin{itemize}
-\item Sprawdzany powinien być typ, źródło oraz maksymalna długość danych.
-\item W danych tekstowych kontrolowane powinny być znaki sterujące (EOF, EOL, NULL), znaki specjalne ( * \lq\ \lq\lq\ \textbackslash\ / ), separatory pól, kodowanie znaków (np. UTF-8 posiada zmienną długość), kodowanie danych do przesyłu.
-\item W danych numerycznych kontrolowany powinien być typ liczby (int, float, double), wartość minimalna i maksymalna, forma zapisu (np. rozdzielenie kropką czy przecinkiem)
-\item Uwzględnienie specyfiki oczekiwanych danych (np. poprawność adresu e-mail)
-\end{itemize}
+Ataki typu Injection dotyczą aplikacji internetowych. Polegają ,,wstrzyknięciu'' spreparowanych danych wejściowych do serwera tak, aby ten wykonał niezamierzone przez programistę operacje. 
+Obrona przed tego typu atakami polega na sprawdzaniu danych wejściowych przed wykorzystaniem tych danych w programie. Istotna jest również separacja uprawnień, tak aby nawet jeżeli dojdzie do wykonywania złośliwych poleceń, skutki były ograniczone.
 \end{solution}
 
 \question Omów przykład błędu skutkującemu możliwością SQL-Injection?
