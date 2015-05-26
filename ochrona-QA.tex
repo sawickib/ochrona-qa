@@ -887,6 +887,10 @@ Protokół Diffie-Helmana służy do ustalenia klucza szyfrowania przez niezabez
 Alicja i Bob współdzielą tajną wartość $s$, za pomocą której mogą szyfrować dalszą komunikację. Dzieje się tak ponieważ $g^{ab}=g^{ba}=s \pmod{p}$, czyli tylko osoba znająca obie tajne wartości $a$ i $b$ mogłaby obliczyć wartość $s$. Trudność problemu logarytmu dyskretnego powoduje, że publicznie znane liczby $A$ i $B$ nie umożlwiają odtworzenia $a$ i $b$.
 \end{solution}
 
+\question Omów protokół Diffie-Helmana oparty na krzywych eliptycznych.
+\begin{solution}
+\end{solution}
+
 \question Omów protokół Interlock.
 \begin{solution}
 Ciekawy protokół mający za zadanie zapobiegać atakom man-in-the-middle. Podstawową zasadą jest to, że nie deszyfruje się klucza mając tylko połowę kryptogramu(0.5 krypto$=>$ 0.5 tekstu jawnego). Istnieją jednak skuteczne ataki na ten protokół.
@@ -915,6 +919,9 @@ Ciekawy protokół mający za zadanie zapobiegać atakom man-in-the-middle. Pods
 Dzielenie tajemnic jest sposobem rozdzielenie sekretu pomiędzy kilku użytkowników w taki sposób, że żaden z nich samodzielnie nie może go odzyskać. Przydatność takiej metody prosto pokazać na przykładzie: Pewna firma jest w posiadaniu ważnych informacji, np. decydującej o jej przewadze technologicznej nad konkurencją. Informacje te muszę być chronione i dlatego znajdują się w sejfie. Aby dodatkowo zwiększyć bezpieczeństwo, sejf może zostać otwarty tylko wtedy, gdy wszystkie osoby z zarządu firmy użyją swych kluczy (protokół bez progu). Wygodniejsza wersja powyższego scenariusza zakłada, że do otworzenia sejfu wystarcza, powiedzmy, 2/3 kluczy (tak aby sejf nie został zablokowany, np. absencją chorobową pojedynczych członków zarządu) (protokół z progiem). Oczywiście, najlepiej, gdy sejf ma postać protokołu kryptograficznego – eliminuje to konieczność drogich szaf pancernych.
 \end{solution}
 
+\question{Wyjaśnij dlaczego proste podzielenie tajemnicy na fragmenty nie jest dobrym rozwiązaniem?}
+
+
 \question{Omów wybrany przykład protokołu dzielenia tajemnicy.}
 \begin{solution}
 Przedstawmy najprostszy protokół bez progu opierający działanie na funkcji XOR ($\oplus$):
@@ -930,6 +937,10 @@ Przedstawmy najprostszy protokół bez progu opierający działanie na funkcji X
 \begin{solution}
 Protokoły dzielenia tajemnicy z progiem pozwalają dowolnie ustalić liczbę osób, które będą konieczne do odtworzenia tajemnicy. Liczba ta jest niezależna od całkowitej liczby powierników tajemnicy. Przykładem takiego rozwiązania jest wielomianowy protokół Shamira. Polega on na tym, że dla ustalonego progu $k$ zostają wylosowane współczynniki wielomianu stopnia $k-1$. Kolejnym osobom rozdaje się punkty na krzywej, a do odtworzenia wielomianu wystarczy spotkanie $k$ z nich.
 \end{solution}
+
+\question{Omów zasadę podziału tajemnicy w wielomianowym protokole Shamira.}
+
+\question{Omów zasadę podziału tajemnicy w protokole hiperpłaszczyzn Blackley'a.}
 
 \end{questions}
 
@@ -976,6 +987,9 @@ Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy si
 \question Na czym polega model security-by-design?
 \begin{solution}
 Polega on na projektowaniu oprogramowania ze szczególnym naciskiem na bezpieczeństwo. Zakłada się, że przyjęta architektura i algorytmy ochrony są wystarczająco dobre do zapewnienia ochrony. Jest to przeciwieństwo modelu security-by-obscurity.
+
+Model secure-by-design oznacza tworzenie oprogramowania w taki sposób, aby już na etapie projektowania uwzględnić kwestie bezpieczeństwa. U podstaw leży założenie, że każdy użytkownik systemu ma złe intencje oraz najwyższe kwalifikacje do przeprowadzania ataków. Na ogół projekty o otwartym kodzie są lepiej poznane i przetestowane ze względu na związaną z nimi społeczność użytkowników (Prawo Linusa).  Z drugiej zaś strony może to ułatwić napastnikom rozpoznanie i znalezienie dziur bezpieczeństwa. 
+
 \end{solution}
 
 \question Na czym polega model security-by-separation?
@@ -1081,6 +1095,16 @@ ACL (ang. Access Control List) jest techniką przechowywania uprawnień w system
 \begin{solution}
 \fixit
 Model ten oparty jest na grafie, w którym wierzchołki stanowią obiekty i podmioty, zaś etykietowane połączenia między nimi opisują uprawnienia.
+
+Model ochrony Take-Grant składa się z: zbioru podmiotów S, zbioru obiektów O, zbioru praw dostępu R. System ochrony jest modelowany za pomocą grafu, w którym każdy obiekt bądź podmiot jest wierzchołkiem grafu, a prawa określonego podmiotu do pewnego obiektu są modelowane za pomocą etykietowanej i skierowanej od podmiotu do obiektu krawędzi. Cztery elementarne operacje w modelu to:
+\begin{itemize}
+\item create(o,r) – dodaje nowy wierzchołek do grafu. Z s do o jest tworzony łuk z etykietą r opisująca prawo s do o.
+\item revoke(o,r) – s usuwa prawo d do obiektu o. Łuk z s do o jest etykietowany jako q\r, gdzie q jest zbiorem uprawnień.
+\item grant(o, p, r) – podmiot s przyznaje o prawo dostępu r do p. W grafie dodawany jest łuk z o do p etykietowany jako r.
+\item take(o,p,r) -  podmiot s zabiera o prawo dostępu r do p. W grafie dodawany jest łuk z o do p etykietowany jako r.
+\end{itemize}
+Użyteczność modelu Take-Grant polega na tym, że identyfikuje warunki, na jakich użytkownik może otrzymywać dostęp do obiektu.
+
 \end{solution}
 
 \question Przedstaw schemat ,,High-water mark'' do ustalania poziomu poufności.
@@ -1171,18 +1195,37 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 \end{solution}
 
 
-\question Wyjaśnij dlaczego ewidencja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
+\question Wyjaśnij dlaczego ewidencja i klasyfikacja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
+\begin{solution}
+Pełna informacja o posiadanych zasobów informatycznych oraz ich analiza pod względem krytyczności dla działania organizacji, są niezbędne do uzasadnionego doboru poziomu ochrony oraz związanego z nim odpowiednimi środkami technicznymi. 
+
+\fixit
+Ewidencja pozwala na bieżąco utrzymywać porządek w zasobach infrastruktury. Każdy element objęty ewidencją powinien być oznaczony, w taki sposób, aby można było jednoznacznie stwierdzić, czy sprzęt lub oprogramowanie znajdują się we właściwym miejscu. Często zdarza się, że firmy zaniedbują ten aspekt i inwentaryzacja jest wykonywana na potrzeby księgowości i ewidencji środków trwałych, przez co poświęca się jednorazowo mnóstwo czasu. Dedykowane oprogramowanie przyspiesza ten proces, aby czynności takie jak aktualizacja oprogramowania nie stanowiły szczególnego problemu. Jest to istotne zwłaszcza w przypadku krytycznych poprawek, gdzie ujawniona luka bezpieczeństwa może stać się źródłem kosztownych strat. Panowanie nad zasobami uszczelnia system ochrony, ponieważ pozwala na szybkie reagowanie w przypadku wykrycia problemów.
+\end{solution}
 
 \question Na czym polega audyt polityki bezpieczeństwa?
 \begin{solution}
 Audyt dokumentu polityki bezpieczeństwa polega na zweryfikowaniu jej zgodności ze stosowanymi zabezpieczeniami. Wymagane są ciągłe modyfikacje odzwierciedlające zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzetu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
+
+\fixit
+Audyt polityki bezpieczeństwa polega m.in. na: wskazaniu braków i nieścisłości we wdrożonej dokumentacji, wskazaniu sposobu uzupełnienia braków i poprawienia nieścisłości, zweryfikowaniu poprawności wdrożenia dokumentacji w organizacji oraz pomocy w postępowaniu naprawczym. Audyt ma na celu zweryfikowanie zastosowanej już polityki bezpieczeństwa oraz procedur z nią związanych, jak również wskazanie możliwych ulepszeń. Powinien być przeprowadzany w regularnych odstępach czasu, a nie tylko w przypadku naruszenia zabezpieczeń czy też istotnych zmian w konfiguracji i zasobach teleinformatycznych. Częstość audytu jest w dużej mierze kwestią umowną i zależy od specyfiki instytucji.
 \end{solution}
 
-\question Jaki wpływ na bezpieczeństwo systemu mogą mieć normy z serii ISO 27000?
+\question Czego dotyczą normy z serii ISO 27000?
+\begin{solution}
+Seria norm ISO 27000 dotyczy szerokopojętego bezpieczeństwa systemów informatycznych. W obszarze jej zainteresowań pojawiają się zarówno nowe aspekty techniczne  - np. chmury obliczeniowe, jak i nowe szczegółowe wymagania dla określonych dziedzin wiedzy (np. służba zdrowia, telekomunikacja czy kryminalistyka). Zakres danych przetwarzanych przez instytucje państwowe, firmy, jak i osóby prywatne staje się coraz większy. W związku z tym rośnie też problem zagrożeń z tym związanych. 
+\end{solution}
+
 
 \question Czego dotyczy norma PN-ISO 17799?
 \begin{solution}
 Norma ISO 17799 wywodzi się z brytyjskiego standardu bezpieczeństwa BS 7799. Stanowi zestaw wskazówek dla wdrożenia i utrzymania bezpieczeństwa informacji w przedsiębiorstwie.
+
+\fixit
+Norma PN-ISO/IEC 17799:2007 jest polskim odpowiednikiem normy ISO/IEC 17799:2005.
+
+Określa ona wytyczne związane z ustanowieniem, wdrożeniem, eksploatacją, monitorowaniem, przeglądem, utrzymaniem i doskonaleniem Systemu Zarządzania Bezpieczeństwem Informacji. Stanowi ona uzupełnienie normy PN-ISO/IEC 27001:2007. Zawiera zalecenia i ogólne zasady dotyczące inicjowania działań, wdrażania, utrzymania i doskonalenia zarządzania bezpieczeństwem informacji w organizacji. Cele stosowania zabezpieczeń przedstawione w normie są powszechnie akceptowanymi praktykami zarządzania bezpieczeństwem informacji. Norma wycofana i zastąpiona przez PN-ISO/IEC 27002:2014-12.
+
 \end{solution}
 
 \question Jakie dane chronione są przez ustawę o ochronie danych osobowych?
@@ -1204,6 +1247,10 @@ Szczególnie chronione są tzw. dane wrażliwe do których zaliczamy:
 \item stan zdrowia, kodu genetycznego, nałogów lub życia seksualnego,
 \item skazania, orzeczenia o ukaraniu i mandaty karnych, a także inne orzeczenia wydane w postępowaniu sądowym lub administracyjnym.
 \end{itemize}
+
+\fixit
+W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej. Osobą możliwą do zidentyfikowania jest osoba, której tożsamość można określić bezpośrednio lub pośrednio, w szczególności przez powołanie się na numer identyfikacyjny albo jeden lub kilka specyficznych czynników określających jej cechy fizyczne, fizjologiczne, umysłowe, ekonomiczne, kulturowe lub społeczne. Informacji nie uważa się za umożliwiającą określenie tożsamości osoby, jeżeli wymagałoby to nadmiernych kosztów, czasu lub działań. Danymi osobowymi są nie tylko, imię czy nazwisko, ale również wszelkiego typu przypisane numery, określone cechy (np. fizjologiczne, umysłowe, ekonomiczne) itd. Danymi osobowymi nie będą zatem pojedyncze informacje o dużym stopniu ogólności, np. sama nazwa ulicy i numer domu czy wysokość wynagrodzenia. Informacja ta będzie jednak stanowić dane osobowe wówczas, gdy zostanie zestawiona z innymi, dodatkowymi informacjami, np. imieniem i nazwiskiem czy numerem PESEL, które w konsekwencji można odnieść do konkretnej osoby. Adres poczty elektronicznej – bez dodatkowych informacji, umożliwiających ustalenie tożsamości osoby – zasadniczo nie stanowi danych osobowych. Występujący samodzielnie adres poczty elektronicznej można w wyjątkowych przypadkach uznać za dane osobowe, ale tylko wtedy, gdy elementy jego treści pozwalają, bez nadmiernych kosztów, czasu lub działań – na ustalenie na ich podstawie tożsamości danej osoby. Dzieje się tak w sytuacji, gdy elementami treści adresu są np. imię i nazwisko jego właściciela.
+
 \end{solution}
 
 
