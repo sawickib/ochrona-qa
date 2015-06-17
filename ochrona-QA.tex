@@ -658,8 +658,11 @@ jest łatwa do wykonania w jedną stronę, jednak bardzo trudna do odwrócenia. 
 
 \question Wyjaśnij pojęcie świadka złożoności.
 \begin{solution}
-\fixit
-Świadek złożoności $p$ jest losowo wybraną liczbą, przy której użyciu stwierdzona zostanie złożoność $p$.
+Świadek złożoności $p$ jest losowo wybraną liczbą podczas
+przeprowadzania probabilistycznych testów pierwszości. Jeżeli w
+procesie iteracyjnym pewne równanie uwzględniające liczbę badaną oraz
+$p$ jest fałszywe, to liczba badana jest złożona, a $p$ jest świadkiem
+złożoności.
 \end{solution}
 
 \question Omów algorytm plecakowy.
@@ -839,6 +842,9 @@ Weryfikacja podpisu:
 
 
 \question Wyjaśnij jakie znaczenie ma zastosowanie funkcji haszującej w podpisie cyfrowym.
+\begin{solution}
+\end{solution}
+
 
 \question Jakie zagrożenia niesie za sobą podpisywanie niezrozumiałych danych?
 \begin{solution}
@@ -939,6 +945,16 @@ Protokoły dzielenia tajemnicy z progiem pozwalają dowolnie ustalić liczbę os
 \end{solution}
 
 \question{Omów zasadę podziału tajemnicy w wielomianowym protokole Shamira.}
+\begin{solution}
+Dwa punkty jednoznacznie wyznaczają  prostą, trzy punkty wyznaczają
+parabolę, i ogólnie n punktów wyznacza jednoznacznie wielomian stopnia
+n-1. W protokole Shamira mamy nieskończoną ilość fragmentów do
+przydzielenia. Osoba dzieląca wybiera wielomian stopnia t-1, którego
+wartość np. w zerze jest równa sekretowi. Jako fragmenty sekretu
+udostępniane są wartości tego wielomianu w różnych punktach. Zebranie
+t punktów pozwala dokonać interpolacji wielomianu i wyznaczyć jego
+wartość w zerze.
+\end{solution}
 
 \question{Omów zasadę podziału tajemnicy w protokole hiperpłaszczyzn Blackley'a.}
 
