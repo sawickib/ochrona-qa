@@ -1186,10 +1186,8 @@ Termin ten może odnosić się zarówno do dedykowanego sprzętu komputerowego w
 Istnieją zasadniczo dwa rodzaje systemów IDS oraz trzeci, będący ich syntezą:
 \begin{itemize}
 \item{HIDS - Host IDS} Działa lokalnie, na wybranym hoście - może to być np. serwer bazodanowy. Odpowiednie informacje są zbierane z logów systemowych i aplikacyjnych i przesyłane na serwer, który je analizuje. Jeżeli jakiś użytkownik wykonał niedozwoloną czynność (np. nieautoryzowana modyfikacja pliku), informacja o tym szybko trafia do takiego serwera, który może podjąć adekwatne działanie.
-
 Wady? Przy dużych sieciach taki system staje się niewygodny w obsłudze i nieefektywny. Poza tym odcięcie lub awaria serwera HIDS wyłącza cały system zabezpieczający.
 \item{NIDS - Network IDS} Ten wariant systemu IDS działa w obrębie sieci, analizując przesyłane przez nią pakiety i określając je jako prawidłowe lub złośliwe. Zaletą NIDS jest to, że dobrze radzi sobie z wykrywaniem ataków spoza sieci, również DoS.
-
 Słabości? Takie systemy nie przeanalizują ruchu szyfrowanego, zaś przy dużym obciążeniu sieci mogą - żeby uniknąć wprowadzenia wąskiego gardła - analizować przesyłane pakiety bardzo pobieżnie.
 \end{itemize}
 \item[IPS]
