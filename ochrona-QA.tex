@@ -546,24 +546,8 @@ Jeśli w wystarczająco wielu próbach nie uda się stwierdzić złożoności $n
 \fixit
 Algorytm szybkiego potęgowania pozwala obliczać potęgi całkowite dużych liczb. Opiera się na spostrzeżeniu, że do obliczenia wartości wyrażenia $x^n$ wystarczy wykonanie maksymalnie $\frac{n}{2} + 1$ mnożeń, zgodnie z właściwością potęgowania: $x^n = x * x^{n-1}$.
 
-\medskip
-Treść algorytmu:\\
-Wejście: $x,n \in N$,
-Wyjście: $w \in N$
-\begin{verbatim}
-potęga(x, n):
-  jeżeli n = 0 
-    zwróć 1;
-  jeżeli n nieparzysta
-    zwróć x * potęga (x, n-1);
-  jeżeli n parzysta
-    a = potęga (x, n/2);
-    w = a * a;
-    zwróć w;
-\end{verbatim}
-
-Algorytm interacyjny jest chyba czytelniejszy.
-
+Schemat algorytmu: 
+Wykładnik potęgowania można zapisać w postaci binarnej. Wynik przyjmuje na początku wartość 1. Idąc po kolei od najmłodszego bitu, sprawdzamy, czy dany bit jest równy 1. Jeśli tak, wtedy mnożymy wynik przez podstawę potęgowania. Na koniec każdej iteracji nadpisujemy podstawę jej kwadratem. 
 \end{solution}
 
 \question Oblicz liczbę odwrotną do $34 \pmod{77}$.
