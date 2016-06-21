@@ -848,6 +848,7 @@ Weryfikacja podpisu:
 
 \question Wyjaśnij jakie znaczenie ma zastosowanie funkcji haszującej w podpisie cyfrowym.
 \begin{solution}
+W najprostszym schemacie podpisu cyfrowego procedura polega na zaszyfrowaniu podpisywanego dokumentu naszym kluczem prywatnym. Jednak problemem w takim rozwiązaniu jest fakt, iż sam podpis jest wówczas tej samej długości co dokument, a więc trzeba wysłać dwa razy więcej informacji. Zastosowanie funkcji haszującej rozwiązuje ten problem, gdyż szyfrujemy jedynie hash z oryginalnego dokumentu, a nie całą treść, dzięki czemu podpis jest krótszy a nadal spełnia swoją rolę.
 \end{solution}
 
 
@@ -931,7 +932,9 @@ Dzielenie tajemnic jest sposobem rozdzielenie sekretu pomiędzy kilku użytkowni
 \end{solution}
 
 \question{Wyjaśnij dlaczego proste podzielenie tajemnicy na fragmenty nie jest dobrym rozwiązaniem?}
-
+\begin{solution}
+Proste dzielenie tajemnic na fragmenty nie jest dobrym rozwiązaniem gdyż wówczas każdy z udziałowców mimo iż otrzymuje fragment całości, to jest to fragment kompletny i sensowny w swoim zakresie, zatem zbierając wiele fragmentów od wielu udziałowców można w znacznym stopniu odtworzyć pierwotną tajemnicę. Protokoły dzielenia tajemnic rozwiązują ten problem gdyż wtedy potrzebni są wszyscy udziałowcy lub ich z góry założona ilość (dla protokołow z progiem odzyskania tajemnicy). W przypadku zgromadzenia mniejszej ilości udziałów nie daje to żadnej przewagi gdyż nie ma możlwości odzyskania części tajemnicy.
+\end{solution}
 
 \question{Omów wybrany przykład protokołu dzielenia tajemnicy.}
 \begin{solution}
@@ -962,6 +965,9 @@ wartość w zerze.
 \end{solution}
 
 \question{Omów zasadę podziału tajemnicy w protokole hiperpłaszczyzn Blackley'a.}
+\begin{solution}
+W protokole tym definiuje się próg odzyskania tajemnicy - jest on ilością wymiarów przestrzeni w której ukrywamy tajemnicę. Tajemnicą są w tym przypadku współrzędne punktu przecięcia, a udziałami równania prostych (dla progu n=2), płaszczyzn (dla progu n=3) itd. Można wówczas utworzyć dowolną ilość udziałów, z czego do odzyskania tajemnicy konieczne jest n z nich (tyle, ile wynosił założony na początku próg).
+\end{solution}
 
 \end{questions}
 
