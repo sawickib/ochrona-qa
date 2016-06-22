@@ -208,6 +208,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 
 \question Wyjaśnij dlaczego atak 'brute force' na algorytm szyfrowania OTP nie jest skuteczny?
 \begin{solution}
+Czysto teoretycznie algorytm OTP \textbf{jest} podatny na atak brute-force; sęk w tym, że przeprowadzenie takiego ataku przy użyciu wszystkich możliwych kluczy da nam wszystkie możliwe wiadomości. Problemem będzie zatem nie złamanie klucza, ale wyłowienie oryginalnej wiadomości. A przy założeniu rzeczywistej losowości klucza każda z odszyfrowanych wersji jest jednakowo prawdopodobna.
 \end{solution}
 
 
@@ -1194,7 +1195,14 @@ Demilitarized zone (DMZ), strefa zdemilitaryzowana bądź ograniczonego zaufania
 Zapora sieciowa (ang. firewall – ściana przeciwogniowa) – jeden ze sposobów zabezpieczania sieci i systemów przed intruzami.
 Termin ten może odnosić się zarówno do dedykowanego sprzętu komputerowego wraz ze specjalnym oprogramowaniem, jak i do samego oprogramowania blokującego niepowołany dostęp do komputera, na którego straży stoi. Pełni rolę połączenia ochrony sprzętowej i programowej sieci wewnętrznej LAN przed dostępem z zewnątrz tzn. sieci publicznych, Internetu, chroni też przed nieuprawnionym wypływem danych z sieci lokalnej na zewnątrz. Często jest to komputer wyposażony w system operacyjny z odpowiednim oprogramowaniem. Do jego podstawowych zadań należy filtrowanie połączeń wchodzących i wychodzących oraz tym samym odmawianie żądań dostępu uznanych za niebezpieczne.
 \item[IDS]
-(ang. intrusion detection system)Jest to software'owy lub hardware'owy system moinitorujacy sieć pod kątem złośliwych aktywności. 
+(ang. intrusion detection system) Ogólna nazwa systemów wykrywających intruzów. Warto je stosować, bo umożliwiają wykrywanie włamań i nieuprawnionych działań wewnątrz sieci - kiedy atakującymi są np. pracownicy - ale umożliwiają też wykrycie ataków z zewnątrz, np. DoS. 
+Istnieją zasadniczo dwa rodzaje systemów IDS oraz trzeci, będący ich syntezą:
+\begin{itemize}
+\item{HIDS - Host IDS} Działa lokalnie, na wybranym hoście - może to być np. serwer bazodanowy. Odpowiednie informacje są zbierane z logów systemowych i aplikacyjnych i przesyłane na serwer, który je analizuje. Jeżeli jakiś użytkownik wykonał niedozwoloną czynność (np. nieautoryzowana modyfikacja pliku), informacja o tym szybko trafia do takiego serwera, który może podjąć adekwatne działanie.
+Wady? Przy dużych sieciach taki system staje się niewygodny w obsłudze i nieefektywny. Poza tym odcięcie lub awaria serwera HIDS wyłącza cały system zabezpieczający.
+\item{NIDS - Network IDS} Ten wariant systemu IDS działa w obrębie sieci, analizując przesyłane przez nią pakiety i określając je jako prawidłowe lub złośliwe. Zaletą NIDS jest to, że dobrze radzi sobie z wykrywaniem ataków spoza sieci, również DoS.
+Słabości? Takie systemy nie przeanalizują ruchu szyfrowanego, zaś przy dużym obciążeniu sieci mogą - żeby uniknąć wprowadzenia wąskiego gardła - analizować przesyłane pakiety bardzo pobieżnie.
+\end{itemize}
 \item[IPS]
 Intrusion prevention system
 \item[DLP]
