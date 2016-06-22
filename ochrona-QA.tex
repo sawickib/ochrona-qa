@@ -570,75 +570,24 @@ Algorytm interacyjny jest chyba czytelniejszy.
 \question Oblicz liczbę odwrotną do $34 \pmod{77}$.
 \begin{solution}
 \fixit
-Za pomocą rozszerzonego algorytmu Euklidesa:\\
+Wykorzystanie algorytmu Euklidesa:\\
+$r_0 = 77$\\
+$r_1 = 34$\\
+$r_2 = 77 - 2*34 = 9$\\
+$r_3 = 34 - 3*9 = 7$\\
+$r_4 = 9 - 1*7 = 2$\\
+$r_5 = 7 - 3*2 = 1$\\
 
-$ax + by = NWD(a,b)$\\
-$a = 34, b = 77$\\
+$NWD(34,77) = 1$ , więc liczby $34$ i $77$ są względnie pierwsze. Istnieje liczba odwrotna do $34 \pmod{77}$.\\
 
-$NWD(34,77) = 1$ , więc liczby są względnie pierwsze - liczba $x$ jest odwrotnością modulo $77$ liczby $34$ .\\ 
+$t_0 = 0$\\
+$t_1 = 1$\\
+$t_2 = 0 - 2*1 = -2 = 75$\\
+$t_3 = 1 - 3*75 = -224 = 7$\\
+$t_4 = 75 - 1*7 = 68$\\
+$t_5 = 7 - 3*68 = -197 = 34
 
-$ 34 * u + 77 * v = w$\\
-$ 34 * x + 77 * y = z$\\
-
-Tworzę parę równań :\\
-$ 34 * 1 + 77 * 0 = 34$\\
-$ 34 * 0 + 77 * 1 = 77$\\
-
-Ponieważ $34 < 77$, równania zamieniam miejscami:\\
-$ 34 * 0 + 77 * 1 = 77$\\
-$ 34 * 1 + 77 * 0 = 34$\\
-Obliczam iloraz $q = 77 / 34 = 2$\\
-Od równania (1) odejmuję (2) pomnożone przez q:\\
-$ 34 * (0 - 2 * 1)  + 77 * (1 - 2 * 0) = 77 - 2 * 34$\\
-$ 34 * (-2) + 77 * 1 = 9$\\
-$ 34 * 1 + 77 * 0 = 34$\\
-
-Ponieważ $9 < 34$, równania zamieniam miejscami:\\
-$ 34 * 1 + 77 * 0 = 34$\\
-$ 34 * (-2) + 77 * 1 = 9$\\
-
-Obliczam iloraz $q = 34 / 9 = 3$\\
-$ 34 * (1 - 3 * (-2)) + 77 * (0 - 3 * 1) = 34  - 3 * 9$\\
-$ 34 * 7 + 77 * (-3) = 7$\\
-$ 34 * (-2) + 77 * 1 = 9$\\
-
-Ponieważ $7 < 9$, równania zamieniam miejscami:\\
-$ 34 * (-2) + 77 * 1 = 9$\\
-$ 34 * 7 + 77 * (-3) = 7$\\
-
-Obliczam iloraz $q = 9 / 7 = 1$\\
-$ 34 * ((-2) - 1 * 7) + 77 * (1 - 1 * (-3)) = 9 - 1 * 7$\\
-$ 34 * (-9) + 77 * 4 = 2$\\
-$ 34 * 7 + 77 * (-3) = 7$\\
-
-Ponieważ $2 < 7$, równania zamieniam miejscami:\\
-$ 34 * 7 + 77 * (-3) = 7$\\
-$ 34 * (-9) + 77 * 4 = 2$\\
-
-Obliczam iloraz $q = 7 / 2 = 3$\\
-$ 34 * (7 - 3 * (-9)) + 77 * ((-3) - 3 * 4) = 7 - 3 * 2$\\
-$ 34 * 34 + 77 * (-15) = 1$\\
-$ 34 * (-9) + 77 * 4 = 2$\\
-Ponieważ $1 < 2$, równania zamieniam miejscami:\\
-$ 34 * (-9) + 77 * 4 = 2$\\
-$ 34 * 34 + 77 * (-15) = 1$\\
-
-Obliczam iloraz $q = 2 / 1 = 2$\\
-$ 34 * ((-9) - 2 * 34)  + 77 * (4 - 2 * (-15)) = 2 - 2 * 1$\\
-$ 34 * (-77) + 77 * 34 = 0$\\
-$(2) 34 * 34 + 77 * (-15) = 1$\\
-
-Otrzymuję $w = 0$, kończę modyfikowanie równań. Wyniki są następujące:\\
-$u = -77,  v = 34,  w = 0$\\
-$x = 34, y = 77,  z = 1$\\
-
-Ponieważ $z = NWD(a,b) = NWD(34,77) = 1$, to odwrotność istnieje i jest równa $34$.\\
-
-Sprawdzam, czy otrzymany wynik spełnia definicję odwrotności modulo:\\
-$a * x mod b = 34 * 34 mod 77 = 1156 mod 77 = 1$\\
-
-Wynik się zgadza, więc szukana wartość:\\
-$x = 34$
+Liczba odwrotna jest równa $34$.
 \end{solution}
 
 \question Korzystając algorytmu Euklidesa sprawdź, czy liczby 57 i 123 są względnie pierwsze.
