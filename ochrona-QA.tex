@@ -569,7 +569,6 @@ Algorytm interacyjny jest chyba czytelniejszy.
 
 \question Oblicz liczbę odwrotną do $34 \pmod{77}$.
 \begin{solution}
-\fixit
 Wykorzystanie algorytmu Euklidesa:\\
 $r_0 = 77$\\
 $r_1 = 34$\\
@@ -577,15 +576,13 @@ $r_2 = 77 - 2*34 = 9$\\
 $r_3 = 34 - 3*9 = 7$\\
 $r_4 = 9 - 1*7 = 2$\\
 $r_5 = 7 - 3*2 = 1$\\
-
-$NWD(34,77) = 1$ , więc liczby $34$ i $77$ są względnie pierwsze. Istnieje liczba odwrotna do $34 \pmod{77}$.\\
-
+Co oznacza, że $NWD(34,77) = 1$ , więc liczby $34$ i $77$ są względnie pierwsze. Istnieje więc także liczba odwrotna do $34 \pmod{77}$.\\
 $t_0 = 0$\\
 $t_1 = 1$\\
 $t_2 = 0 - 2*1 = -2 = 75$\\
 $t_3 = 1 - 3*75 = -224 = 7$\\
 $t_4 = 75 - 1*7 = 68$\\
-$t_5 = 7 - 3*68 = -197 = 34
+$t_5 = 7 - 3*68 = -197 = 34$
 
 Liczba odwrotna jest równa $34$.
 \end{solution}
