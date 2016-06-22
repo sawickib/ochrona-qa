@@ -620,7 +620,25 @@ złożoności.
 \question Omów algorytm plecakowy.
 \begin{solution}
 \fixit
-Algorytm plecakowy jest asymetrycznym szyfrem opierającym się na maksymalizacyjnym problemie wyboru przedmiotów tak, by ich sumaryczna wartość była jak największa i jednocześnie mieściły się w plecaku. Generowane klucze tworzone są za pomocą dwóch problemów plecakowych - łatwego (klucz publiczny do szyfrowania) i trudnego (klucz prywatny do deszyfrowania). Reprezentacje wag dla danego problemu reprezentowane są liczbą binarną, np. w sytuacji dostępnych wag : $1, 6, 8, 15, 24$ przy ograniczeniu $40$ rozwiązaniem problemu plecakowego będzie : $1+15+24 = 40$, co zostanie przedstawione liczbą : $10011$.
+Algorytm plecakowy jest asymetrycznym szyfrem opierającym się na maksymalizacyjnym problemie wyboru przedmiotów tak, by ich sumaryczna wartość była jak największa i jednocześnie mieściły się w plecaku.
+
+Generowanie kluczy:
+\begin{itemize}
+\item Wybieramy wektor superrosnący $a$.
+\item Losujemy liczbę $M$ taką, że $M = \sum_{i=1}^{n} a_i$.
+\item Losujemy liczbę $W$ taką, że $M > W > M/2$ oraz $NWD(M,W) = 1$.
+\item Tworzymy nowy ciąg $a'$ taki, że $a'_i = a_iW mod M$.
+\end{itemize}
+Klucz publiczny: ciąg $a'$.
+Klucz prywatny: ciąg a, liczby M, W, permutacja.
+
+Szyfrowanie bitów: $y = \sum_{j=1}^{n} i_ja'_j$, gdzie $i$ to tekst jawny.
+
+Odszyforowanie:
+\begin{itemize}
+\item Obliczamy $W^{-1} mod M$.
+\item Obliczamy $W^{-1}y mod M$.
+\end{itemize}
 \end{solution}
 
 \end{questions}
