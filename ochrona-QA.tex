@@ -744,6 +744,13 @@ Web-of-trust to rozproszona metoda dystrybucji kluczy publicznych, alternatywna 
 \end{solution}
 
 \question W jaki sposób dystrybuowane są klucze publiczne w protokole SSH?
+\begin{solution}
+Klucze publiczne w protokole SSH są przechowywane w pliku $\sim$/.ssh/authorized\textunderscore keys po stronie serwera.
+Umieszczenie klucza publicznego w pliku authorized\textunderscore keys (przy pomocy programu ssh-copy-id lub ręcznie) pozwala na logowanie się przez SSH bez konieczności podawania hasła dlatego możliwośc ta stwarza zagrożenie bezpieczeństwa w przypadku, gdy klucz prywatny powiązany z kluczem publicznym trafi w niepowołane ręce.
+Z tego względu jak i również z innych względów administracyjnych należy zarządzać kluczami publicznymi w zależności od potrzeb
+i zaistniałych sytuacji.
+Jednym ze sposobów zarządzania kluczami publicznymi może być wykorzystanie systemu LDAP lub inne narzędzia dedykowane do tego celu np. Puppet.
+\end{solution}
 
 \question Co to jest certyfikat X.509 i jakie są jego najważniejsze elementy?
 \begin{solution}
