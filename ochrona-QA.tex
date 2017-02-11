@@ -89,7 +89,7 @@ Algorytmy polifoniczne, to rodzaj szyfrów przez podstawienie, w których kilka 
 
 \question Omów systematykę klasycznych algorytmów szyfrowania przez podstawienie?
 \begin{solution}
-Jest kilka klasyfikacji algorytmów tego typu. Możemy wydzielić algorytmy jednoznakowe, w których niezależnie szyfrowane są poszczególe litery tekstu jawnego, lub algorytmy poligramowe (jednoczesne szyfrowanie kilku znaków). 
+Jest kilka klasyfikacji algorytmów tego typu. Możemy wydzielić algorytmy jednoznakowe, w których niezależnie szyfrowane są poszczególne litery tekstu jawnego, lub algorytmy poligramowe (jednoczesne szyfrowanie kilku znaków). 
 Drugi podział opiera się na tym, czy jest jeden słownik/alfabet tłumaczący (monoalfabetyczne), czy też jest ich wiele (polialfabetyczne). 
 \end{solution}
 
@@ -208,7 +208,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 
 \question Wyjaśnij dlaczego atak 'brute force' na algorytm szyfrowania OTP nie jest skuteczny?
 \begin{solution}
-Jeżeli klucz jest losowy i jego długośś jest taka jak wiadomości, to przeprowadzenie ataku systematycznego przeszukiwania wszystkich możliwych kluczy da nam rezultacie wszystkie możliwe wiadomości. Problemem stanie się zatem nie złamanie klucza, ale wyłowienie oryginalnej wiadomości. A przy założeniu prawdziwej losowości klucza każda z odszyfrowanych wersji jest jednakowo prawdopodobna.
+Jeżeli klucz jest losowy i jego długość jest taka jak wiadomości, to przeprowadzenie ataku systematycznego przeszukiwania wszystkich możliwych kluczy da nam rezultacie wszystkie możliwe wiadomości. Problemem stanie się zatem nie złamanie klucza, ale wyłowienie oryginalnej wiadomości. A przy założeniu prawdziwej losowości klucza każda z odszyfrowanych wersji jest jednakowo prawdopodobna.
 \end{solution}
 
 
@@ -327,7 +327,7 @@ R_{i-1} = L_{i},\;\; L_{i-1} = R_{i} \oplus {\rm F}(L_{i}, K_{i-1}).
 
 \question Wykaż, że runda w sieci Feistela jest odwracalna.
 \begin{solution} 
-Jeżeli zapiszeny szyfrowanie w sieci Feistela jako:
+Jeżeli zapiszemy szyfrowanie w sieci Feistela jako:
 \begin{equation}
 L_{i+1} = R_i, \;\; R_{i+1}= L_i \oplus {\rm F}(R_i, K_i),
 \end{equation}
@@ -358,7 +358,7 @@ W trybie ECB każdy blok szyfrowany jest niezależnie, co przekłada się na to,
 \question Przedstaw tryb CFB
 \begin{solution}
 CFB jest to tryb pracy algorytmów blokowych. Polega on na sprzężeniu pomiędzy wyjściem z algorytmu blokowego, a jego wejściem. Dopiero wyjście zXORowane z tekstem jawnym daje kryptogram.
-Tryb ten może być wykorzystany do stworzenia algorytmu strumieniowego zdolnego do szyfrowania pojedyńczych bitów. 
+Tryb ten może być wykorzystany do stworzenia algorytmu strumieniowego zdolnego do szyfrowania pojedynczych bitów. 
 \end{solution}
 
 \question Wyjaśnij podstawy działania i uzasadnienie dla wykorzystania trybów uwierzytelniająco-szyfrujących.
@@ -388,8 +388,7 @@ Przykładem ataku, którego celem jest właśnie znalezienie takiego $x'$ są at
 
 \question Jakie warunek musi spełniać funkcja silnie bezkonfliktowa?
 \begin{solution}
-\fixit
-Funkcja silnie bezkonfliktowa wymaga, aby dla każdego x nie było możliwe znalezienie takiego $x'$ różnego od $x$, żeby $f(x) = f(x')$.
+Funkcja silnie bezkonfliktowa wymaga, aby dla każdego $x$ niemożliwe było (w praktycznych zastosowaniach, nie w teoretycznych rozważaniach) znalezienie takiego $x'$ różnego od $x$, że $H(x) = H(x')$. W praktyce takie funkcje haszujące nie produkują kolizji.
 \end{solution}
 
 \question Wyjaśnij zasadę działania tablic tęczowych.
@@ -679,7 +678,7 @@ Celem znakowania wodnego jest trwałe oznaczenie materiału multimedialnego dany
 
 \question Przedstaw ogólny schemat tworzenia kanału steganograficznego?
 \begin{solution}
-Kanał steganograficzny ma za zadanie w ukryty sposób przekazać tajną wiadomośći. Proces rozpoczyna się od zaszyfrowania wiadomości, aby zapewnić jej poufność i zatrzeć cechy statystyczne. Jednocześnie dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
+Kanał steganograficzny ma za zadanie w ukryty sposób przekazać tajną wiadomość. Proces rozpoczyna się od zaszyfrowania wiadomości, aby zapewnić jej poufność i zatrzeć cechy statystyczne. Jednocześnie dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
 \end{solution}
 
 \question Wyjaśnij pojęcie szyfrowania homomorficznego?
@@ -869,7 +868,7 @@ Protokół Diffie-Helmana służy do ustalenia klucza szyfrowania przez niezabez
 \item Alicja oblicza $s=B^{a} \pmod{p}$
 \item Bob oblicza $s=A^{b} \pmod{p}$
 \end{enumerate}
-Alicja i Bob współdzielą tajną wartość $s$, za pomocą której mogą szyfrować dalszą komunikację. Dzieje się tak ponieważ $g^{ab}=g^{ba}=s \pmod{p}$, czyli tylko osoba znająca obie tajne wartości $a$ i $b$ mogłaby obliczyć wartość $s$. Trudność problemu logarytmu dyskretnego powoduje, że publicznie znane liczby $A$ i $B$ nie umożlwiają odtworzenia $a$ i $b$.
+Alicja i Bob współdzielą tajną wartość $s$, za pomocą której mogą szyfrować dalszą komunikację. Dzieje się tak ponieważ $g^{ab}=g^{ba}=s \pmod{p}$, czyli tylko osoba znająca obie tajne wartości $a$ i $b$ mogłaby obliczyć wartość $s$. Trudność problemu logarytmu dyskretnego powoduje, że publicznie znane liczby $A$ i $B$ nie umożliwiają odtworzenia $a$ i $b$.
 \end{solution}
 
 \question Omów protokół Diffie-Helmana oparty na krzywych eliptycznych.
@@ -906,7 +905,7 @@ Dzielenie tajemnic jest sposobem rozdzielenie sekretu pomiędzy kilku użytkowni
 
 \question{Wyjaśnij dlaczego proste podzielenie tajemnicy na fragmenty nie jest dobrym rozwiązaniem?}
 \begin{solution}
-Proste dzielenie tajemnic na fragmenty nie jest dobrym rozwiązaniem gdyż wówczas każdy z udziałowców mimo iż otrzymuje fragment całości, to jest to fragment kompletny i sensowny w swoim zakresie, zatem zbierając wiele fragmentów od wielu udziałowców można w znacznym stopniu odtworzyć pierwotną tajemnicę. Protokoły dzielenia tajemnic rozwiązują ten problem gdyż wtedy potrzebni są wszyscy udziałowcy lub ich z góry założona ilość (dla protokołow z progiem odzyskania tajemnicy). W przypadku zgromadzenia mniejszej ilości udziałów nie daje to żadnej przewagi gdyż nie ma możlwości odzyskania części tajemnicy.
+Proste dzielenie tajemnic na fragmenty nie jest dobrym rozwiązaniem gdyż wówczas każdy z udziałowców mimo iż otrzymuje fragment całości, to jest to fragment kompletny i sensowny w swoim zakresie, zatem zbierając wiele fragmentów od wielu udziałowców można w znacznym stopniu odtworzyć pierwotną tajemnicę. Protokoły dzielenia tajemnic rozwiązują ten problem gdyż wtedy potrzebni są wszyscy udziałowcy lub ich z góry założona ilość (dla protokołów z progiem odzyskania tajemnicy). W przypadku zgromadzenia mniejszej ilości udziałów nie daje to żadnej przewagi gdyż nie ma możliwości odzyskania części tajemnicy.
 \end{solution}
 
 \question{Omów wybrany przykład protokołu dzielenia tajemnicy.}
@@ -981,7 +980,7 @@ Walidacja, czyli kontrola poprawności danych wejściowych musi dotyczyć wszelk
 \question Na czym polega model security-by-obsurity?
 \begin{solution}
 ,,Security by obscurity'' jest techniką zwiększenia bezpieczeństwa przez pisanie programów w sposób bardzo niejasny i zagmatwany. Skuteczność tej metody jest dosyć wątpliwa.
-Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy sie na tajności algorytmu, a na pewności klucza.'' Podkreśla to fakt, iż bezpieczeństwo nie tkwi w tajności budowy algorytmu, ale w jego konstrukcji.
+Już reguła Kerkhoffsa odradzała stosowania takiej techniki: ,,Nie opieramy się na tajności algorytmu, a na pewności klucza.'' Podkreśla to fakt, iż bezpieczeństwo nie tkwi w tajności budowy algorytmu, ale w jego konstrukcji.
 \end{solution}
 
 \question Na czym polega model security-by-design?
@@ -1049,7 +1048,7 @@ Atak SQL-Injection jest możliwy w przypadku gdy dane otrzymane od użytkownika 
 Przykładowy kod w PHP:\\
 \$catid = mysql\_real\_escape\_string( \$\_GET[\lq catid\lq ] );\\
 \$query = \lq\lq SELECT header, shorttext FROM news WHERE id = \lq\lq.\$catid.\lq\lq\ ORDER BY id DESC LIMIT 10\lq\lq;\\
-W powyższym zapytaniu zmienna \$catid umieszczana jest w zapytaniu SQL jako liczba (nie jest pomiędzy cudzysłowami jak typ string). Niebyłoby w tym nic złego gdyby do zapytania trafiały jedynie dane uprzednio właściwie zweryfikowane np. używając funkcji is\_numeric() która sprawdzi czy otrzymany ciąg znaków jest liczbą. Funkcja której użyto do zabezpieczenia danych pochodzących od użytkownika to mysql\_real\_escape\_string(), która dodaje lewe ukośniki przed następującymi znakami: \textbackslash x00, \textbackslash n, \textbackslash r, \textbackslash, \lq, \lq\lq oraz \textbackslash x1a. Taka ochrona sprawdza się świetnie, gdy mamy do czynienia z danymi typu string, które są umieszczane w cudzysłowach. W tym przykładzie jednak w zapytaniu do bazy dane wejściowe są  innego typu. Powyższe zapytanie ma na celu pobrać z bazy danych nagłówki i skróconą wersję dziesięciu ostatnich artykułów przypisanych do kategorii \$catid. Powyższy sposób implementacji tego zadania zawiera jednak błąd skutkujący możliwością SQL-Injection.\\
+W powyższym zapytaniu zmienna \$catid umieszczana jest w zapytaniu SQL jako liczba (nie jest pomiędzy cudzysłowami jak typ string). Nie byłoby w tym nic złego gdyby do zapytania trafiały jedynie dane uprzednio właściwie zweryfikowane np. używając funkcji is\_numeric() która sprawdzi czy otrzymany ciąg znaków jest liczbą. Funkcja której użyto do zabezpieczenia danych pochodzących od użytkownika to mysql\_real\_escape\_string(), która dodaje lewe ukośniki przed następującymi znakami: \textbackslash x00, \textbackslash n, \textbackslash r, \textbackslash, \lq, \lq\lq oraz \textbackslash x1a. Taka ochrona sprawdza się świetnie, gdy mamy do czynienia z danymi typu string, które są umieszczane w cudzysłowach. W tym przykładzie jednak w zapytaniu do bazy dane wejściowe są  innego typu. Powyższe zapytanie ma na celu pobrać z bazy danych nagłówki i skróconą wersję dziesięciu ostatnich artykułów przypisanych do kategorii \$catid. Powyższy sposób implementacji tego zadania zawiera jednak błąd skutkujący możliwością SQL-Injection.\\
 Przykładowe wykorzystanie błędu:\\
 Użytkownik przesyła do serwisu parametr catid metodą GET z wartością:\\
 NULL UNION ALL SELECT username, password FROM users \# \\
@@ -1086,7 +1085,7 @@ DAC (ang. Discretionary Access Control) to model uznaniowej kontroli dostępu. U
 RBAC to model kontroli dostępu oparty na rolach (ang. Role Based Access Control). Uprawnienia nie są nadawane bezpośrednio użytkownikom systemu, ale poprzez role. Dopiero nominowanie użytkownika do danej roli daje mu odpowiednie uprawnienia. Dzięki temu zarządzanie uprawnieniami jest ułatwione, a system zachowuje elastyczność, gdyż użytkownik może posiadać wiele ról, z których każda może mieć niezależne uprawnienia. 
 \end{solution}
 
-\question Na czym polega przechowywanie oprawnień w formie ACL?
+\question Na czym polega przechowywanie uprawnień w formie ACL?
 \begin{solution}
 ACL (ang. Access Control List) jest techniką przechowywania uprawnień w systemie. Polega ona na tym, że do każdego obiektu (zasobu) przypisana jest lista par (podmiot, uprawnienie). W momencie prośby o dostęp do zasobu system weryfikuje, czy podmiot proszący i wnioskowane uprawnienie są na liście ACL związanej z danym obiektem. Technika ta jest wydajna w przypadku gdy obiektów jest znacznie więcej niż użytkowników.
 \end{solution}
@@ -1131,8 +1130,7 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 
 \question Przedstaw czym kopie zapasowe różnią się od systemu archiwizacji.
 \begin{solution}
-\fixit
-W języku polskim określenia: „backup” i „archiwizacja danych” są (często mylnie) stosowane zamiennie. Jednak w języku angielskim „backup” i „data archiving” określają różne działania. Podobnie w języku polskim kopia bezpieczeństwa i archiwizacja danych. „Backup” dotyczy tworzenia kopii bezpieczeństwa danych w celu ich odtworzenia po utracie lub uszkodzeniu, natomiast „data archiving” oznacza proces tzw. warstwowania danych, czyli ich dzielenia na dane aktywne, nieaktywne i referencyjne, a następnie zapisywania w odpowiednich obszarach zapisu. D
+W języku polskim określenia: „backup” i „archiwizacja danych” są (często mylnie) stosowane zamiennie. Jednak w języku angielskim „backup” i „data archiving” określają różne działania. Podobnie w języku polskim kopia bezpieczeństwa i archiwizacja danych. „Backup” dotyczy tworzenia kopii bezpieczeństwa danych w celu ich odtworzenia po utracie lub uszkodzeniu, natomiast „data archiving” oznacza proces tzw. warstwowania danych, czyli dzielenia ich na dane aktywne, nieaktywne i referencyjne i następnie zapisania w celu długotrwałego przechowywania - najczęściej na zewnętrznych, trwałych nośnikach.
 \end{solution}
 
 \question Wyjaśnij czy kopie zapasowe zapewniają wysoką dostępność danych?
@@ -1212,7 +1210,7 @@ Ewidencja pozwala na bieżąco utrzymywać porządek w zasobach infrastruktury. 
 
 \question Na czym polega audyt polityki bezpieczeństwa?
 \begin{solution}
-Audyt dokumentu polityki bezpieczeństwa polega na zweryfikowaniu jej zgodności ze stosowanymi zabezpieczeniami. Wymagane są ciągłe modyfikacje odzwierciedlające zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzetu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
+Audyt dokumentu polityki bezpieczeństwa polega na zweryfikowaniu jej zgodności ze stosowanymi zabezpieczeniami. Wymagane są ciągłe modyfikacje odzwierciedlające zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzętu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
 
 \fixit
 Audyt polityki bezpieczeństwa polega m.in. na: wskazaniu braków i nieścisłości we wdrożonej dokumentacji, wskazaniu sposobu uzupełnienia braków i poprawienia nieścisłości, zweryfikowaniu poprawności wdrożenia dokumentacji w organizacji oraz pomocy w postępowaniu naprawczym. Audyt ma na celu zweryfikowanie zastosowanej już polityki bezpieczeństwa oraz procedur z nią związanych, jak również wskazanie możliwych ulepszeń. Powinien być przeprowadzany w regularnych odstępach czasu, a nie tylko w przypadku naruszenia zabezpieczeń czy też istotnych zmian w konfiguracji i zasobach teleinformatycznych. Częstość audytu jest w dużej mierze kwestią umowną i zależy od specyfiki instytucji.
@@ -1220,7 +1218,7 @@ Audyt polityki bezpieczeństwa polega m.in. na: wskazaniu braków i nieścisło�
 
 \question Czego dotyczą normy z serii ISO 27000?
 \begin{solution}
-Seria norm ISO 27000 dotyczy szerokopojętego bezpieczeństwa systemów informatycznych. W obszarze jej zainteresowań pojawiają się zarówno nowe aspekty techniczne  - np. chmury obliczeniowe, jak i nowe szczegółowe wymagania dla określonych dziedzin wiedzy (np. służba zdrowia, telekomunikacja czy kryminalistyka). Zakres danych przetwarzanych przez instytucje państwowe, firmy, jak i osóby prywatne staje się coraz większy. W związku z tym rośnie też problem zagrożeń z tym związanych. 
+Seria norm ISO 27000 dotyczy szeroko pojętego bezpieczeństwa systemów informatycznych. W obszarze jej zainteresowań pojawiają się zarówno nowe aspekty techniczne  - np. chmury obliczeniowe, jak i nowe szczegółowe wymagania dla określonych dziedzin wiedzy (np. służba zdrowia, telekomunikacja czy kryminalistyka). Zakres danych przetwarzanych przez instytucje państwowe, firmy, jak i osoby prywatne staje się coraz większy. W związku z tym rośnie też problem zagrożeń z tym związanych. 
 \end{solution}
 
 
