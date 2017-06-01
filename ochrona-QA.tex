@@ -970,7 +970,7 @@ Błąd przepełnienia bufora polega na tym, że ilość wprowadzanych danych prz
 
 \question Omów metody ochrony przed błędami przepełnienia bufora?
 \begin{solution}
-Główną metodą ochrony przed błędami przepełnienia bufora jest unikanie stosowania funkcji, które nie sprawdzają rozmiaru przyjmowanych danych, a w zamian używanie ich bezpieczniejszych odpowiedników (np. strncpy zamiast strcpy w C). Ogólnie rzecz ujmując, zawsze trzeba brać pod uwagę rozmiar przyjmowanych danych.
+Główną metodą ochrony przed błędami przepełnienia bufora jest unikanie stosowania funkcji, które nie sprawdzają rozmiaru przyjmowanych danych, a w zamian używanie ich bezpieczniejszych odpowiedników (np. strncpy zamiast strcpy w C (chociaż strncpy też może być niebiezpieczne, bo nie zapewnia '\0' na końcu ciągu)). Ogólnie rzecz ujmując, zawsze trzeba brać pod uwagę rozmiar przyjmowanych danych. 
 \end{solution}
 
 \question Przedstaw najważniejsze zasady walidacji danych.
