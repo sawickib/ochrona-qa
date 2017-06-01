@@ -381,16 +381,19 @@ Atak meet-in-the-middle jest wydajnym atakiem na algorytmy, które można rozdzi
 \subsection{Algorytmy funkcji skrótu}
 \begin{questions}
 
-\question Na jakie typy ataków podatne są jednokierunkowe funkcje skrótu słabo bezkonfliktowe? Odpowiedź uzasadnij.
+\question Podaj atak, na który nie jest podatna jednokierunkowe funkcja skrótu słabo bezkonfliktowa? Odpowiedź uzasadnij.
 \begin{solution}
 Słaba bezkonfliktowość do cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
-Przykładem ataku, którego celem jest właśnie znalezienie takiego $x'$ są ataki słownikowe, lub brutalnej siły na hasła.
+Przykładem ataku, który bazuje na przełananiu tej cechy jest atak na kryptograficzną sumę konktrolną wiadomości (MAC), albo podpis cyfrowy.
+Słaba bezkonfliktowość nazywana jest także "second-preimage resistance".
 \end{solution}
 
 \question Jakie warunek musi spełniać funkcja silnie bezkonfliktowa?
 \begin{solution}
 \fixit
-Funkcja silnie bezkonfliktowa wymaga, aby dla każdego x nie było możliwe znalezienie takiego $x'$ różnego od $x$, żeby $f(x) = f(x')$.
+Funkcja silnie bezkonfliktowa wymaga, aby nie było możliwe znalezienie takiej pary $(x,x')$, $x'$ różne od $x$, żeby $f(x) = f(x')$.
+Silna bezkonfliktowość nazywana jest także "collision resistance".
+
 \end{solution}
 
 \question Wyjaśnij zasadę działania tablic tęczowych.
