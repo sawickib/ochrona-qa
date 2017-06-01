@@ -381,17 +381,24 @@ Atak meet-in-the-middle jest wydajnym atakiem na algorytmy, które można rozdzi
 \subsection{Algorytmy funkcji skrótu}
 \begin{questions}
 
+
+\question Na czym polega preimage resistance i jakie atakim atakom zapobiega?
+\begin{solution}
+Preimage resistance (odporność przeciwobrazu) jest cechą funkcji skrótu, która zapewnia, że dla znanego $y$ trudne jest znalezienie $x$, takiego że $H(x) = y$. Spełnienie tego warunku zapobiega wszelkim atakom, których celem jest odtworzenie wejścia funkcji hash na podstawie jej wartości, np. atak na hashowane hasła.
+\end{solution}
+
+
 \question Podaj atak, na który nie jest podatna jednokierunkowe funkcja skrótu słabo bezkonfliktowa? Odpowiedź uzasadnij.
 \begin{solution}
 Słaba bezkonfliktowość do cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
 Przykładem ataku, który bazuje na przełananiu tej cechy jest atak na kryptograficzną sumę konktrolną wiadomości (MAC), albo podpis cyfrowy.
-Słaba bezkonfliktowość nazywana jest także "second-preimage resistance".
+Słaba bezkonfliktowość nazywana jest także 'second-preimage resistance'.
 \end{solution}
 
 \question Jakie warunek musi spełniać funkcja silnie bezkonfliktowa?
 \begin{solution}
 Funkcja silnie bezkonfliktowa wymaga, aby nie było możliwe znalezienie takiej pary $(x,x')$, $x'$ różne od $x$, żeby $f(x) = f(x')$.
-Silna bezkonfliktowość nazywana jest także "collision resistance".
+Silna bezkonfliktowość nazywana jest także 'collision resistance'.
 \end{solution}
 
 \question Wyjaśnij zasadę działania tablic tęczowych.
