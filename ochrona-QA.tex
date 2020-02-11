@@ -74,7 +74,7 @@ Podstawą działania szyfru homofonicznego jest podstawienie jeden do wielu, czy
 
 \question Jakie algorytmy podatne są na kryptoanalizę statystyczno-lingwistyczną?
 \begin{solution}
-Zasadniczo większość algorytmów historycznych miało problem ze zniekształcaniem statystycznych cech tekstu napisanego w języku naturalnym. Każdy język charakteryzuje się pewną częstotliwością występowania poszczególnych liter. Dysponując dużą próbką tekstu możemy z dużą pewnością określić jakie znaki odpowiadają jakim literom. Najbardziej podatne na tego typu atak są algorytmu jednoznakowe, monoalfabetyczne (np. alg. Cezara). Algorytmy polialfabetyczne są lepsze pod tym względem. 
+Zasadniczo większość algorytmów historycznych miało problem ze zniekształcaniem statystycznych cech tekstu napisanego w języku naturalnym. Każdy język charakteryzuje się pewną częstotliwością występowania poszczególnych liter. Dysponując dużą próbką tekstu możemy z dużą pewnością określić jakie znaki odpowiadają jakim literom. Najbardziej podatne na tego typu atak są algorytmy jednoznakowe, monoalfabetyczne (np. alg. Cezara). Algorytmy polialfabetyczne są lepsze pod tym względem. 
 \end{solution}
 
 \question Na czym polega algorytm autokey?
@@ -208,7 +208,7 @@ Homomorficzność jest cechą algorytmów szyfrujących, która umożliwia wykon
 
 \question Wyjaśnij dlaczego atak 'brute force' na algorytm szyfrowania OTP nie jest skuteczny?
 \begin{solution}
-Jeżeli klucz jest losowy i jego długość jest taka jak wiadomości, to przeprowadzenie ataku systematycznego przeszukiwania wszystkich możliwych kluczy da nam rezultacie wszystkie możliwe wiadomości. Problemem stanie się zatem nie złamanie klucza, ale wyłowienie oryginalnej wiadomości. A przy założeniu prawdziwej losowości klucza każda z odszyfrowanych wersji jest jednakowo prawdopodobna.
+Jeżeli klucz jest losowy i jego długość jest taka jak wiadomości, to przeprowadzenie ataku systematycznego przeszukiwania wszystkich możliwych kluczy da nam w rezultacie wszystkie możliwe wiadomości. Problemem stanie się zatem nie złamanie klucza, ale wyłowienie oryginalnej wiadomości. A przy założeniu prawdziwej losowości klucza każda z odszyfrowanych wersji jest jednakowo prawdopodobna.
 \end{solution}
 
 
@@ -301,7 +301,7 @@ DES (ang. Data Encryption Standard) to jeden z pierwszych popularnych algorytmó
 
 \question Wyjaśnij rolę i budowę elementu S-box.
 \begin{solution}
-S-box jest kluczowym elementem algorytmów szyfrowania symetrycznego. Jego rola polega na przekształceniu $m$ bitów wejścia w $n$ wyjścia. Operacja opiera się na tablicy, w której bity wejścia określają położenie komórki zawierającej bity wejścia. Poprawne skonstruowanie takiej tablicy jest zadaniem trudnym, dlatego też korzysta się ze zdefiniowanych S-boxów. W przypadku algorytmu DES: S-box ma wymiar (4x16), a dla AES (16x16). 
+S-box jest kluczowym elementem algorytmów szyfrowania symetrycznego. Jego rola polega na przekształceniu $m$ bitów wejścia w $n$ wyjścia. Operacja opiera się na tablicy, w której bity wejścia określają położenie komórki zawierającej bity wyjścia. Poprawne skonstruowanie takiej tablicy jest zadaniem trudnym, dlatego też korzysta się ze zdefiniowanych S-boxów. W przypadku algorytmu DES: S-box ma wymiar (4x16), a dla AES (16x16). 
 \end{solution}
 
 \question Opisz zasadę działania S-boxów w algorytmie DES.
@@ -390,8 +390,8 @@ Preimage resistance (odporność przeciwobrazu) jest cechą funkcji skrótu, kt�
 
 \question Podaj atak, na który nie jest podatna jednokierunkowe funkcja skrótu słabo bezkonfliktowa? Odpowiedź uzasadnij.
 \begin{solution}
-Słaba bezkonfliktowość do cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
-Przykładem ataku, który bazuje na przełananiu tej cechy jest atak na kryptograficzną sumę konktrolną wiadomości (MAC), albo podpis cyfrowy.
+Słaba bezkonfliktowość to cecha funkcji haszujących, która mówi, że dla danego $x$ trudne jest znalezienie takiego $x'$, że $H(x) = H(x')$.
+Przykładem ataku, który bazuje na przełamaniu tej cechy jest atak na kryptograficzną sumę kontrolną wiadomości (MAC), albo podpis cyfrowy.
 Słaba bezkonfliktowość nazywana jest także 'second-preimage resistance'.
 \end{solution}
 
@@ -428,7 +428,7 @@ SHA-2 to rodzina algorytmów hashujących. Zawiera ona funkcje generujące hashe
 
 \question Na czym polega paradoks urodzinowy i jak wykorzystać go do ataku na MAC?
 \begin{solution}
-Paradoks urodzinowy to zaskakująca obserwacja z rachunku prawdopodobieństwa dla grupy liczącej  $k$ osób. Polega ona na zestawieniu szansy na to ktoś ma urodziny konkretnego dnia, z tym, że dowolne dwie osoby w grupie mają urodziny tego samego dnia. O ile pierwsza wartość wynosi $P_1 = k/365$, o tyle druga $P_2 = 1 - \frac{364}{365}\frac{363}{365} ... \frac{365-k+1}{365}$. 
+Paradoks urodzinowy to zaskakująca obserwacja z rachunku prawdopodobieństwa dla grupy liczącej  $k$ osób. Polega ona na zestawieniu szansy na to, że ktoś ma urodziny konkretnego dnia, z tym, że dowolne dwie osoby w grupie mają urodziny tego samego dnia. O ile pierwsza wartość wynosi $P_1 = k/365$, o tyle druga $P_2 = 1 - \frac{364}{365}\frac{363}{365} ... \frac{365-k+1}{365}$. 
 Na przykład, jeśli $k=20$, to $P_1 = 0.06$, a $P_2 = 0.44$. 
 \end{solution}
 
@@ -525,7 +525,7 @@ W kryptografii asymetrycznej używane są dwa rodzaje kluczy - klucz publiczny i
 
 \question Wymień wady i zalety kryptografii asymetrycznej.
 \begin{solution}
-Kryptografia asymetryczna rozwiązuje problem ustalania klucza, który jest poważnym utrudnieniem przy masowym stosowaniu kryptografii symetrycznej. Ponadto stwarza nowe możliwości (np. uwierzytelnianie) definiowane przez wykorzystanie schematu podpisu (szyfrowanie kluczem prywatnym). Do wad kryptografii asymetrycznej należy zaliczyć większą złożoność obliczeniową stosowanych algorytmów oraz większość długość wymaganych kluczy.
+Kryptografia asymetryczna rozwiązuje problem ustalania klucza, który jest poważnym utrudnieniem przy masowym stosowaniu kryptografii symetrycznej. Ponadto stwarza nowe możliwości (np. uwierzytelnianie) definiowane przez wykorzystanie schematu podpisu (szyfrowanie kluczem prywatnym). Do wad kryptografii asymetrycznej należy zaliczyć większą złożoność obliczeniową stosowanych algorytmów oraz większą długość wymaganych kluczy.
 \end{solution}
 
 
@@ -658,7 +658,7 @@ Odszyfrowanie:
 
 \question Na czym polega steganografia? Podaj przykłady historyczne.
 \begin{solution}
-Steganografia polega na ukrywaniu faktu istnienia informacji, a także na ukrywaniu kanału komunikacyjnego. O starożytności mamy wiele metod tego typu, np: atrament sympatyczny, mikrokropki, tatuaż pod włosami.
+Steganografia polega na ukrywaniu faktu istnienia informacji, a także na ukrywaniu kanału komunikacyjnego. Od starożytności mamy wiele metod tego typu, np: atrament sympatyczny, mikrokropki, tatuaż pod włosami.
 \end{solution}
 
 \question Jakiego rodzaju dane cyfrowe mogą być nośnikiem kanału steganograficznego?
@@ -688,7 +688,7 @@ Celem znakowania wodnego jest trwałe oznaczenie materiału multimedialnego dany
 
 \question Przedstaw ogólny schemat tworzenia kanału steganograficznego?
 \begin{solution}
-Kanał steganograficzny ma za zadanie w ukryty sposób przekazać tajną wiadomośći. Proces rozpoczyna się od zaszyfrowania wiadomości, aby zapewnić jej poufność i zatrzeć cechy statystyczne. Jednocześnie dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
+Kanał steganograficzny ma za zadanie w ukryty sposób przekazać tajną wiadomość. Proces rozpoczyna się od zaszyfrowania wiadomości, aby zapewnić jej poufność i zatrzeć cechy statystyczne. Jednocześnie dane nośnika poddawane są transformacji (np. fft, kosinusowej, falkowej). Następnie oba te sygnały są dodawane, a wynik przechodzi przez transformację odwrotną, dzięki czemu nośnik wraca do normalnej formy.
 \end{solution}
 
 \question Wyjaśnij pojęcie szyfrowania homomorficznego?
@@ -920,7 +920,7 @@ Dzielenie tajemnic jest sposobem rozdzielenie sekretu pomiędzy kilku użytkowni
 
 \question{Wyjaśnij dlaczego proste podzielenie tajemnicy na fragmenty nie jest dobrym rozwiązaniem?}
 \begin{solution}
-Proste dzielenie tajemnic na fragmenty nie jest dobrym rozwiązaniem gdyż wówczas każdy z udziałowców mimo iż otrzymuje fragment całości, to jest to fragment kompletny i sensowny w swoim zakresie, zatem zbierając wiele fragmentów od wielu udziałowców można w znacznym stopniu odtworzyć pierwotną tajemnicę. Protokoły dzielenia tajemnic rozwiązują ten problem gdyż wtedy potrzebni są wszyscy udziałowcy lub ich z góry założona ilość (dla protokołow z progiem odzyskania tajemnicy). W przypadku zgromadzenia mniejszej ilości udziałów nie daje to żadnej przewagi gdyż nie ma możlwości odzyskania części tajemnicy.
+Proste dzielenie tajemnic na fragmenty nie jest dobrym rozwiązaniem gdyż wówczas każdy z udziałowców mimo iż otrzymuje fragment całości, to jest to fragment kompletny i sensowny w swoim zakresie, zatem zbierając wiele fragmentów od wielu udziałowców można w znacznym stopniu odtworzyć pierwotną tajemnicę. Protokoły dzielenia tajemnic rozwiązują ten problem gdyż wtedy potrzebni są wszyscy udziałowcy lub ich z góry założona ilość (dla protokołów z progiem odzyskania tajemnicy). W przypadku zgromadzenia mniejszej ilości udziałów nie daje to żadnej przewagi gdyż nie ma możliwości odzyskania części tajemnicy.
 \end{solution}
 
 \question{Omów wybrany przykład protokołu dzielenia tajemnicy.}
@@ -1218,7 +1218,7 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 
 \question Wyjaśnij dlaczego ewidencja i klasyfikacja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
 \begin{solution}
-Pełna informacja o posiadanych zasobów informatycznych oraz ich analiza pod względem krytyczności dla działania organizacji, są niezbędne do uzasadnionego doboru poziomu ochrony oraz związanego z nim odpowiednimi środkami technicznymi. 
+Pełna informacja o posiadanych zasobach informatycznych oraz ich analiza pod względem krytyczności dla działania organizacji, są niezbędne do uzasadnionego doboru poziomu ochrony oraz związanego z nim odpowiednimi środkami technicznymi. 
 
 \fixit
 Ewidencja pozwala na bieżąco utrzymywać porządek w zasobach infrastruktury. Każdy element objęty ewidencją powinien być oznaczony, w taki sposób, aby można było jednoznacznie stwierdzić, czy sprzęt lub oprogramowanie znajdują się we właściwym miejscu. Często zdarza się, że firmy zaniedbują ten aspekt i inwentaryzacja jest wykonywana na potrzeby księgowości i ewidencji środków trwałych, przez co poświęca się jednorazowo mnóstwo czasu. Dedykowane oprogramowanie przyspiesza ten proces, aby czynności takie jak aktualizacja oprogramowania nie stanowiły szczególnego problemu. Jest to istotne zwłaszcza w przypadku krytycznych poprawek, gdzie ujawniona luka bezpieczeństwa może stać się źródłem kosztownych strat. Panowanie nad zasobami uszczelnia system ochrony, ponieważ pozwala na szybkie reagowanie w przypadku wykrycia problemów.
