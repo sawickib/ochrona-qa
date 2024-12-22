@@ -362,6 +362,18 @@ CFB jest to tryb pracy algorytmów blokowych. Polega on na sprzężeniu pomiędz
 Tryb ten może być wykorzystany do stworzenia algorytmu strumieniowego zdolnego do szyfrowania pojedynczych bitów. 
 \end{solution}
 
+\question Przedstaw tryb szyfrowania CTR 
+\begin{solution} 
+Tryb szyfrowania CTR (Counter Mode) jest trybem pracy algorytmów szyfrowania blokowego, który przekształca go w strumieniowy. Działa poprzez generowanie strumienia klucza przy pomocy szyfrowania kolejnych wartości licznika. Każda wartość licznika jest szyfrowana za pomocą klucza, a wynik jest XOR-owany z odpowiednim fragmentem tekstu jawnego w celu uzyskania kryptogramu. Tryb CTR pozwala na równoległe szyfrowanie i deszyfrowanie bloków, co czyni go bardzo wydajnym i szeroko stosowanym w praktyce. Dodatkowo nie wymaga wypełniania bloków i jest odporny na propagację błędów.
+\end{solution}
+
+\question Przedstaw tryb szyfrowania GCM 
+\begin{solution} 
+Tryb szyfrowania GCM (Galois/Counter Mode) to zaawansowany tryb pracy algorytmów szyfrowania, który zapewnia jednoczesne szyfrowanie danych oraz ich uwierzytelnianie. Bazuje na trybie CTR (Counter Mode) do szyfrowania, a do uwierzytelniania wykorzystuje mnożenie Galois. 
+GCM jest wspiera równoległe przetwarzanie i oferuje wysokie bezpieczeństwo.
+\end{solution}
+
+
 \question Wyjaśnij podstawy działania i uzasadnienie dla wykorzystania trybów uwierzytelniająco-szyfrujących.
 \begin{solution}
 Często występuje potrzeba jednoczesnego zapewnienia poufności i kontroli autentyczności dla wiadomości. W klasycznych rozwiązaniach poufność zapewniana jest poprzez szyfrowanie, a kontrola autentyczności poprzez hashowanie HMAC. Tryby uwierzytelniająco-szyfrujące przeprowadzają te dwie operacje jednocześnie, a więc są znacznie bardziej efektywne, niż przetwarzanie dwuetapowe.
@@ -395,7 +407,7 @@ Przykładem ataku, który bazuje na przełananiu tej cechy jest atak na kryptogr
 Słaba bezkonfliktowość nazywana jest także 'second-preimage resistance'.
 \end{solution}
 
-\question Jakie warunek musi spełniać funkcja silnie bezkonfliktowa?
+\question Jaki warunek musi spełniać funkcja silnie bezkonfliktowa?
 \begin{solution}
 Funkcja silnie bezkonfliktowa wymaga, aby nie było możliwe znalezienie takiej pary $(x,x')$, $x'$ różne od $x$, żeby $f(x) = f(x')$.
 Silna bezkonfliktowość nazywana jest także 'collision resistance'.
@@ -699,8 +711,20 @@ Cechą szyfrów homomorficznych jest to, że pewne operacje mogą być wykonywan
 
 
 \question Pokaż homomorficzność mnożenia dla wybranego algorytmu szyfrowania.
-
-
+\begin{solution}
+Dla algorytmu ElGamal, homomorficzność mnożenia wynika z własności szyfrowania:
+\[
+E(a) = (g^r, a \cdot h^r), \quad E(b) = (g^s, b \cdot h^s).
+\]
+Mnożenie szyfrogramów:
+\[
+E(a) \cdot E(b) = (g^{r+s}, (a \cdot b) \cdot h^{r+s}),
+\]
+co odpowiada szyfrowaniu \(a \cdot b\):
+\[
+E(a \cdot b) = (g^{r+s}, (a \cdot b) \cdot h^{r+s}).
+\]
+\end{solution}
 \end{questions}
 
 
@@ -892,6 +916,8 @@ Alicja i Bob współdzielą tajną wartość $s$, za pomocą której mogą szyfr
 
 \question Omów protokół Diffie-Helmana oparty na krzywych eliptycznych.
 \begin{solution}
+Protokół Diffie-Helmana oparty na krzywych eliptycznych (ECDH) pozwala na bezpieczne uzgadnianie klucza przy użyciu krzywych eliptycznych. Obie strony uzgadniają publiczne parametry krzywej i punkt bazowy \(P\). Następnie każda generuje klucz prywatny (\(a\) i \(b\)) i wylicza klucz publiczny (\(A = a \cdot P\), \(B = b \cdot P\)). Po wymianie kluczy publicznych obie strony obliczają wspólny klucz \(S = ab \cdot P\).
+
 \end{solution}
 
 \question Omów protokół Interlock.
@@ -1044,24 +1070,24 @@ Protokół HTTP jest bezstanowy, co oznacza, że w wersji podstawowej każde zap
 Atak Cross-Site Request Forgery (XSRF) dotyczy nadużycia poprawnie otwartej sesji. W typowym schemacie atakujący przesyła użytkownikowi adres URL, który odnosi się do innego systemu. Kliknięcie jest widoczne jako poprawna akcja w ramach otwartej sesji. Problem polega na tym, że przeglądarka ma centralny rejestr plików cookie (najczęściej przechowujących identyfikatory sesji), a więc nie może określić, która zakładka ma prawo do korzystania z sesji. 
 \end{solution}
 
-\question W jaki sposób bronić się przed atakiem XSRF?
+\question W jaki sposób bronić się przed atakiem XSRF.
 \begin{solution}
 XSRF jest atakiem na sesję, a więc należy uszczelnić mechanizmy kontroli jej spójności. Najlepiej jest to zrobić poprzez wprowadzenie dodatkowego mechanizmu losowych, każdorazowo zmiennych jednorazowych kluczy sesji, które są przekazywane w każdym zapytaniu. Możliwe jest także sprawdzanie, źródła zapytania poprzez pole nagłówka HTTP Referer. Dobrą strategią jest także wymaganie dodatkowego uwierzytelnienia przy szczególnie istotnych operacjach. 
 \end{solution}
 
 
-\question Przedstaw podstawowe metody przed atakiem XSS?
+\question Przedstaw podstawowe metody przed atakiem XSS.
 \begin{solution}
 Atak XSS (Cross-Site Scripting) polega na umieszczeniu na stronie internetowej złośliwego kodu Javascript. Niezależnie od zastosowanej przez atakującego metody, jedyną skuteczną metodą jest walidacja wszystkich danych wejściowych do systemu. Precyzyjne określenie dopuszczalnych formatów i kontrola wszystkich danych pod kątem zgodności z nimi eliminuje podatność na XSS.  
 \end{solution}
 
-\question Przedstaw metody obrony przed atakami typu Injection?
+\question Przedstaw metody obrony przed atakami typu Injection.
 \begin{solution}
 Ataki typu Injection dotyczą aplikacji internetowych. Polegają ,,wstrzyknięciu'' spreparowanych danych wejściowych do serwera tak, aby ten wykonał niezamierzone przez programistę operacje. 
 Obrona przed tego typu atakami polega na sprawdzaniu danych wejściowych przed wykorzystaniem tych danych w programie. Istotna jest również separacja uprawnień, tak aby nawet jeżeli dojdzie do wykonywania złośliwych poleceń, skutki były ograniczone.
 \end{solution}
 
-\question Omów przykład błędu skutkującemu możliwością SQL-Injection?
+\question Omów przykład błędu skutkującemu możliwością SQL-Injection.
 \begin{solution}
 Atak SQL-Injection jest możliwy w przypadku gdy dane otrzymane od użytkownika nie będą należycie sprawdzone przed wykorzystaniem ich w zapytaniach do bazy danych.\\
 Przykładowy kod w PHP:\\
@@ -1076,8 +1102,14 @@ SELECT header, shorttext FROM news WHERE id = NULL UNION ALL SELECT username, pa
 A jego wykonanie zwróci z tabeli users nazwy użytkowników wraz z hasłem.
 \end{solution}
 
-\question Przedstaw metody obrony przed atakami typu Phishing?
-
+\question Przedstaw metody obrony przed atakami typu Phishing.
+\begin{solution}
+\begin{itemize}
+\item Edukacja użytkowników – Regularne szkolenia w rozpoznawaniu podejrzanych wiadomości, linków i fałszywych stron.
+\item Uwierzytelnianie wieloskładnikowe (MFA) – Dodatkowa warstwa ochrony przed przejęciem kont.
+\item Filtrowanie e-maili – Wykorzystanie zaawansowanych narzędzi antyphishingowych w systemach pocztowych.
+\end{itemize}
+\end{solution}
 
 \end{questions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1111,18 +1143,14 @@ ACL (ang. Access Control List) jest techniką przechowywania uprawnień w system
 
 \question Przedstaw model ochrony Take-Grant.
 \begin{solution}
-\fixit
-Model ten oparty jest na grafie, w którym wierzchołki stanowią obiekty i podmioty, zaś etykietowane połączenia między nimi opisują uprawnienia.
-
-Model ochrony Take-Grant składa się z: zbioru podmiotów S, zbioru obiektów O, zbioru praw dostępu R. System ochrony jest modelowany za pomocą grafu, w którym każdy obiekt bądź podmiot jest wierzchołkiem grafu, a prawa określonego podmiotu do pewnego obiektu są modelowane za pomocą etykietowanej i skierowanej od podmiotu do obiektu krawędzi. Cztery elementarne operacje w modelu to:
+Model Take-Grant opisuje uprawnienia do zasobów w systemach informatycznych za pomocą grafu, gdzie wierzchołki reprezentują podmioty i obiekty, a skierowane krawędzie oznaczają uprawnienia. Cztery elementarne operacje w modelu to:
 \begin{itemize}
-\item create(o,r) – dodaje nowy wierzchołek do grafu. Z s do o jest tworzony łuk z etykietą r opisująca prawo s do o.
-\item revoke(o,r) – s usuwa prawo d do obiektu o. Łuk z s do o jest etykietowany jako q\r, gdzie q jest zbiorem uprawnień.
-\item grant(o, p, r) – podmiot s przyznaje o prawo dostępu r do p. W grafie dodawany jest łuk z o do p etykietowany jako r.
-\item take(o,p,r) -  podmiot s zabiera o prawo dostępu r do p. W grafie dodawany jest łuk z o do p etykietowany jako r.
+\item Take – pozwala podmiotowi przejąć określone uprawnienie do obiektu.
+\item Grant – umożliwia podmiotowi przyznanie uprawnienia innemu podmiotowi.
+\item Create – tworzy nowy obiekt lub podmiot i odpowiednią krawędź z uprawnieniami.
+\item Revoke – usuwa istniejące uprawnienie.
 \end{itemize}
 Użyteczność modelu Take-Grant polega na tym, że identyfikuje warunki, na jakich użytkownik może otrzymywać dostęp do obiektu.
-
 \end{solution}
 
 \question Przedstaw schemat ,,High-water mark'' do ustalania poziomu poufności.
