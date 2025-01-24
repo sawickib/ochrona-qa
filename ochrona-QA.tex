@@ -1177,8 +1177,7 @@ Skuteczna obrona wymaga także znajomości technik ataków. Hackowanie jest wła
 
 \question Przedstaw czym kopie zapasowe różnią się od systemu archiwizacji.
 \begin{solution}
-\fixit
-W języku polskim określenia: „backup” i „archiwizacja danych” są (często mylnie) stosowane zamiennie. Jednak w języku angielskim „backup” i „data archiving” określają różne działania. Podobnie w języku polskim kopia bezpieczeństwa i archiwizacja danych. „Backup” dotyczy tworzenia kopii bezpieczeństwa danych w celu ich odtworzenia po utracie lub uszkodzeniu, natomiast „data archiving” oznacza proces tzw. warstwowania danych, czyli ich dzielenia na dane aktywne, nieaktywne i referencyjne, a następnie zapisywania w odpowiednich obszarach zapisu.
+Kopie zapasowe (backup) służą do odtworzenia danych w przypadku ich utraty lub uszkodzenia i zazwyczaj są regularnie tworzone dla aktualnych danych. System archiwizacji polega na przechowywaniu danych nieaktywnych lub rzadko używanych w celu długoterminowego zachowania informacji, przy czym archiwa nie są zwykle gotowe do odtworzenia systemu w razie awarii​. Jego zadaniem jest utrwalenie historii danych.
 \end{solution}
 
 \question Wyjaśnij czy kopie zapasowe zapewniają wysoką dostępność danych?
@@ -1197,25 +1196,18 @@ Zadaniem klasycznych systemów kopii zapasowych jest zabezpieczenie przed utrat�
 
 \question Wyjaśnij terminy DDOS, DMZ, Firewall, IDS, IPS, DLP, DPI.
 \begin{solution}
-\fixit (za dużo Wikipedii)
+
 \begin{description}
 \item[DDOS] (ang. Distributed Denial of Service – rozproszona odmowa usługi) – atak na system komputerowy lub usługę sieciową w celu uniemożliwienia działania poprzez zajęcie wszystkich wolnych zasobów, przeprowadzany równocześnie z wielu komputerów
 \item[DMZ]
-Demilitarized zone (DMZ), strefa zdemilitaryzowana bądź ograniczonego zaufania – jest to wydzielany na zaporze sieciowej (ang. firewall) obszar sieci komputerowej nienależący ani do sieci wewnętrznej (tj. tej chronionej przez zaporę), ani do sieci zewnętrznej (tej przed zaporą; na ogół jest to Internet). W strefie zdemilitaryzowanej umieszczane są serwery "zwiększonego ryzyka włamania", przede wszystkim serwery świadczące usługi użytkownikom sieci zewnętrznej, którym ze względów bezpieczeństwa nie umożliwia się dostępu do sieci wewnętrznej (najczęściej są to serwery WWW i FTP). W strefie zdemilitaryzowanej umieszczane są także te serwery usług świadczonych użytkownikom sieci wewnętrznej, które muszą kontaktować się z obszarem sieci zewnętrznej (serwery DNS, proxy, poczty i inne), oraz serwery monitorujące i reagujące na próby włamań IDS.
+DMZ (ang. Demilitarized Zone) to wydzielony obszar w sieci komputerowej, oddzielony od sieci wewnętrznej i zewnętrznej (np. Internetu) za pomocą zapór sieciowych. W DMZ umieszczane są serwery świadczące usługi zarówno dla użytkowników z sieci zewnętrznej, jak i wewnętrznej, takie jak serwery WWW czy pocztowe, aby zwiększyć bezpieczeństwo głównej sieci wewnętrznej, ograniczając dostęp do niej​.
 \item[Firewall]
 Zapora sieciowa (ang. firewall – ściana przeciwogniowa) – jeden ze sposobów zabezpieczania sieci i systemów przed intruzami.
 Termin ten może odnosić się zarówno do dedykowanego sprzętu komputerowego wraz ze specjalnym oprogramowaniem, jak i do samego oprogramowania blokującego niepowołany dostęp do komputera, na którego straży stoi. Pełni rolę połączenia ochrony sprzętowej i programowej sieci wewnętrznej LAN przed dostępem z zewnątrz tzn. sieci publicznych, Internetu, chroni też przed nieuprawnionym wypływem danych z sieci lokalnej na zewnątrz. Często jest to komputer wyposażony w system operacyjny z odpowiednim oprogramowaniem. Do jego podstawowych zadań należy filtrowanie połączeń wchodzących i wychodzących oraz tym samym odmawianie żądań dostępu uznanych za niebezpieczne.
 \item[IDS]
 (ang. intrusion detection system) Ogólna nazwa systemów wykrywających intruzów. Warto je stosować, bo umożliwiają wykrywanie włamań i nieuprawnionych działań wewnątrz sieci - kiedy atakującymi są np. pracownicy - ale umożliwiają też wykrycie ataków z zewnątrz, np. DoS. 
-Istnieją zasadniczo dwa rodzaje systemów IDS oraz trzeci, będący ich syntezą:
-\begin{itemize}
-\item{HIDS (Host IDS)} - Działa lokalnie, na wybranym hoście - może to być np. serwer bazodanowy. Odpowiednie informacje są zbierane z logów systemowych i aplikacyjnych i przesyłane na serwer, który je analizuje. Jeżeli jakiś użytkownik wykonał niedozwoloną czynność (np. nieautoryzowana modyfikacja pliku), informacja o tym szybko trafia do takiego serwera, który może podjąć adekwatne działanie.
-Wady? Przy dużych sieciach taki system staje się niewygodny w obsłudze i nieefektywny. Poza tym odcięcie lub awaria serwera HIDS wyłącza cały system zabezpieczający.
-\item{NIDS (Network IDS)} - Ten wariant systemu IDS działa w obrębie sieci, analizując przesyłane przez nią pakiety i określając je jako prawidłowe lub złośliwe. Zaletą NIDS jest to, że dobrze radzi sobie z wykrywaniem ataków spoza sieci, również DoS.
-Słabości? Takie systemy nie przeanalizują ruchu szyfrowanego, zaś przy dużym obciążeniu sieci mogą - żeby uniknąć wprowadzenia wąskiego gardła - analizować przesyłane pakiety bardzo pobieżnie.
-\end{itemize}
-\item[IPS]
-Intrusion prevention system
+\item[Honeypot] - Honeypot to celowo wystawiony system lub zasób informatyczny, zaprojektowany w taki sposób, aby przyciągać potencjalnych atakujących. Jego głównym celem jest monitorowanie, analiza technik ataku oraz gromadzenie informacji o działaniach intruzów, co pozwala na lepsze zrozumienie zagrożeń i opracowanie skuteczniejszych mechanizmów obrony. Naruszenie bezpieczeństwa Honeypot nie wpływa na bezpieczeństwo właściwego systemu.
+\item[IPS] - Intrusion Prevention System to system ochrony sieci, który monitoruje ruch w czasie rzeczywistym, wykrywając i blokując potencjalnie złośliwe działania. Działa prewencyjnie, zapobiegając dotarciu zagrożeń do chronionych zasobów.
 \item[DLP]
 Ochrona przed wyciekami informacji (ang. DLP – Data Leak/Leakage/Loss Protection/Prevention) – ogólna nazwa technologii informatycznych wspomagających ochronę danych w postaci elektronicznej przed kradzieżą lub przypadkowymi wyciekami.
 Systemy DLP wdraża się w organizacjach przetwarzających informacje podlegające ochronie z powodów biznesowych (tajemnica przedsiębiorstwa) lub prawnych (osobowe, dane wrażliwe, finansowe, zdrowotne) a których ujawnienie może narazić organizację na odpowiedzialność karną, cywilną lub innego rodzaju straty. Wdrożenia DLP służą najczęściej realizacji prawnych lub branżowych wymogów ochrony danych osobowych i finansowych (PCI DSS).
@@ -1250,18 +1242,12 @@ Jeżeli organizacja nie opracowała polityki bezpieczeństwa, to najczęściej o
 
 \question Wyjaśnij dlaczego ewidencja i klasyfikacja zasobów informatycznych jest podstawą budowania efektywnego systemu ochrony.
 \begin{solution}
-Pełna informacja o posiadanych zasobów informatycznych oraz ich analiza pod względem krytyczności dla działania organizacji, są niezbędne do uzasadnionego doboru poziomu ochrony oraz związanego z nim odpowiednimi środkami technicznymi. 
-
-\fixit
-Ewidencja pozwala na bieżąco utrzymywać porządek w zasobach infrastruktury. Każdy element objęty ewidencją powinien być oznaczony, w taki sposób, aby można było jednoznacznie stwierdzić, czy sprzęt lub oprogramowanie znajdują się we właściwym miejscu. Często zdarza się, że firmy zaniedbują ten aspekt i inwentaryzacja jest wykonywana na potrzeby księgowości i ewidencji środków trwałych, przez co poświęca się jednorazowo mnóstwo czasu. Dedykowane oprogramowanie przyspiesza ten proces, aby czynności takie jak aktualizacja oprogramowania nie stanowiły szczególnego problemu. Jest to istotne zwłaszcza w przypadku krytycznych poprawek, gdzie ujawniona luka bezpieczeństwa może stać się źródłem kosztownych strat. Panowanie nad zasobami uszczelnia system ochrony, ponieważ pozwala na szybkie reagowanie w przypadku wykrycia problemów.
+Ewidencja i klasyfikacja zasobów informatycznych umożliwiają dokładne określenie, jakie zasoby są w posiadaniu organizacji, oraz ich wartości i krytyczności. Dzięki temu można odpowiednio priorytetyzować działania ochronne, stosować właściwe środki zabezpieczeń oraz szybko reagować na zagrożenia, co wzmacnia skuteczność całego systemu ochrony​.
 \end{solution}
 
 \question Na czym polega audyt polityki bezpieczeństwa?
 \begin{solution}
-Audyt dokumentu polityki bezpieczeństwa polega na zweryfikowaniu jej zgodności ze stosowanymi zabezpieczeniami. Wymagane są ciągłe modyfikacje odzwierciedlające zmieniające się uwarunkowania pracy firmy, profilu działania, stosowanego sprzetu i oprogramowania. Zakończony audyt polityki bezpieczeństwa powinien wskazać braki i nieścisłości we wdrożonej dokumentacji, sposób uzupełnienia braków i poprawienia nieścisłości. Audyt powinien również zweryfikować poprawność wdrożenia dokumentacji w organizacji oraz pomóc w postępowaniu naprawczym. Audyt polityki bezpieczeństwa powinien być wykonywany regularnie co jakiś czas.
-
-\fixit
-Audyt polityki bezpieczeństwa polega m.in. na: wskazaniu braków i nieścisłości we wdrożonej dokumentacji, wskazaniu sposobu uzupełnienia braków i poprawienia nieścisłości, zweryfikowaniu poprawności wdrożenia dokumentacji w organizacji oraz pomocy w postępowaniu naprawczym. Audyt ma na celu zweryfikowanie zastosowanej już polityki bezpieczeństwa oraz procedur z nią związanych, jak również wskazanie możliwych ulepszeń. Powinien być przeprowadzany w regularnych odstępach czasu, a nie tylko w przypadku naruszenia zabezpieczeń czy też istotnych zmian w konfiguracji i zasobach teleinformatycznych. Częstość audytu jest w dużej mierze kwestią umowną i zależy od specyfiki instytucji.
+Audyt polityki bezpieczeństwa polega na weryfikacji, czy dokumentacja polityki bezpieczeństwa organizacji oraz jej wdrożenie są zgodne z przyjętymi standardami i rzeczywistym stanem systemów ochrony. Obejmuje identyfikację braków, nieścisłości oraz ocenę skuteczności stosowanych zabezpieczeń, a także rekomendacje dotyczące ich poprawy i dostosowania do zmieniających się warunków działalności instytucji.
 \end{solution}
 
 \question Czego dotyczą normy z serii ISO 27000?
@@ -1272,38 +1258,12 @@ Seria norm ISO 27000 dotyczy szeroko pojętego bezpieczeństwa systemów informa
 
 \question Czego dotyczy norma PN-ISO 17799?
 \begin{solution}
-Norma ISO 17799 wywodzi się z brytyjskiego standardu bezpieczeństwa BS 7799. Stanowi zestaw wskazówek dla wdrożenia i utrzymania bezpieczeństwa informacji w przedsiębiorstwie.
-
-\fixit
-Norma PN-ISO/IEC 17799:2007 jest polskim odpowiednikiem normy ISO/IEC 17799:2005.
-
-Określa ona wytyczne związane z ustanowieniem, wdrożeniem, eksploatacją, monitorowaniem, przeglądem, utrzymaniem i doskonaleniem Systemu Zarządzania Bezpieczeństwem Informacji. Stanowi ona uzupełnienie normy PN-ISO/IEC 27001:2007. Zawiera zalecenia i ogólne zasady dotyczące inicjowania działań, wdrażania, utrzymania i doskonalenia zarządzania bezpieczeństwem informacji w organizacji. Cele stosowania zabezpieczeń przedstawione w normie są powszechnie akceptowanymi praktykami zarządzania bezpieczeństwem informacji. Norma wycofana i zastąpiona przez PN-ISO/IEC 27002:2014-12.
-
+Norma PN-ISO 17799 (obecnie zastąpiona przez PN-ISO/IEC 27002) dotyczy wytycznych związanych z zarządzaniem bezpieczeństwem informacji w organizacjach. Obejmowała rekomendacje dotyczące ustanawiania, wdrażania, utrzymania i doskonalenia polityki bezpieczeństwa informacji, w tym ochrony poufności, integralności i dostępności danych​.
 \end{solution}
 
 \question Jakie dane chronione są przez ustawę o ochronie danych osobowych?
 \begin{solution}
-W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania żyjącej osoby fizycznej, np:
-\begin{itemize}
-\item Imię, nazwisko
-\item Adres
-\item PESEL
-\item DNA, linie papilarne
-\end{itemize}
-
-Szczególnie chronione są tzw. dane wrażliwe do których zaliczamy:
-\begin{itemize}
-\item pochodzenie rasowe lub etniczne
-\item poglądy polityczne
-\item przekonania religijne lub filozoficzne
-\item przynależność wyznaniową, partyjną lub związkową
-\item stan zdrowia, kodu genetycznego, nałogów lub życia seksualnego,
-\item skazania, orzeczenia o ukaraniu i mandaty karnych, a także inne orzeczenia wydane w postępowaniu sądowym lub administracyjnym.
-\end{itemize}
-
-\fixit
-W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej. Osobą możliwą do zidentyfikowania jest osoba, której tożsamość można określić bezpośrednio lub pośrednio, w szczególności przez powołanie się na numer identyfikacyjny albo jeden lub kilka specyficznych czynników określających jej cechy fizyczne, fizjologiczne, umysłowe, ekonomiczne, kulturowe lub społeczne. Informacji nie uważa się za umożliwiającą określenie tożsamości osoby, jeżeli wymagałoby to nadmiernych kosztów, czasu lub działań. Danymi osobowymi są nie tylko, imię czy nazwisko, ale również wszelkiego typu przypisane numery, określone cechy (np. fizjologiczne, umysłowe, ekonomiczne) itd. Danymi osobowymi nie będą zatem pojedyncze informacje o dużym stopniu ogólności, np. sama nazwa ulicy i numer domu czy wysokość wynagrodzenia. Informacja ta będzie jednak stanowić dane osobowe wówczas, gdy zostanie zestawiona z innymi, dodatkowymi informacjami, np. imieniem i nazwiskiem czy numerem PESEL, które w konsekwencji można odnieść do konkretnej osoby. Adres poczty elektronicznej – bez dodatkowych informacji, umożliwiających ustalenie tożsamości osoby – zasadniczo nie stanowi danych osobowych. Występujący samodzielnie adres poczty elektronicznej można w wyjątkowych przypadkach uznać za dane osobowe, ale tylko wtedy, gdy elementy jego treści pozwalają, bez nadmiernych kosztów, czasu lub działań – na ustalenie na ich podstawie tożsamości danej osoby. Dzieje się tak w sytuacji, gdy elementami treści adresu są np. imię i nazwisko jego właściciela.
-
+Ustawa o ochronie danych osobowych chroni dane umożliwiające zidentyfikowanie osoby fizycznej, takie jak imię, nazwisko, adres, numer PESEL, dane biometryczne czy genetyczne. Szczególną ochroną objęte są dane wrażliwe, m.in. dotyczące zdrowia, poglądów politycznych, przekonań religijnych, życia seksualnego czy przynależności wyznaniowej lub związkowej​.
 \end{solution}
 
 
